@@ -10,7 +10,6 @@ public class BookData : ScriptableObject
     public float publicationYear;
     public bookGenre BookGenre;
     public string bookBio;
-    public Sprite bookCover;
 
 }
 
