@@ -14,4 +14,4 @@ public class BookData : ScriptableObject
 }
 
 [Flags]
-public enum bookGenre { Horror, Romance, Childrens, Academic, Play, Tragedy, Gothic, Literary, Vampire, Fantasy, Epic, Crime, Mystery };
+public enum bookGenre { TBA, Horror, Romance, Childrens, Academic, Play, Tragedy, Gothic, Literary, Vampire, Fantasy, Epic, Crime, Mystery };

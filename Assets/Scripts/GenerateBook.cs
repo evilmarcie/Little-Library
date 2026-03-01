@@ -4,10 +4,11 @@ using UnityEngine;
 public class GenerateBook : MonoBehaviour
 {
     public GameObject book;
+    public GameObject holder;
 
     public void generateBook()
     {
-        Instantiate(book);
+        Instantiate(book, holder.transform);
     
     }
 }

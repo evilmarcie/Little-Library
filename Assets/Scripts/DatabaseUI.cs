@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class DatabaseUI : MonoBehaviour
 {
@@ -26,4 +28,5 @@ public class DatabaseUI : MonoBehaviour
         CXMenu.SetActive(false);
         AchievementsMenu.SetActive(true);
     }
+    
 }

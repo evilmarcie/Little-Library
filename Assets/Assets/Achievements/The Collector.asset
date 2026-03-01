@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7010daf982a7a1b4595d4f349d9a28d6, type: 3}
-  m_Name: Little Women
-  m_EditorClassIdentifier: Assembly-CSharp::BookData
-  bookTitle: Little Women
-  authorName: Louisa May Alcott
-  publicationYear: 1869
-  BookGenre: 0
-  bookBio: 
+  m_Script: {fileID: 11500000, guid: b682115e7e5fc6944bcfc712ce3a8cba, type: 3}
+  m_Name: The Collector
+  m_EditorClassIdentifier: Assembly-CSharp::Achievements
+  achievementName: The Collector
+  requirements: Recieve One Copy of Every Book
+  achieved: 0
+  reward: 

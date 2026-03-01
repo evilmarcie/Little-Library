@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Anne of Green Gables
   m_EditorClassIdentifier: Assembly-CSharp::BookData
   bookTitle: Anne of Green Gables
-  authorName: Lucy Maud Montgomery
+  authorName: L.M. Montgomery
   publicationYear: 1908
   BookGenre: 0
   bookBio: 
