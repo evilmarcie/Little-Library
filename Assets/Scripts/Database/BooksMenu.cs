@@ -12,6 +12,5 @@ public class BooksMenu : MonoBehaviour
         infoMenu.SetActive(false);
         homeMenu.SetActive(true);
     }
-
-
+    
 }

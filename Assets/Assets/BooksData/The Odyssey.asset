@@ -15,5 +15,5 @@ MonoBehaviour:
   bookTitle: The Odyssey
   authorName: Homer
   publicationYear: 1893
-  BookGenre: 0
+  BookGenre: 1024
   bookBio: 

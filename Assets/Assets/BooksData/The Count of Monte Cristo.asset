@@ -15,5 +15,5 @@ MonoBehaviour:
   bookTitle: The Count of Monte Cristo
   authorName: Alexandre Dumas
   publicationYear: 1846
-  BookGenre: 0
+  BookGenre: 8192
   bookBio: 
