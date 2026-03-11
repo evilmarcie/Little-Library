@@ -1,5 +1,7 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class uiManager : MonoBehaviour
@@ -55,6 +57,35 @@ public class uiManager : MonoBehaviour
         infoMenu.SetActive(false);
         booksScrollbar.value = 1;
         achievementsScrollbar.value = 1;
+    }
+
+    [SerializeField] Button leftButton;
+    [SerializeField] Button rightButton;
+
+    public void toShelves()
+    {
+        // Scene Bookshelves = SceneManager.GetSceneByName("Bookshelves");
+        // SceneManager.SetActiveScene(Bookshelves);
+
+        SceneController.Instance
+            .NewTransition()
+            .Load(SceneDatabase.Slots.Bookshelves, SceneDatabase.Scenes.Bookshelves, SetActive: true)
+            .Load(SceneDatabase.Slots.UI, SceneDatabase.Scenes.UI)
+            .WithOverlay()
+            .Perform();
+    }
+
+    public void toCounter()
+    {
+        //Scene Counter = SceneManager.GetSceneByName("Counter");
+        //SceneManager.SetActiveScene(Counter);
+
+         SceneController.Instance
+            .NewTransition()
+            .Load(SceneDatabase.Slots.Counter, SceneDatabase.Scenes.Counter, SetActive: true)
+            .Load(SceneDatabase.Slots.UI, SceneDatabase.Scenes.UI)
+            .WithOverlay()
+            .Perform();
     }
 
 }

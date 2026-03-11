@@ -1,16 +1,20 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
 
 public class MenuManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void StartGame()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SceneController.Instance
+            .NewTransition()
+            .Load(SceneDatabase.Slots.Session, SceneDatabase.Scenes.Session)
+            .Load(SceneDatabase.Slots.Bookshelves, SceneDatabase.Scenes.Bookshelves)
+            .Load(SceneDatabase.Slots.Counter, SceneDatabase.Scenes.Counter, SetActive: true)
+            .Load(SceneDatabase.Slots.UI, SceneDatabase.Scenes.UI)
+            .Unload(SceneDatabase.Slots.Menu)
+            .WithOverlay()
+            .WithClearUnusedAssets()
+            .Perform();
     }
 }

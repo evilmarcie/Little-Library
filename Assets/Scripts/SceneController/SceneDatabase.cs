@@ -6,7 +6,9 @@ public class SceneDatabase : MonoBehaviour
     {
         public const string Menu = "Menu";
         public const string Session = "Session";
-        public const string SessionContent = "SessionContent";
+        public const string Counter = "Counter";
+        public const string Bookshelves = "Bookshelves";
+        public const string UI = "UI";
     }
 
     public class Scenes

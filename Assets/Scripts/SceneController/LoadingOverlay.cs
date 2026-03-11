@@ -15,7 +15,7 @@ public class LoadingOverlay : MonoBehaviour
 
     public IEnumerator FadeOutBlack()
     {
-        yield return FadeTo(1f, fadeOutTime);
+        yield return FadeTo(0f, fadeOutTime);
     }
 
     private IEnumerator FadeTo(float targetAlpha, float duration)
@@ -25,7 +25,7 @@ public class LoadingOverlay : MonoBehaviour
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsed/duration);
+            float t = Mathf.Clamp01(elapsed / duration);
             canvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, t);
             yield return null;
         }
