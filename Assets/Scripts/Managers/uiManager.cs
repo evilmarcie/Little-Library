@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class uiManager : MonoBehaviour
 {
     public GameObject databaseMenu;
     public GameObject pauseMenu;
