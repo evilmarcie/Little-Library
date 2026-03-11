@@ -9,7 +9,7 @@ public class uiBook : MonoBehaviour
     public BookData book;
     public Sprite cover;
 
-     private Button button;
+    private Button button;
 
     public Image coverDisplay;
     public TextMeshProUGUI title;
