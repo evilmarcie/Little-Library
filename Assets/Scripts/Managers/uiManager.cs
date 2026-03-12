@@ -64,26 +64,20 @@ public class uiManager : MonoBehaviour
 
     public void toShelves()
     {
-        // Scene Bookshelves = SceneManager.GetSceneByName("Bookshelves");
-        // SceneManager.SetActiveScene(Bookshelves);
 
         SceneController.Instance
             .NewTransition()
-            .Load(SceneDatabase.Slots.Bookshelves, SceneDatabase.Scenes.Bookshelves, SetActive: true)
-            .Load(SceneDatabase.Slots.UI, SceneDatabase.Scenes.UI)
+            .SwapScreen(SceneDatabase.Scenes.Bookshelves)
             .WithOverlay()
             .Perform();
     }
 
     public void toCounter()
     {
-        //Scene Counter = SceneManager.GetSceneByName("Counter");
-        //SceneManager.SetActiveScene(Counter);
 
-         SceneController.Instance
+          SceneController.Instance
             .NewTransition()
-            .Load(SceneDatabase.Slots.Counter, SceneDatabase.Scenes.Counter, SetActive: true)
-            .Load(SceneDatabase.Slots.UI, SceneDatabase.Scenes.UI)
+            .SwapScreen(SceneDatabase.Scenes.Counter)
             .WithOverlay()
             .Perform();
     }
