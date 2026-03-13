@@ -59,17 +59,18 @@ public class uiManager : MonoBehaviour
         achievementsScrollbar.value = 1;
     }
 
-    [SerializeField] Button leftButton;
-    [SerializeField] Button rightButton;
+    [SerializeField] GameObject leftButton;
+    [SerializeField] GameObject rightButton;
 
     public void toShelves()
     {
-
         SceneController.Instance
             .NewTransition()
             .SwapScreen(SceneDatabase.Scenes.Bookshelves)
             .WithOverlay()
             .Perform();
+
+        rightButton.SetActive(false);
     }
 
     public void toCounter()
@@ -80,6 +81,8 @@ public class uiManager : MonoBehaviour
             .SwapScreen(SceneDatabase.Scenes.Counter)
             .WithOverlay()
             .Perform();
+
+        leftButton.SetActive(false);
     }
 
 }

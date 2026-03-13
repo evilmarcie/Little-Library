@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Book : MonoBehaviour
+public class bookPrefab : MonoBehaviour
 {
     //arrays
     public BookData[] books = {};
@@ -17,10 +17,9 @@ public class Book : MonoBehaviour
     public BookData book;
 
     //rendering book gameobject
-    public GameObject cover;
-    SpriteRenderer coverRenderer;
-    public TextMeshPro title;
-    public TextMeshPro author;
+    public Image coverImage;
+    public TextMeshProUGUI title;
+    public TextMeshProUGUI author;
     
 
     void Start()
@@ -29,9 +28,8 @@ public class Book : MonoBehaviour
         book = books[UnityEngine.Random.Range(0, books.Length)];
         bookCover = CoverSprites[UnityEngine.Random.Range(0, CoverSprites.Length)]; 
 
-        //set bookcover sprite to sprite renderer
-        coverRenderer = cover.GetComponent<SpriteRenderer>();
-        coverRenderer.sprite = bookCover;
+        //set bookcover sprite to image renderer
+        coverImage.sprite = bookCover;
         
         //set book title to title text
         title.text = book.bookTitle;

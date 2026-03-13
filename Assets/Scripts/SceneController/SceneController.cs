@@ -24,8 +24,6 @@ public class SceneController : MonoBehaviour
     private Dictionary <string, string> loadedSceneBySlot = new();
     private bool isBusy = false;
 
-    //public string SceneName { get; private set; }
-
     public SceneTransitionPlan NewTransition()
     {
         return new SceneTransitionPlan();
@@ -69,12 +67,6 @@ public class SceneController : MonoBehaviour
         }
         isBusy = false;
 
-        //if (plan.SwapScreen)
-        //{
-
-           // Scene scene = SceneManager.GetSceneByName(SceneName);
-            //yield return SceneManager.SetActiveScene(scene);
-        //}
     }
 
     private IEnumerator LoadAdditiveRoutine(string slotKey, string sceneName, bool SetActive)
@@ -137,7 +129,6 @@ public class SceneController : MonoBehaviour
         public bool ClearUnusedAssets {get; private set;} = false;
         public bool Overlay {get; private set;} = false;
         
-        //public bool SwapScreen = false;
         public SceneTransitionPlan Load(string slotKey, string SceneName, bool SetActive = false)
         {
             ScenesToLoad[slotKey] = SceneName;

@@ -1,16 +1,20 @@
+using System.Runtime.Serialization;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class BookshelfManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public GameObject bookPrefab;
+    public Canvas canvas;
 
-    // Update is called once per frame
-    void Update()
+    public void GenerateBook()
     {
-        
+        GameObject book = Instantiate(bookPrefab, new Vector3(-778, 111, 0), Quaternion.identity);
+        book.transform.SetParent(canvas.transform, false);
+        // book.transform.localScale =  new Vector3 (35, 35, 35);
+    
     }
 }
