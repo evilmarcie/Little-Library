@@ -22,5 +22,6 @@ public class SnapSlot : MonoBehaviour, IDropHandler
             currentBook.transform.SetParent(book.parentAfterDrag);
             
         }
+
     }
 }

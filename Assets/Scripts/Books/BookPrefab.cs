@@ -12,6 +12,11 @@ public class bookPrefab : MonoBehaviour
     public BookData[] books = {};
     public Sprite[] CoverSprites = {};
 
+    // temporary fill
+    // have spines match the corrosponding cover in their respective arrays
+    // pick random cover and then find that matching number in the spine array
+    public Sprite spineSprite;
+
     //variables
     public Sprite bookCover;
     public BookData book;
@@ -20,6 +25,10 @@ public class bookPrefab : MonoBehaviour
     public Image coverImage;
     public TextMeshProUGUI title;
     public TextMeshProUGUI author;
+
+    //spine
+    public Image spine;
+    public TextMeshProUGUI spineTitle;
     
 
     void Start()
@@ -30,9 +39,11 @@ public class bookPrefab : MonoBehaviour
 
         //set bookcover sprite to image renderer
         coverImage.sprite = bookCover;
+        spine.sprite = spineSprite;
         
         //set book title to title text
         title.text = book.bookTitle;
+        spineTitle.text = book.bookTitle;
 
         //set author to author text
         author.text = book.authorName;
