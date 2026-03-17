@@ -14,7 +14,6 @@ public class BookshelfManager : MonoBehaviour
     {
         GameObject book = Instantiate(bookPrefab, new Vector3(-778, 111, 0), Quaternion.identity);
         book.transform.SetParent(canvas.transform, false);
-        // book.transform.localScale =  new Vector3 (35, 35, 35);
     
     }
 }

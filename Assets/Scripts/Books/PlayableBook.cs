@@ -5,11 +5,15 @@ using UnityEngine.InputSystem;
 using System.ComponentModel.Design;
 using UnityEditor.Rendering;
 using Unity.VisualScripting;
+using System;
+using UnityEditor;
+using TMPro;
 
 public class PlayableBook : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     [HideInInspector] public Transform parentAfterDrag;
-    public Image image;
+    public Image CoverImage;
+    public Image SpineImage;
     public GameObject coverView;
     public GameObject spineView;
 
@@ -19,13 +23,17 @@ public class PlayableBook : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         spineView.SetActive(false);
     }
 
+    // put onto shelf 
+
     public void OnBeginDrag(PointerEventData eventData)
     
     {
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
-        image.raycastTarget = false;
+
+        CoverImage.raycastTarget = false;
+        SpineImage.raycastTarget = false;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -37,8 +45,11 @@ public class PlayableBook : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnEndDrag(PointerEventData eventData)
     {
         transform.SetParent(parentAfterDrag);
-        image.raycastTarget = true;
+        CoverImage.raycastTarget = true;
+        SpineImage.raycastTarget = true;
     }
+
+    // toggle cover to spine view
 
     bool PointerDown = false;
 
@@ -73,5 +84,5 @@ public class PlayableBook : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         }
 
     }
-  
+
 }

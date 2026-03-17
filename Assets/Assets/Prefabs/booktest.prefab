@@ -369,7 +369,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayableBook
   parentAfterDrag: {fileID: 0}
-  image: {fileID: 4302099894424192187}
+  CoverImage: {fileID: 0}
+  SpineImage: {fileID: 0}
   coverView: {fileID: 5578540456278490575}
   spineView: {fileID: 4377459937165253876}
 --- !u!1 &4377459937165253876

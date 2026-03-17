@@ -15,11 +15,12 @@ public class SnapSlot : MonoBehaviour, IDropHandler
         }
         else
         {
+            
             Transform originalParent = book.parentAfterDrag;
             GameObject current = transform.GetChild(0).gameObject;
             PlayableBook currentBook = current.GetComponent<PlayableBook>();
 
-            currentBook.transform.SetParent(book.parentAfterDrag);
+            currentBook.transform.SetParent(originalParent);
             
         }
 
