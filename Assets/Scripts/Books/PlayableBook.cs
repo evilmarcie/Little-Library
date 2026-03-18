@@ -1,26 +1,26 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
-using System.ComponentModel.Design;
-using UnityEditor.Rendering;
-using Unity.VisualScripting;
-using System;
-using UnityEditor;
-using TMPro;
+
 
 public class PlayableBook : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     [HideInInspector] public Transform parentAfterDrag;
+    [HideInInspector] public Transform shelfParent;
     public Image CoverImage;
     public Image SpineImage;
     public GameObject coverView;
     public GameObject spineView;
 
+    public SnapSlot myShelf;
+    public bool onShelf = false;
+    public bool holdingBook = false;
+
     void Awake()
     {
         coverView.SetActive(true);
         spineView.SetActive(false);
+        
     }
 
     // put onto shelf 
@@ -28,12 +28,20 @@ public class PlayableBook : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnBeginDrag(PointerEventData eventData)
     
     {
+        onShelf = false;
+        holdingBook = true;
+
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
 
         CoverImage.raycastTarget = false;
         SpineImage.raycastTarget = false;
+
+        if(myShelf != null)
+        {
+            myShelf.BookRemoved(this);
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -45,8 +53,12 @@ public class PlayableBook : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnEndDrag(PointerEventData eventData)
     {
         transform.SetParent(parentAfterDrag);
+
         CoverImage.raycastTarget = true;
         SpineImage.raycastTarget = true;
+
+        holdingBook = false;
+
     }
 
     // toggle cover to spine view
@@ -84,5 +96,4 @@ public class PlayableBook : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         }
 
     }
-
 }
