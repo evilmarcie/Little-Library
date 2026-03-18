@@ -1,21 +1,18 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Runtime.Serialization;
 using Unity.VisualScripting;
-using System.Diagnostics.Tracing;
+using UnityEngine.InputSystem.Android;
 
 public class Tooltip : MonoBehaviour
 {    
-    public Image background;
     public TextMeshProUGUI titleText;
-    public TextMeshProUGUI authorText;
-    public TextMeshProUGUI genreText;
-
+    
     public static Tooltip instance;
 
     void Awake()
     {
+        
         if (instance != null && instance != this)
         {
             Destroy(this.gameObject);
@@ -34,32 +31,13 @@ public class Tooltip : MonoBehaviour
         transform.position = Input.mousePosition;
     }
 
-    public void ShowTooltip()
+    public void updateTooltip(BookData currentBook)
     {
-        //TooltipInfo(currentBook);
-        gameObject.SetActive(true);
+        titleText.text = currentBook.bookTitle;
     }
 
-    public void TooltipInfo()
+    public static void updateTooltip_Static(BookData currentBook)
     {
-        //titleText.text = currentBook.bookTitle;
-        //authorText.text = currentBook.authorName;
-        //genreText.text = currentBook.BookGenre.ToString();
+        instance.updateTooltip(currentBook);
     }
-
-    public void HideTooltip()
-    {
-        gameObject.SetActive(false);
-    }
-
-    public static void ShowTooltip_Static()
-    {
-        instance.ShowTooltip();
-    }
-
-    public static void HideTooltip_Static()
-    {
-        instance.HideTooltip();
-    }
-
 }

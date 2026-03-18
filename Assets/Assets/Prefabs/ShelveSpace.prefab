@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6257561585060963280}
   m_Layer: 5
   m_Name: ShelveSpace
-  m_TagString: Untagged
+  m_TagString: shelves
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

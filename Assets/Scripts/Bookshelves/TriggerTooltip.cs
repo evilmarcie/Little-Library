@@ -1,37 +1,32 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections;
+using UnityEditor;
 
 public class TriggerTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public GameObject tooltip;
-    [HideInInspector] 
-public BookData currentBook;
-    bool pointerEnter = false;
+    GameObject popup;
+    GameObject popupParent;
+    BookData currentBook;
+
+    void Awake()
+    {
+        popupParent = GameObject.Find("PopupParent");
+        popup = popupParent.transform.GetChild(0).gameObject;
+        Tooltip tooltip = popup.GetComponent<Tooltip>();
+        PlayableBook book = gameObject.GetComponent<PlayableBook>();
+    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        pointerEnter = true;
+        popup.SetActive(true);
+
+        currentBook = gameObject.GetComponent<bookPrefab>().book;
+        Tooltip.updateTooltip_Static(currentBook);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        pointerEnter = false;
-    }
-
-    void Update()
-    {
-        tooltip.GetComponent<Tooltip>();
-
-        if (pointerEnter == true)
-        {
-            Debug.Log("enter");
-            //Physics2D.queriesHitTriggers = true;
-            //currentBook = gameObject.GetComponent<bookPrefab>().book;
-            Tooltip.ShowTooltip_Static();
-        }
-        else
-        {
-            Tooltip.HideTooltip_Static();
-        }
+        popup.SetActive(false);
     }
 }

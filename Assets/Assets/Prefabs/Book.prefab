@@ -143,7 +143,6 @@ MonoBehaviour:
   myShelf: {fileID: 0}
   onShelf: 0
   holdingBook: 0
-  currentBook: {fileID: 0}
 --- !u!61 &6196030408846364243
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -229,8 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe510639dd46cf45b185fdd05ee5f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerTooltip
-  tooltip: {fileID: 7874489035169229101, guid: 41309a0b96a30744a9aeb399178cb7e0, type: 3}
-  currentBook: {fileID: 0}
+  popup: {fileID: 0}
 --- !u!1 &4991705327495687478
 GameObject:
   m_ObjectHideFlags: 0
