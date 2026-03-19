@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - shelves
+  - book
   layers:
   - Default
   - TransparentFX

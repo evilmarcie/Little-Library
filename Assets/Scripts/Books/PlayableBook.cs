@@ -14,12 +14,14 @@ public class PlayableBook : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public SnapSlot myShelf;
     public bool onShelf = false;
-    public bool holdingBook = false;
+    public BookshelfManager BookshelfManager;
 
     void Awake()
     {
         coverView.SetActive(true);
         spineView.SetActive(false);
+
+        BookshelfManager = FindFirstObjectByType<BookshelfManager>();
         
     }
 
@@ -29,7 +31,7 @@ public class PlayableBook : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     
     {
         onShelf = false;
-        holdingBook = true;
+        BookshelfManager.holdingBook = true;
 
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
@@ -57,7 +59,7 @@ public class PlayableBook : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         CoverImage.raycastTarget = true;
         SpineImage.raycastTarget = true;
 
-        holdingBook = false;
+        BookshelfManager.holdingBook = false;
 
     }
 

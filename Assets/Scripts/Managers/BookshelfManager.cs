@@ -16,4 +16,6 @@ public class BookshelfManager : MonoBehaviour
         book.transform.SetParent(canvas.transform, false);
     
     }
+
+    public bool holdingBook;
 }

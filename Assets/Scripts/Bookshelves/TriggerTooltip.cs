@@ -1,32 +1,36 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using System.Collections;
-using UnityEditor;
 
 public class TriggerTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     GameObject popup;
     GameObject popupParent;
     BookData currentBook;
+    GameObject trigger;
 
     void Awake()
     {
         popupParent = GameObject.Find("PopupParent");
         popup = popupParent.transform.GetChild(0).gameObject;
-        Tooltip tooltip = popup.GetComponent<Tooltip>();
         PlayableBook book = gameObject.GetComponent<PlayableBook>();
+        Tooltip tooltip = popup.GetComponent<Tooltip>();
     }
+
+    public bool pointerHover = false;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        popup.SetActive(true);
-
+        
+        trigger = this.gameObject;
         currentBook = gameObject.GetComponent<bookPrefab>().book;
-        Tooltip.updateTooltip_Static(currentBook);
+        Tooltip.tooltipActive_Static(currentBook, trigger);
+
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        popup.SetActive(false);
+        
+        Tooltip.tooltipInactive_Static();
+        
     }
 }

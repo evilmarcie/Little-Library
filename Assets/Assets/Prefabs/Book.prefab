@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 8432290094300540313}
   m_Layer: 5
   m_Name: Book
-  m_TagString: Untagged
+  m_TagString: book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe510639dd46cf45b185fdd05ee5f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerTooltip
-  popup: {fileID: 0}
+  pointerHover: 0
 --- !u!1 &4991705327495687478
 GameObject:
   m_ObjectHideFlags: 0

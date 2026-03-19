@@ -39,8 +39,8 @@ public class SnapSlot : MonoBehaviour, IDropHandler
         {
             Debug.Log("full");
 
-		    Instantiate(shelfFullText, book.transform);
-            // make instantiate at mouse position later :(      
+            Instantiate(shelfFullText, book.transform);
+		        
         }
 
     }

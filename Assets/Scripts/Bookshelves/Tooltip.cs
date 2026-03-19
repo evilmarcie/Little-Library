@@ -1,14 +1,16 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using System;
 using Unity.VisualScripting;
-using UnityEngine.InputSystem.Android;
+using System.Collections.Generic;
 
 public class Tooltip : MonoBehaviour
 {    
     public TextMeshProUGUI titleText;
+    public TextMeshProUGUI authorText;
     
     public static Tooltip instance;
+    GameObject me;
 
     void Awake()
     {
@@ -24,20 +26,58 @@ public class Tooltip : MonoBehaviour
 
         gameObject.SetActive(false);
 
+        me = this.gameObject;
+
     } 
 
     void Update()
     {
-        transform.position = Input.mousePosition;
+        transform.position = Input.mousePosition + new Vector3(50, -50, 0);
+
+        books = GameObject.FindGameObjectsWithTag("book");
     }
 
-    public void updateTooltip(BookData currentBook)
+    public BookshelfManager bookshelfManager;
+
+    public void tooltipActive(BookData currentBook, GameObject trigger)
     {
-        titleText.text = currentBook.bookTitle;
+        PlayableBook triggerBook = trigger.GetComponent<PlayableBook>();
+        
+        if((triggerBook.onShelf == true) && (bookshelfManager.holdingBook == false))
+        {
+            titleText.text = currentBook.bookTitle;
+            authorText.text = "By " + currentBook.authorName;
+            me.SetActive(true);
+            //Debug.Log("active");
+        }
+    
     }
 
-    public static void updateTooltip_Static(BookData currentBook)
+    public GameObject[] books;
+
+    public void tooltipInactive()
     {
-        instance.updateTooltip(currentBook);
+
+        foreach (GameObject book in books)
+        {
+            TriggerTooltip checkHover = book.GetComponent<TriggerTooltip>();
+            if (checkHover.pointerHover == false)
+            {
+                me.SetActive(false);
+
+                //Debug.Log("hover");
+            }
+        }
+    
+    }
+
+    public static void tooltipActive_Static(BookData currentBook,  GameObject trigger)
+    {
+        instance.tooltipActive(currentBook, trigger);
+    }
+
+    public static void tooltipInactive_Static()
+    {
+        instance.tooltipInactive();
     }
 }
