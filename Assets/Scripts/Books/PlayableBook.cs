@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Unity.VisualScripting;
+using UnityEditor;
 
 
-public class PlayableBook : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler
+public class PlayableBook : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
 {
     [HideInInspector] public Transform parentAfterDrag;
     [HideInInspector] public Transform shelfParent;
@@ -16,6 +18,8 @@ public class PlayableBook : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public bool onShelf = false;
     public BookshelfManager BookshelfManager;
 
+    public uiManager UImanager;
+
     void Awake()
     {
         coverView.SetActive(true);
@@ -23,6 +27,11 @@ public class PlayableBook : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
         BookshelfManager = FindFirstObjectByType<BookshelfManager>();
         
+    }
+
+    void Start()
+    {
+        UImanager = uiManager.UImanager;
     }
 
     // put onto shelf 
@@ -75,6 +84,18 @@ public class PlayableBook : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnPointerUp(PointerEventData eventData)
     {
         PointerDown = false;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.clickCount == 2)
+        {
+            Debug.Log("doubleclicked");
+            bookPrefab thisBook = gameObject.GetComponent<bookPrefab>();
+            BookData book = thisBook.book;
+            Sprite cover = thisBook.bookCover;
+            UImanager.setBookInfo(book, cover);
+        }
     }
 
     void Update()

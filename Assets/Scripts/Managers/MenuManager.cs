@@ -9,8 +9,7 @@ public class MenuManager : MonoBehaviour
         SceneController.Instance
             .NewTransition()
             .Load(SceneDatabase.Slots.Session, SceneDatabase.Scenes.Session)
-            .Load(SceneDatabase.Slots.Bookshelves, SceneDatabase.Scenes.Bookshelves)
-            .Load(SceneDatabase.Slots.Counter, SceneDatabase.Scenes.Counter, SetActive: true)
+            .Load(SceneDatabase.Slots.SessionContent, SceneDatabase.Scenes.Counter, SetActive: true)
             .Load(SceneDatabase.Slots.UI, SceneDatabase.Scenes.UI)
             .Unload(SceneDatabase.Slots.Menu)
             .WithOverlay()

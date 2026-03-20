@@ -601,16 +601,7 @@ MonoBehaviour:
   coverDisplay: {fileID: 1482079079}
   title: {fileID: 193380064}
   author: {fileID: 663117688}
-  homeMenu: {fileID: 1831459462}
-  infoMenu: {fileID: 1808414735}
-  infoCover: {fileID: 434803571}
-  infoTitle: {fileID: 1729814068}
-  infoAuthor: {fileID: 492388746}
-  titleHeader: {fileID: 35768736}
-  authorInfo: {fileID: 1052020299}
-  publishedInfo: {fileID: 457862489}
-  genreInfo: {fileID: 2108519787}
-  descInfo: {fileID: 702724474}
+  uiManager: {fileID: 0}
 --- !u!114 &60451235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1130,16 +1121,7 @@ MonoBehaviour:
   coverDisplay: {fileID: 1561104817}
   title: {fileID: 42929269}
   author: {fileID: 992987951}
-  homeMenu: {fileID: 1831459462}
-  infoMenu: {fileID: 1808414735}
-  infoCover: {fileID: 434803571}
-  infoTitle: {fileID: 1729814068}
-  infoAuthor: {fileID: 492388746}
-  titleHeader: {fileID: 35768736}
-  authorInfo: {fileID: 1052020299}
-  publishedInfo: {fileID: 457862489}
-  genreInfo: {fileID: 2108519787}
-  descInfo: {fileID: 702724474}
+  uiManager: {fileID: 0}
 --- !u!114 &174505765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1893,8 +1875,16 @@ MonoBehaviour:
   infoMenu: {fileID: 1808414735}
   booksScrollbar: {fileID: 1117664931}
   achievementsScrollbar: {fileID: 111250834}
-  leftButton: {fileID: 0}
-  rightButton: {fileID: 0}
+  leftButton: {fileID: 930260722}
+  rightButton: {fileID: 1877384094}
+  infoCover: {fileID: 434803571}
+  infoTitle: {fileID: 1729814068}
+  infoAuthor: {fileID: 492388746}
+  titleHeader: {fileID: 35768736}
+  authorInfo: {fileID: 1052020299}
+  publishedInfo: {fileID: 457862489}
+  genreInfo: {fileID: 2108519787}
+  descInfo: {fileID: 702724474}
 --- !u!1 &252459233
 GameObject:
   m_ObjectHideFlags: 0
@@ -2364,16 +2354,7 @@ MonoBehaviour:
   coverDisplay: {fileID: 1784062286}
   title: {fileID: 198597108}
   author: {fileID: 734025675}
-  homeMenu: {fileID: 1831459462}
-  infoMenu: {fileID: 1808414735}
-  infoCover: {fileID: 434803571}
-  infoTitle: {fileID: 1729814068}
-  infoAuthor: {fileID: 492388746}
-  titleHeader: {fileID: 35768736}
-  authorInfo: {fileID: 1052020299}
-  publishedInfo: {fileID: 457862489}
-  genreInfo: {fileID: 2108519787}
-  descInfo: {fileID: 702724474}
+  uiManager: {fileID: 0}
 --- !u!114 &318285991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2484,16 +2465,7 @@ MonoBehaviour:
   coverDisplay: {fileID: 1689951905}
   title: {fileID: 2009885742}
   author: {fileID: 1006257157}
-  homeMenu: {fileID: 1831459462}
-  infoMenu: {fileID: 1808414735}
-  infoCover: {fileID: 434803571}
-  infoTitle: {fileID: 1729814068}
-  infoAuthor: {fileID: 492388746}
-  titleHeader: {fileID: 35768736}
-  authorInfo: {fileID: 1052020299}
-  publishedInfo: {fileID: 457862489}
-  genreInfo: {fileID: 2108519787}
-  descInfo: {fileID: 702724474}
+  uiManager: {fileID: 0}
 --- !u!114 &332658602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2741,16 +2713,7 @@ MonoBehaviour:
   coverDisplay: {fileID: 1172098295}
   title: {fileID: 683464470}
   author: {fileID: 376634188}
-  homeMenu: {fileID: 1831459462}
-  infoMenu: {fileID: 1808414735}
-  infoCover: {fileID: 434803571}
-  infoTitle: {fileID: 1729814068}
-  infoAuthor: {fileID: 492388746}
-  titleHeader: {fileID: 35768736}
-  authorInfo: {fileID: 1052020299}
-  publishedInfo: {fileID: 457862489}
-  genreInfo: {fileID: 2108519787}
-  descInfo: {fileID: 702724474}
+  uiManager: {fileID: 0}
 --- !u!114 &366701194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3278,12 +3241,12 @@ RectTransform:
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1808414736}
+  m_Father: {fileID: 1113661341}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 665.46655, y: -3.1117554}
-  m_SizeDelta: {x: 857.7794, y: 83.4494}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 650, y: -81.85}
+  m_SizeDelta: {x: 650, y: 81.85}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &457862489
 MonoBehaviour:
@@ -3397,6 +3360,7 @@ GameObject:
   - component: {fileID: 482358012}
   - component: {fileID: 482358011}
   - component: {fileID: 482358010}
+  - component: {fileID: 482358014}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3465,7 +3429,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &482358013
 RectTransform:
@@ -3488,6 +3452,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &482358014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482358009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc8d87624fdccd42ad700c764f3f7fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DatabaseCanvas
 --- !u!1 &485728904
 GameObject:
   m_ObjectHideFlags: 0
@@ -3519,7 +3495,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 173838899}
-  - {fileID: 1820803056}
+  - {fileID: 761229688}
   m_Father: {fileID: 1328198679}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3766,16 +3742,7 @@ MonoBehaviour:
   coverDisplay: {fileID: 146661354}
   title: {fileID: 648427598}
   author: {fileID: 1044569348}
-  homeMenu: {fileID: 1831459462}
-  infoMenu: {fileID: 1808414735}
-  infoCover: {fileID: 434803571}
-  infoTitle: {fileID: 1729814068}
-  infoAuthor: {fileID: 492388746}
-  titleHeader: {fileID: 35768736}
-  authorInfo: {fileID: 1052020299}
-  publishedInfo: {fileID: 457862489}
-  genreInfo: {fileID: 2108519787}
-  descInfo: {fileID: 702724474}
+  uiManager: {fileID: 0}
 --- !u!114 &509585339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3886,16 +3853,7 @@ MonoBehaviour:
   coverDisplay: {fileID: 1404631744}
   title: {fileID: 1658997657}
   author: {fileID: 895488445}
-  homeMenu: {fileID: 1831459462}
-  infoMenu: {fileID: 1808414735}
-  infoCover: {fileID: 434803571}
-  infoTitle: {fileID: 1729814068}
-  infoAuthor: {fileID: 492388746}
-  titleHeader: {fileID: 35768736}
-  authorInfo: {fileID: 1052020299}
-  publishedInfo: {fileID: 457862489}
-  genreInfo: {fileID: 2108519787}
-  descInfo: {fileID: 702724474}
+  uiManager: {fileID: 0}
 --- !u!114 &512000699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4417,16 +4375,7 @@ MonoBehaviour:
   coverDisplay: {fileID: 1191845923}
   title: {fileID: 556726645}
   author: {fileID: 920507326}
-  homeMenu: {fileID: 1831459462}
-  infoMenu: {fileID: 1808414735}
-  infoCover: {fileID: 434803571}
-  infoTitle: {fileID: 1729814068}
-  infoAuthor: {fileID: 492388746}
-  titleHeader: {fileID: 35768736}
-  authorInfo: {fileID: 1052020299}
-  publishedInfo: {fileID: 457862489}
-  genreInfo: {fileID: 2108519787}
-  descInfo: {fileID: 702724474}
+  uiManager: {fileID: 0}
 --- !u!114 &604712226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4670,16 +4619,7 @@ MonoBehaviour:
   coverDisplay: {fileID: 895070887}
   title: {fileID: 1878289448}
   author: {fileID: 263005367}
-  homeMenu: {fileID: 1831459462}
-  infoMenu: {fileID: 1808414735}
-  infoCover: {fileID: 434803571}
-  infoTitle: {fileID: 1729814068}
-  infoAuthor: {fileID: 492388746}
-  titleHeader: {fileID: 35768736}
-  authorInfo: {fileID: 1052020299}
-  publishedInfo: {fileID: 457862489}
-  genreInfo: {fileID: 2108519787}
-  descInfo: {fileID: 702724474}
+  uiManager: {fileID: 0}
 --- !u!114 &637309640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5310,12 +5250,12 @@ RectTransform:
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1808414736}
+  m_Father: {fileID: 1113661341}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 665.46655, y: -147.45853}
-  m_SizeDelta: {x: 857.7794, y: 83.4494}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 650, y: -245.54999}
+  m_SizeDelta: {x: 650, y: 81.85}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &702724474
 MonoBehaviour:
@@ -5916,7 +5856,7 @@ GameObject:
   - component: {fileID: 1117664933}
   - component: {fileID: 1117664931}
   m_Layer: 5
-  m_Name: Scrollbar
+  m_Name: HomeScrollbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6117,16 +6057,7 @@ MonoBehaviour:
   coverDisplay: {fileID: 1003725201}
   title: {fileID: 872878208}
   author: {fileID: 1635993120}
-  homeMenu: {fileID: 1831459462}
-  infoMenu: {fileID: 1808414735}
-  infoCover: {fileID: 434803571}
-  infoTitle: {fileID: 1729814068}
-  infoAuthor: {fileID: 492388746}
-  titleHeader: {fileID: 35768736}
-  authorInfo: {fileID: 1052020299}
-  publishedInfo: {fileID: 457862489}
-  genreInfo: {fileID: 2108519787}
-  descInfo: {fileID: 702724474}
+  uiManager: {fileID: 0}
 --- !u!114 &734462029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6179,6 +6110,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734462026}
   m_CullTransparentMesh: 1
+--- !u!1 &761229687
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 761229688}
+  m_Layer: 5
+  m_Name: AchievementScrollbarParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &761229688
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761229687}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1820803056}
+  m_Father: {fileID: 485728905}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 632.09436, y: 326.7002}
+  m_SizeDelta: {x: 32.872604, y: 673.4568}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &763393718
 GameObject:
   m_ObjectHideFlags: 0
@@ -6752,16 +6719,7 @@ MonoBehaviour:
   coverDisplay: {fileID: 209417237}
   title: {fileID: 893586175}
   author: {fileID: 1339386850}
-  homeMenu: {fileID: 1831459462}
-  infoMenu: {fileID: 1808414735}
-  infoCover: {fileID: 434803571}
-  infoTitle: {fileID: 1729814068}
-  infoAuthor: {fileID: 492388746}
-  titleHeader: {fileID: 35768736}
-  authorInfo: {fileID: 1052020299}
-  publishedInfo: {fileID: 457862489}
-  genreInfo: {fileID: 2108519787}
-  descInfo: {fileID: 702724474}
+  uiManager: {fileID: 0}
 --- !u!114 &870008084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7358,16 +7316,7 @@ MonoBehaviour:
   coverDisplay: {fileID: 2004812959}
   title: {fileID: 256590669}
   author: {fileID: 1133679173}
-  homeMenu: {fileID: 1831459462}
-  infoMenu: {fileID: 1808414735}
-  infoCover: {fileID: 434803571}
-  infoTitle: {fileID: 1729814068}
-  infoAuthor: {fileID: 492388746}
-  titleHeader: {fileID: 35768736}
-  authorInfo: {fileID: 1052020299}
-  publishedInfo: {fileID: 457862489}
-  genreInfo: {fileID: 2108519787}
-  descInfo: {fileID: 702724474}
+  uiManager: {fileID: 0}
 --- !u!114 &919919120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7615,16 +7564,7 @@ MonoBehaviour:
   coverDisplay: {fileID: 2032197368}
   title: {fileID: 1522014770}
   author: {fileID: 343043039}
-  homeMenu: {fileID: 1831459462}
-  infoMenu: {fileID: 1808414735}
-  infoCover: {fileID: 434803571}
-  infoTitle: {fileID: 1729814068}
-  infoAuthor: {fileID: 492388746}
-  titleHeader: {fileID: 35768736}
-  authorInfo: {fileID: 1052020299}
-  publishedInfo: {fileID: 457862489}
-  genreInfo: {fileID: 2108519787}
-  descInfo: {fileID: 702724474}
+  uiManager: {fileID: 0}
 --- !u!114 &929111050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8994,12 +8934,12 @@ RectTransform:
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1808414736}
+  m_Father: {fileID: 1113661341}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 665.46655, y: 74.37839}
-  m_SizeDelta: {x: 857.7794, y: 83.4494}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 650, y: 0}
+  m_SizeDelta: {x: 650, y: 81.85}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1052020299
 MonoBehaviour:
@@ -9233,16 +9173,7 @@ MonoBehaviour:
   coverDisplay: {fileID: 1019082718}
   title: {fileID: 715182467}
   author: {fileID: 2081643027}
-  homeMenu: {fileID: 1831459462}
-  infoMenu: {fileID: 1808414735}
-  infoCover: {fileID: 434803571}
-  infoTitle: {fileID: 1729814068}
-  infoAuthor: {fileID: 492388746}
-  titleHeader: {fileID: 35768736}
-  authorInfo: {fileID: 1052020299}
-  publishedInfo: {fileID: 457862489}
-  genreInfo: {fileID: 2108519787}
-  descInfo: {fileID: 702724474}
+  uiManager: {fileID: 0}
 --- !u!114 &1101219460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9432,6 +9363,87 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113659362}
   m_CullTransparentMesh: 1
+--- !u!1 &1113661340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1113661341}
+  - component: {fileID: 1113661343}
+  - component: {fileID: 1113661342}
+  m_Layer: 5
+  m_Name: content
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1113661341
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113661340}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1052020298}
+  - {fileID: 457862488}
+  - {fileID: 2108519786}
+  - {fileID: 702724473}
+  m_Father: {fileID: 1808414736}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 239, y: -67}
+  m_SizeDelta: {x: 650, y: 327.4}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1113661342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113661340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
+--- !u!114 &1113661343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113661340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!114 &1117664931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9488,17 +9500,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 732184970}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1161516766}
-  m_Father: {fileID: 1128217886}
+  m_Father: {fileID: 1331818813}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 630.4363, y: 281.23962}
+  m_AnchoredPosition: {x: 0.00012207031, y: 0}
   m_SizeDelta: {x: 32.8726, y: 558.4792}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1117664933
@@ -9570,7 +9582,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1248084716}
-  - {fileID: 1117664932}
+  - {fileID: 1331818813}
   m_Father: {fileID: 1831459463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -9817,16 +9829,7 @@ MonoBehaviour:
   coverDisplay: {fileID: 763393720}
   title: {fileID: 2056019482}
   author: {fileID: 1463132899}
-  homeMenu: {fileID: 1831459462}
-  infoMenu: {fileID: 1808414735}
-  infoCover: {fileID: 434803571}
-  infoTitle: {fileID: 1729814068}
-  infoAuthor: {fileID: 492388746}
-  titleHeader: {fileID: 35768736}
-  authorInfo: {fileID: 1052020299}
-  publishedInfo: {fileID: 457862489}
-  genreInfo: {fileID: 2108519787}
-  descInfo: {fileID: 702724474}
+  uiManager: {fileID: 0}
 --- !u!114 &1150963165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10871,6 +10874,42 @@ RectTransform:
   m_AnchoredPosition: {x: 50, y: 50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 1}
+--- !u!1 &1331818812
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1331818813}
+  m_Layer: 5
+  m_Name: HomeScrollbarParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1331818813
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331818812}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1117664932}
+  m_Father: {fileID: 1128217886}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 630.4363, y: 281.23962}
+  m_SizeDelta: {x: 32.872604, y: 558.4792}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1339386848
 GameObject:
   m_ObjectHideFlags: 0
@@ -11503,16 +11542,7 @@ MonoBehaviour:
   coverDisplay: {fileID: 1579677918}
   title: {fileID: 1851383280}
   author: {fileID: 2053137284}
-  homeMenu: {fileID: 1831459462}
-  infoMenu: {fileID: 1808414735}
-  infoCover: {fileID: 434803571}
-  infoTitle: {fileID: 1729814068}
-  infoAuthor: {fileID: 492388746}
-  titleHeader: {fileID: 35768736}
-  authorInfo: {fileID: 1052020299}
-  publishedInfo: {fileID: 457862489}
-  genreInfo: {fileID: 2108519787}
-  descInfo: {fileID: 702724474}
+  uiManager: {fileID: 0}
 --- !u!114 &1380274803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13726,16 +13756,7 @@ MonoBehaviour:
   coverDisplay: {fileID: 1404413807}
   title: {fileID: 1511261622}
   author: {fileID: 1166421609}
-  homeMenu: {fileID: 1831459462}
-  infoMenu: {fileID: 1808414735}
-  infoCover: {fileID: 434803571}
-  infoTitle: {fileID: 1729814068}
-  infoAuthor: {fileID: 492388746}
-  titleHeader: {fileID: 35768736}
-  authorInfo: {fileID: 1052020299}
-  publishedInfo: {fileID: 457862489}
-  genreInfo: {fileID: 2108519787}
-  descInfo: {fileID: 702724474}
+  uiManager: {fileID: 0}
 --- !u!114 &1767423958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13846,16 +13867,7 @@ MonoBehaviour:
   coverDisplay: {fileID: 2063496133}
   title: {fileID: 1543994903}
   author: {fileID: 1351553180}
-  homeMenu: {fileID: 1831459462}
-  infoMenu: {fileID: 1808414735}
-  infoCover: {fileID: 434803571}
-  infoTitle: {fileID: 1729814068}
-  infoAuthor: {fileID: 492388746}
-  titleHeader: {fileID: 35768736}
-  authorInfo: {fileID: 1052020299}
-  publishedInfo: {fileID: 457862489}
-  genreInfo: {fileID: 2108519787}
-  descInfo: {fileID: 702724474}
+  uiManager: {fileID: 0}
 --- !u!114 &1772677513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13966,16 +13978,7 @@ MonoBehaviour:
   coverDisplay: {fileID: 1435630795}
   title: {fileID: 716787720}
   author: {fileID: 818591159}
-  homeMenu: {fileID: 1831459462}
-  infoMenu: {fileID: 1808414735}
-  infoCover: {fileID: 434803571}
-  infoTitle: {fileID: 1729814068}
-  infoAuthor: {fileID: 492388746}
-  titleHeader: {fileID: 35768736}
-  authorInfo: {fileID: 1052020299}
-  publishedInfo: {fileID: 457862489}
-  genreInfo: {fileID: 2108519787}
-  descInfo: {fileID: 702724474}
+  uiManager: {fileID: 0}
 --- !u!114 &1781486427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14404,10 +14407,7 @@ RectTransform:
   - {fileID: 1099644906}
   - {fileID: 1174736527}
   - {fileID: 35768735}
-  - {fileID: 1052020298}
-  - {fileID: 457862488}
-  - {fileID: 2108519786}
-  - {fileID: 702724473}
+  - {fileID: 1113661341}
   m_Father: {fileID: 410086647}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -14428,7 +14428,7 @@ GameObject:
   - component: {fileID: 1820803057}
   - component: {fileID: 111250834}
   m_Layer: 5
-  m_Name: Scrollbar
+  m_Name: AchievementScrollbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14447,11 +14447,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1082025997}
-  m_Father: {fileID: 485728905}
+  m_Father: {fileID: 761229688}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 632.09436, y: 326.7002}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 32.8726, y: 673.4568}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1820803057
@@ -14793,7 +14793,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1877384094}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -15154,16 +15154,7 @@ MonoBehaviour:
   coverDisplay: {fileID: 1340838341}
   title: {fileID: 1527966999}
   author: {fileID: 727491868}
-  homeMenu: {fileID: 1831459462}
-  infoMenu: {fileID: 1808414735}
-  infoCover: {fileID: 434803571}
-  infoTitle: {fileID: 1729814068}
-  infoAuthor: {fileID: 492388746}
-  titleHeader: {fileID: 35768736}
-  authorInfo: {fileID: 1052020299}
-  publishedInfo: {fileID: 457862489}
-  genreInfo: {fileID: 2108519787}
-  descInfo: {fileID: 702724474}
+  uiManager: {fileID: 0}
 --- !u!114 &1967147975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16156,12 +16147,12 @@ RectTransform:
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1808414736}
+  m_Father: {fileID: 1113661341}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 665.46655, y: -77.773865}
-  m_SizeDelta: {x: 857.7794, y: 83.4494}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 650, y: -163.7}
+  m_SizeDelta: {x: 650, y: 81.85}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &2108519787
 MonoBehaviour:

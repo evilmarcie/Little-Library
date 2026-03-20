@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,10 +15,30 @@ public class uiManager : MonoBehaviour
     public GameObject infoMenu;
     public Scrollbar booksScrollbar;
     public Scrollbar achievementsScrollbar;
+    public GameObject leftButton;
+    public GameObject rightButton;
 
-    void Start()
+    public static uiManager UImanager;
+
+    void Awake()
     {
+        if (UImanager == null)
+        {
+            UImanager = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        leftButton.SetActive(false);
         databaseMenu.SetActive(false);
+
+    }
+
+    void Update()
+    {
 
         if (gamePaused == true)
         {
@@ -59,17 +80,16 @@ public class uiManager : MonoBehaviour
         achievementsScrollbar.value = 1;
     }
 
-    [SerializeField] GameObject leftButton;
-    [SerializeField] GameObject rightButton;
-
     public void toShelves()
     {
         SceneController.Instance
             .NewTransition()
-            .SwapScreen(SceneDatabase.Scenes.Bookshelves)
+            .Load(SceneDatabase.Slots.SessionContent, SceneDatabase.Scenes.Bookshelves, SetActive: true)
+            .Load(SceneDatabase.Slots.UI, SceneDatabase.Scenes.UI)
             .WithOverlay()
             .Perform();
 
+        leftButton.SetActive(true);
         rightButton.SetActive(false);
     }
 
@@ -78,11 +98,51 @@ public class uiManager : MonoBehaviour
 
           SceneController.Instance
             .NewTransition()
-            .SwapScreen(SceneDatabase.Scenes.Counter)
+            .Load(SceneDatabase.Slots.SessionContent, SceneDatabase.Scenes.Counter, SetActive: true)
+            .Load(SceneDatabase.Slots.UI, SceneDatabase.Scenes.UI)
             .WithOverlay()
             .Perform();
 
+        rightButton.SetActive(true);
         leftButton.SetActive(false);
+    }
+
+    
+    //book display
+    public Image infoCover;
+    public TextMeshProUGUI infoTitle;
+    public TextMeshProUGUI infoAuthor;
+
+    //book info
+    public TextMeshProUGUI titleHeader;
+    public TextMeshProUGUI authorInfo;
+    public TextMeshProUGUI publishedInfo;
+    public TextMeshProUGUI genreInfo;
+    public TextMeshProUGUI descInfo;
+
+
+    public void setBookInfo(BookData book, Sprite cover)
+    {
+        if (databaseMenu.activeSelf == false)
+        {
+            databaseMenu.SetActive(true);
+        }
+        
+        homeMenu.SetActive(false);
+        infoMenu.SetActive(true);
+
+        //book display
+        infoCover.sprite = cover;
+        infoTitle.text = book.bookTitle;
+        infoAuthor.text = book.authorName;
+
+        //info
+        titleHeader.text = book.bookTitle;
+        authorInfo.text = "Author: " + book.authorName;
+        publishedInfo.text = "Published: " + book.publicationYear;
+        genreInfo.text = "Genre: " + book.BookGenre;
+        descInfo.text = "Description: " + book.bookBio; 
+
     }
 
 }
