@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e35d8c95d09fd0b42b06f428da01c8e4, type: 3}
+  m_Name: Ms Denfield
+  m_EditorClassIdentifier: Assembly-CSharp::Character
+  fullName: Nora Denfield
+  characterName: Ms Denfield
+  pronouns: she/her
+  age: 0
+  career: Retired
+  characterSprite: {fileID: 0}
+  favGenre: 2048
+  lovedBooks: []
+  likedBooks: []
+  neutralBooks: []
+  dislikedBooks: []

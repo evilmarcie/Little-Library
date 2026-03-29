@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e35d8c95d09fd0b42b06f428da01c8e4, type: 3}
+  m_Name: Evie
+  m_EditorClassIdentifier: Assembly-CSharp::Character
+  fullName: Evie
+  characterName: Evie
+  pronouns: she/they
+  age: 0
+  career: 
+  characterSprite: {fileID: 0}
+  favGenre: 321
+  lovedBooks:
+  - {fileID: 11400000, guid: 904f35bfd5e543644aba954bed2e6c55, type: 2}
+  - {fileID: 11400000, guid: 895afc838658e3f48ba6d5ec27e219ff, type: 2}
+  - {fileID: 11400000, guid: b76908050e2246246bc92bd2374e35ca, type: 2}
+  - {fileID: 11400000, guid: 0130d90c43c2adf4cb24e469c077a88e, type: 2}
+  likedBooks:
+  - {fileID: 11400000, guid: b3d017e15e2b733489738faf8e98ea98, type: 2}
+  - {fileID: 11400000, guid: b94acfe05cb6fe24a9ea92ab57be638a, type: 2}
+  - {fileID: 11400000, guid: 46e5d453f4fbcdc4d9942c13535719bd, type: 2}
+  - {fileID: 11400000, guid: 43213c0cb362ac7428adc3a575c6d23c, type: 2}
+  - {fileID: 11400000, guid: 7fa14292d6cdd5b418fc4954c62c9454, type: 2}
+  neutralBooks:
+  - {fileID: 11400000, guid: 307e79a6ec31c3144ad3e46b31171dfc, type: 2}
+  - {fileID: 11400000, guid: 57e61609ac62f3741a2119cf03b2245b, type: 2}
+  - {fileID: 11400000, guid: d4d0cd9f6ca5a1447a0a681646f668d2, type: 2}
+  - {fileID: 11400000, guid: 714a347148ae7c747b0fcc2231b94d26, type: 2}
+  dislikedBooks:
+  - {fileID: 11400000, guid: 1046f26834153b44ca1c7b486cc38055, type: 2}
+  - {fileID: 11400000, guid: 532a8e91d655eb84a832183c2fc8dc83, type: 2}
+  - {fileID: 11400000, guid: 6ddb150a425e21c4ab25667a4ddab5d5, type: 2}
+  - {fileID: 11400000, guid: c4008b482a3b413429b0c544dc25c25c, type: 2}
+  - {fileID: 11400000, guid: 082740916d1a4eb41b4677e1af56264c, type: 2}
+  - {fileID: 11400000, guid: bf5602d5508a6be44ac4e5d93c32b8e2, type: 2}
+  - {fileID: 11400000, guid: a3e9bdde6f110c04281cbe6b431d67b7, type: 2}

@@ -113,9 +113,33 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c4008b482a3b413429b0c544dc25c25c, type: 2}
   - {fileID: 11400000, guid: b3d017e15e2b733489738faf8e98ea98, type: 2}
   CoverSprites:
-  - {fileID: 21300000, guid: 0ebf89cdcd562c54c8d756b28ea9211e, type: 3}
-  spineSprite: {fileID: 21300000, guid: 727e03e56bd773641bd8fee9f17ae9d9, type: 3}
+  - {fileID: 1990461953, guid: ee1c48b7e4f567d439cfa45b4df4f77d, type: 3}
+  - {fileID: 212529996, guid: e02012e2791e1554080bbce615cb8b2d, type: 3}
+  - {fileID: -2012601512, guid: 2b5462c2a23c65245802992d521f21a0, type: 3}
+  - {fileID: -513251137, guid: 26e83043f5178c944a6bd49bbf816d2f, type: 3}
+  - {fileID: -1281391778, guid: 860e504d6458fae4e9872eb37be9b223, type: 3}
+  - {fileID: -841351621, guid: 2c01b15aa00d09a46a3cb558ccfcdbab, type: 3}
+  - {fileID: -1829484092, guid: 332b4bbf4456d2848a7ebbf0e2bf189b, type: 3}
+  - {fileID: -81221623, guid: ef32160c0cb52f149805ce9635b2d089, type: 3}
+  - {fileID: -1106410897, guid: 0b2d91ea015edec409fd5c791a4446b2, type: 3}
+  - {fileID: 1910882474, guid: 43f34cae631d8b140b938e6bdcbf947e, type: 3}
+  - {fileID: -1553367076, guid: b45a60a62d77e0e499b15f50292d7d72, type: 3}
+  - {fileID: -1336198948, guid: 4addb891829d6524eaa95be4d60b8ff7, type: 3}
+  SpineSprites:
+  - {fileID: -2093988111, guid: 290578f4815f28d449844b990f1ed897, type: 3}
+  - {fileID: -208658747, guid: c1b2b94fd0b39324a9340e5edf8e2fb3, type: 3}
+  - {fileID: -882155937, guid: dbf19af496469c74ea30234694cf2b68, type: 3}
+  - {fileID: 2026691020, guid: 293324a3c66db6840bcdbf486ebe7c1d, type: 3}
+  - {fileID: -542723568, guid: ac613c5cf41077e45a0f137a85960b49, type: 3}
+  - {fileID: -1506499321, guid: fe4b2b41fc3733746bbcc33148a7af96, type: 3}
+  - {fileID: 2007303265, guid: 4cb0db8c80f72554a9d30b9820117e57, type: 3}
+  - {fileID: 195810816, guid: 3b89dfd9964806b479bb115e494c7e30, type: 3}
+  - {fileID: 847912409, guid: a2dcac31c26a5ed40ae535dedbd0018e, type: 3}
+  - {fileID: -2061327195, guid: 16d5b1bd745fc164d97a439dafbb2ca9, type: 3}
+  - {fileID: 1961594753, guid: cca932b0088fa124697aae40b4c9c4fd, type: 3}
+  - {fileID: 71292082, guid: 8896a449e31be4140a3e7a4c15f74321, type: 3}
   bookCover: {fileID: 0}
+  spineSprite: {fileID: 0}
   book: {fileID: 0}
   coverImage: {fileID: 9082827502198184532}
   title: {fileID: 8994382996755750543}
@@ -142,7 +166,8 @@ MonoBehaviour:
   spineView: {fileID: 2656576118311163697}
   myShelf: {fileID: 0}
   onShelf: 0
-  holdingBook: 0
+  BookshelfManager: {fileID: 0}
+  UImanager: {fileID: 0}
 --- !u!61 &6196030408846364243
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -469,7 +494,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0ebf89cdcd562c54c8d756b28ea9211e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ee1c48b7e4f567d439cfa45b4df4f77d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -544,7 +569,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 727e03e56bd773641bd8fee9f17ae9d9, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

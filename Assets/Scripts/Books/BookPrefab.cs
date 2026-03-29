@@ -1,8 +1,5 @@
 using System;
-using System.Diagnostics;
-using NUnit.Framework.Internal;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,14 +8,11 @@ public class bookPrefab : MonoBehaviour
     //arrays
     public BookData[] books = {};
     public Sprite[] CoverSprites = {};
-
-    // temporary fill
-    // have spines match the corrosponding cover in their respective arrays
-    // pick random cover and then find that matching number in the spine array
-    public Sprite spineSprite;
+    public Sprite [] SpineSprites = {};
 
     //variables
     public Sprite bookCover;
+    public Sprite spineSprite;
     public BookData book;
 
     //rendering book gameobject
@@ -36,6 +30,10 @@ public class bookPrefab : MonoBehaviour
         // randomised book & cover
         book = books[UnityEngine.Random.Range(0, books.Length)];
         bookCover = CoverSprites[UnityEngine.Random.Range(0, CoverSprites.Length)]; 
+
+        //match spine to cover
+        int coverIndex = Array.IndexOf(CoverSprites, bookCover);
+        spineSprite = SpineSprites[coverIndex];
 
         //set bookcover sprite to image renderer
         coverImage.sprite = bookCover;
