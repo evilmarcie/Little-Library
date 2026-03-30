@@ -15,9 +15,11 @@ MonoBehaviour:
   fullName: Albert Brown
   characterName: Albert
   pronouns: he/him
+  characterColour: {r: 0, g: 0, b: 0, a: 0}
   age: 0
   career: Baker
-  characterSprite: {fileID: 0}
+  visitedToday: 0
+  characterSprite: {fileID: 21300000, guid: 4d256d1b83939824dbcde073229f8294, type: 3}
   favGenre: 2
   lovedBooks:
   - {fileID: 11400000, guid: 1046f26834153b44ca1c7b486cc38055, type: 2}

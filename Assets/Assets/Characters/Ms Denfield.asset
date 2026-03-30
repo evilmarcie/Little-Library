@@ -15,9 +15,11 @@ MonoBehaviour:
   fullName: Nora Denfield
   characterName: Ms Denfield
   pronouns: she/her
+  characterColour: {r: 0, g: 0, b: 0, a: 0}
   age: 0
   career: Retired
-  characterSprite: {fileID: 0}
+  visitedToday: 0
+  characterSprite: {fileID: 21300000, guid: d865ca2f207c6f342a4e4c69a7c3eb85, type: 3}
   favGenre: 2048
   lovedBooks: []
   likedBooks: []

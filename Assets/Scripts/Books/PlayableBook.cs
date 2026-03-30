@@ -90,7 +90,6 @@ public class PlayableBook : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     {
         if (eventData.clickCount == 2)
         {
-            Debug.Log("doubleclicked");
             bookPrefab thisBook = gameObject.GetComponent<bookPrefab>();
             BookData book = thisBook.book;
             Sprite cover = thisBook.bookCover;

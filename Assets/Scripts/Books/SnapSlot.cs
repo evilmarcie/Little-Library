@@ -37,10 +37,7 @@ public class SnapSlot : MonoBehaviour, IDropHandler
         }
         else
         {
-            Debug.Log("full");
-
-            Instantiate(shelfFullText, book.transform);
-		        
+            Instantiate(shelfFullText, book.transform);     
         }
 
     }

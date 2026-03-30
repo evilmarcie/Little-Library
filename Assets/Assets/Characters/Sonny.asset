@@ -15,9 +15,11 @@ MonoBehaviour:
   fullName: Sonny Lim
   characterName: Sonny
   pronouns: he/him
+  characterColour: {r: 0, g: 0, b: 0, a: 0}
   age: 0
   career: Student
-  characterSprite: {fileID: 0}
+  visitedToday: 0
+  characterSprite: {fileID: 21300000, guid: 74f565ce2b5ab36438f00256e5c48630, type: 3}
   favGenre: 4
   lovedBooks:
   - {fileID: 11400000, guid: 532a8e91d655eb84a832183c2fc8dc83, type: 2}
