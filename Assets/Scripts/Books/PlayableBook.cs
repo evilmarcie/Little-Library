@@ -3,9 +3,12 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Unity.VisualScripting;
 using UnityEditor;
+using JetBrains.Annotations;
+using System.Collections.Generic;
 
 
-public class PlayableBook : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
+public class PlayableBook : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, 
+IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
 {
     [HideInInspector] public Transform parentAfterDrag;
     [HideInInspector] public Transform shelfParent;
@@ -26,7 +29,6 @@ public class PlayableBook : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         spineView.SetActive(false);
 
         BookshelfManager = FindFirstObjectByType<BookshelfManager>();
-        
     }
 
     void Start()

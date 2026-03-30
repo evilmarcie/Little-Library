@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class bookPrefab : MonoBehaviour
+public class bookPrefab : MonoBehaviour, ISaveData
 {
     //arrays
     public BookData[] books = {};
@@ -23,6 +23,8 @@ public class bookPrefab : MonoBehaviour
     //spine
     public Image spine;
     public TextMeshProUGUI spineTitle;
+
+    GameObject parent;
     
 
     void Start()
@@ -49,6 +51,22 @@ public class bookPrefab : MonoBehaviour
         //change book gameobject name to match book title
         gameObject.name = book.bookTitle.ToString();
         
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.book = data.book;
+        this.bookCover = data.coverSprite;
+        this.spineSprite = data.spineSprite;
+        this.transform.SetParent(data.shelfParent);
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.book = this.book;
+        data.coverSprite = this.bookCover;
+        data.spineSprite = this.spineSprite;
+        data.shelfParent = this.transform.parent;
     }
 
 }

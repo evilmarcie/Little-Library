@@ -3,11 +3,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CounterManager : MonoBehaviour
+public class CounterManager : MonoBehaviour, ISaveData
 {
     public Character activeCustomer;
     public Character[] potentialCustomers;
-
     public GameObject character;
 
     public void customerEnter()
@@ -41,5 +40,15 @@ public class CounterManager : MonoBehaviour
         nameText.text = activeCustomer.name;
         Image nameBoxImage = nameBox.GetComponent<Image>();
         nameBoxImage.color = activeCustomer.characterColour;
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.activeCustomer = data.activeCustomer;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.activeCustomer = this.activeCustomer;
     }
 }
