@@ -211,13 +211,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shelve Space (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 346362269510838633, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
-      propertyPath: m_TagString
-      value: shelves
+    - target: {fileID: 8103768147579464620, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+      propertyPath: Id
+      value: a9fe4a0d-ac6d-403c-8318-c51fb1c48bc9
       objectReference: {fileID: 0}
-    - target: {fileID: 6257561585060963280, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
-      propertyPath: m_ChildForceExpandWidth
-      value: 0
+    - target: {fileID: 8103768147579464620, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+      propertyPath: GroupData.Id
+      value: a9fe4a0d-ac6d-403c-8318-c51fb1c48bc9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -771,13 +771,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shelve Space (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 346362269510838633, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
-      propertyPath: m_TagString
-      value: shelves
+    - target: {fileID: 8103768147579464620, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+      propertyPath: Id
+      value: 7b4654f4-cce8-4307-8192-b8b432b1b397
       objectReference: {fileID: 0}
-    - target: {fileID: 6257561585060963280, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
-      propertyPath: m_ChildForceExpandWidth
-      value: 0
+    - target: {fileID: 8103768147579464620, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+      propertyPath: GroupData.Id
+      value: 7b4654f4-cce8-4307-8192-b8b432b1b397
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1028,13 +1028,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shelve Space (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 346362269510838633, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
-      propertyPath: m_TagString
-      value: shelves
+    - target: {fileID: 8103768147579464620, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+      propertyPath: Id
+      value: fae8863c-d2c4-4228-b799-09e7b657ec2a
       objectReference: {fileID: 0}
-    - target: {fileID: 6257561585060963280, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
-      propertyPath: m_ChildForceExpandWidth
-      value: 0
+    - target: {fileID: 8103768147579464620, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+      propertyPath: GroupData.Id
+      value: fae8863c-d2c4-4228-b799-09e7b657ec2a
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1275,13 +1275,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shelve Space (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 346362269510838633, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
-      propertyPath: m_TagString
-      value: shelves
+    - target: {fileID: 8103768147579464620, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+      propertyPath: Id
+      value: ae295a41-2f9a-43e0-a814-cc811d795218
       objectReference: {fileID: 0}
-    - target: {fileID: 6257561585060963280, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
-      propertyPath: m_ChildForceExpandWidth
-      value: 0
+    - target: {fileID: 8103768147579464620, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+      propertyPath: GroupData.Id
+      value: ae295a41-2f9a-43e0-a814-cc811d795218
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1385,13 +1385,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shelve Space (5)
       objectReference: {fileID: 0}
-    - target: {fileID: 346362269510838633, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
-      propertyPath: m_TagString
-      value: shelves
+    - target: {fileID: 8103768147579464620, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+      propertyPath: Id
+      value: 39c89367-5dd0-4c91-9c19-6d68281629bc
       objectReference: {fileID: 0}
-    - target: {fileID: 6257561585060963280, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
-      propertyPath: m_ChildForceExpandWidth
-      value: 0
+    - target: {fileID: 8103768147579464620, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+      propertyPath: GroupData.Id
+      value: 39c89367-5dd0-4c91-9c19-6d68281629bc
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1757,6 +1757,14 @@ PrefabInstance:
     - target: {fileID: 346362269510838633, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
       propertyPath: m_Name
       value: Shelve Space
+      objectReference: {fileID: 0}
+    - target: {fileID: 8103768147579464620, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+      propertyPath: Id
+      value: aa6f9c00-c15b-4cfe-bfeb-c61394ee3e5f
+      objectReference: {fileID: 0}
+    - target: {fileID: 8103768147579464620, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+      propertyPath: GroupData.Id
+      value: aa6f9c00-c15b-4cfe-bfeb-c61394ee3e5f
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

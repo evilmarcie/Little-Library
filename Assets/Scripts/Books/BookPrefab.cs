@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class bookPrefab : MonoBehaviour, ISaveData
+public class bookPrefab : MonoBehaviour
 {
     //arrays
     public BookData[] books = {};
@@ -23,8 +25,6 @@ public class bookPrefab : MonoBehaviour, ISaveData
     //spine
     public Image spine;
     public TextMeshProUGUI spineTitle;
-
-    GameObject parent;
     
 
     void Start()
@@ -51,22 +51,6 @@ public class bookPrefab : MonoBehaviour, ISaveData
         //change book gameobject name to match book title
         gameObject.name = book.bookTitle.ToString();
         
-    }
-
-    public void LoadData(GameData data)
-    {
-        this.book = data.book;
-        this.bookCover = data.coverSprite;
-        this.spineSprite = data.spineSprite;
-        this.transform.SetParent(data.shelfParent);
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        data.book = this.book;
-        data.coverSprite = this.bookCover;
-        data.spineSprite = this.spineSprite;
-        data.shelfParent = this.transform.parent;
     }
 
 }

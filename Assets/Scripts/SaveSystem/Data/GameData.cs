@@ -10,12 +10,7 @@ public class GameData
     public Character activeCustomer;
 
     //shelvesScene
-    //public List<GameObject> booksOwned;
-    //check that maintains cover etc
-    public BookData book;
-    public Sprite coverSprite;
-    public Sprite spineSprite;
-    public Transform shelfParent;
+    public List<BookSaving.BookGroup> Groups = new List<BookSaving.BookGroup>();
 
     //other
 
@@ -24,6 +19,6 @@ public class GameData
         //inital values
         // data when there is no values to load
         activeCustomer = null;
-        //booksOwned = new List<GameObject>();
+        Groups.Clear();
     }
 }

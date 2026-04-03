@@ -5,6 +5,7 @@ using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Unity.VectorGraphics;
 
 public class SaveManager : MonoBehaviour
 {
@@ -41,6 +42,8 @@ public class SaveManager : MonoBehaviour
     public void LoadGame()
     {
 
+        Debug.Log("load");
+
         this.gameData = dataHandler.Load();
 
         if (this.gameData == null)
@@ -57,6 +60,8 @@ public class SaveManager : MonoBehaviour
 
     public void SaveGame()
     {
+        Debug.Log("save");
+
         foreach (ISaveData saveDataObj in saveDataObjects)
         {
             saveDataObj.SaveData(ref gameData);

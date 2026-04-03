@@ -32,6 +32,8 @@ public class FileDataHandler
                     }
                 }
                 loadedData = JsonUtility.FromJson<GameData>(dataToLoad);
+
+                Debug.Log("loaded data from file");
             }
             catch(Exception)
             {
@@ -54,6 +56,8 @@ public class FileDataHandler
                 {
                     writer.Write(dataToStore);
                 }
+
+                Debug.Log("saved data to file");
             }
         }
         catch (Exception)

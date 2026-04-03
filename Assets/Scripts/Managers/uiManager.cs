@@ -82,6 +82,8 @@ public class uiManager : MonoBehaviour
 
     public void toShelves()
     {
+        //SaveManager.instance.SaveGame();
+
         SceneController.Instance
             .NewTransition()
             .Load(SceneDatabase.Slots.SessionContent, SceneDatabase.Scenes.Bookshelves, SetActive: true)
@@ -89,12 +91,15 @@ public class uiManager : MonoBehaviour
             .WithOverlay()
             .Perform();
 
+        SaveManager.instance.LoadGame();
+
         leftButton.SetActive(true);
         rightButton.SetActive(false);
     }
 
     public void toCounter()
     {
+        SaveManager.instance.SaveGame();
 
           SceneController.Instance
             .NewTransition()
@@ -102,6 +107,8 @@ public class uiManager : MonoBehaviour
             .Load(SceneDatabase.Slots.UI, SceneDatabase.Scenes.UI)
             .WithOverlay()
             .Perform();
+
+        //SaveManager.instance.LoadGame();
 
         rightButton.SetActive(true);
         leftButton.SetActive(false);
