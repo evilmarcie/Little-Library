@@ -60,13 +60,14 @@ public class SaveManager : MonoBehaviour
 
     public void SaveGame()
     {
-        Debug.Log("save");
 
         foreach (ISaveData saveDataObj in saveDataObjects)
         {
             saveDataObj.SaveData(ref gameData);
+            Debug.Log(saveDataObjects);
         }
         dataHandler.Save(gameData);
+        Debug.Log(gameData);
     }
 
     private List<ISaveData> FindAllSaveDataObjects()

@@ -5,7 +5,7 @@ using UnityEngine;
 public class SaveShelf : MonoBehaviour, ISaveData
 {
   public string Id;
-  public BookSaving.BookGroup GroupData;
+  public GameData.BookGroup shelfData;
   [SerializeField] private GameObject bookPrefab;
 
     [ContextMenu("Create New GUID")]
@@ -16,29 +16,29 @@ public class SaveShelf : MonoBehaviour, ISaveData
 
      public void SaveData(ref GameData data)
     {
-        GroupData.Id = Id;
-        foreach (Book book in GetComponentsInChildren<Book>())
+        shelfData.Id = Id;
+        foreach (bookPrefab book in GetComponentsInChildren<bookPrefab>())
         {
-            GroupData.Books.Add(book.Data);
+            shelfData.Books.Add(book.book);
         }
-        data.Groups.Add(GroupData);
-        Debug.Log("save shelf data");
+        data.ShelfGroup.Add(shelfData);
+        Debug.Log(data.ShelfGroup);
     }
 
     public void LoadData(GameData data)
     {
-        GroupData = data.Groups.Find(match:group => group.Id == Id);
+        shelfData = data.ShelfGroup.Find(match:group => group.Id == Id);
         RestoreHierarchy();
-        Debug.Log("load shelf data");
+        Debug.Log(shelfData);
     }
 
     public void RestoreHierarchy()
     {
-        foreach (BookData data in GroupData.Books)
+        foreach (BookData data in shelfData.Books)
         {
             GameObject bookGO = Instantiate(bookPrefab, transform.parent);
-            Book book = bookGO.GetComponent<Book>();
-            book.Data = data;
+            bookPrefab book = bookGO.GetComponent<bookPrefab>();
+            book.book = data;
 
             Debug.Log("restored hierarchy");
         }
