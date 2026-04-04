@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7010daf982a7a1b4595d4f349d9a28d6, type: 3}
   m_Name: The Great Gatsby
   m_EditorClassIdentifier: Assembly-CSharp::BookData
+  bookID: b3f7776d-3b19-4728-bf79-511e2d63e39d
   bookTitle: The Great Gatsby
   authorName: F. Scott Fitzgerald
   publicationYear: 1925

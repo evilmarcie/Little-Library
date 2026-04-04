@@ -51,6 +51,7 @@ GameObject:
   - component: {fileID: 6196030408846364243}
   - component: {fileID: 7231509707576931996}
   - component: {fileID: 8432290094300540313}
+  - component: {fileID: 760862801610162360}
   m_Layer: 5
   m_Name: Book
   m_TagString: book
@@ -254,6 +255,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerTooltip
   pointerHover: 0
+--- !u!114 &760862801610162360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4122946621112120501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c486289e5a9166e40a3cbb078d13912a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Book
+  bookdata: {fileID: 0}
+  coverSpriteID: 
+  spineSpriteID: 
 --- !u!1 &4991705327495687478
 GameObject:
   m_ObjectHideFlags: 0

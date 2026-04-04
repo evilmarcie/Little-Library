@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CounterManager : MonoBehaviour, ISaveData
+public class CounterManager : MonoBehaviour
 {
     public Character activeCustomer;
     public Character[] potentialCustomers;
@@ -40,15 +40,5 @@ public class CounterManager : MonoBehaviour, ISaveData
         nameText.text = activeCustomer.name;
         Image nameBoxImage = nameBox.GetComponent<Image>();
         nameBoxImage.color = activeCustomer.characterColour;
-    }
-
-    public void LoadData(GameData data)
-    {
-        this.activeCustomer = data.activeCustomer;
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        data.activeCustomer = this.activeCustomer;
     }
 }

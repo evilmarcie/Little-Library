@@ -82,7 +82,7 @@ public class uiManager : MonoBehaviour
 
     public void toShelves()
     {
-        //SaveManager.instance.SaveGame();
+        SaveManager.Instance.Load();
 
         SceneController.Instance
             .NewTransition()
@@ -91,15 +91,12 @@ public class uiManager : MonoBehaviour
             .WithOverlay()
             .Perform();
 
-        SaveManager.instance.LoadGame();
-
         leftButton.SetActive(true);
         rightButton.SetActive(false);
     }
 
     public void toCounter()
     {
-        SaveManager.instance.SaveGame();
 
           SceneController.Instance
             .NewTransition()
@@ -108,7 +105,7 @@ public class uiManager : MonoBehaviour
             .WithOverlay()
             .Perform();
 
-        //SaveManager.instance.LoadGame();
+        SaveManager.Instance.Save();
 
         rightButton.SetActive(true);
         leftButton.SetActive(false);

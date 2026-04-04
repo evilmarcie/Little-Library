@@ -211,6 +211,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shelve Space (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6497524958343646262, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+      propertyPath: shelfID
+      value: f302da2b-b576-41f8-8399-7c4f582e473e
+      objectReference: {fileID: 0}
     - target: {fileID: 8103768147579464620, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
       propertyPath: Id
       value: a9fe4a0d-ac6d-403c-8318-c51fb1c48bc9
@@ -224,6 +228,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+--- !u!114 &70682317 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6497524958343646262, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+  m_PrefabInstance: {fileID: 70682316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4da2fd7c62a2784cbfd83edd9cc3ede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shelf
 --- !u!1 &162072179
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,6 +786,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shelve Space (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6497524958343646262, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+      propertyPath: shelfID
+      value: 7dd45d47-ec27-4d09-aea8-0a8785a9c70d
+      objectReference: {fileID: 0}
     - target: {fileID: 8103768147579464620, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
       propertyPath: Id
       value: 7b4654f4-cce8-4307-8192-b8b432b1b397
@@ -784,6 +803,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+--- !u!114 &280472326 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6497524958343646262, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+  m_PrefabInstance: {fileID: 280472325}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4da2fd7c62a2784cbfd83edd9cc3ede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shelf
 --- !u!224 &426760879 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 202838524567137603, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
@@ -1028,6 +1058,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shelve Space (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6497524958343646262, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+      propertyPath: shelfID
+      value: 85c92982-f301-4ab7-9b19-473595cc9f60
+      objectReference: {fileID: 0}
     - target: {fileID: 8103768147579464620, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
       propertyPath: Id
       value: fae8863c-d2c4-4228-b799-09e7b657ec2a
@@ -1041,6 +1075,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+--- !u!114 &748857877 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6497524958343646262, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+  m_PrefabInstance: {fileID: 748857876}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4da2fd7c62a2784cbfd83edd9cc3ede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shelf
 --- !u!1 &784003931
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,6 +1228,57 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 202838524567137603, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
   m_PrefabInstance: {fileID: 70682316}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &915418561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 915418563}
+  - component: {fileID: 915418562}
+  m_Layer: 0
+  m_Name: ShelfManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &915418562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915418561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e63c335c48df6840beeac03493ce79e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShelfManager
+  shelves:
+  - {fileID: 5962396953850981116}
+  - {fileID: 748857877}
+  - {fileID: 1186841944}
+  - {fileID: 280472326}
+  - {fileID: 70682317}
+  - {fileID: 1667310215}
+--- !u!4 &915418563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915418561}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1423.674, y: -0, z: 10165.364}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1186841943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1275,6 +1371,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shelve Space (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6497524958343646262, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+      propertyPath: shelfID
+      value: 8ceceda5-6492-4d12-ac65-cd2560d39536
+      objectReference: {fileID: 0}
     - target: {fileID: 8103768147579464620, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
       propertyPath: Id
       value: ae295a41-2f9a-43e0-a814-cc811d795218
@@ -1288,6 +1388,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+--- !u!114 &1186841944 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6497524958343646262, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+  m_PrefabInstance: {fileID: 1186841943}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4da2fd7c62a2784cbfd83edd9cc3ede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shelf
 --- !u!224 &1259027837 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 202838524567137603, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
@@ -1385,6 +1496,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shelve Space (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 6497524958343646262, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+      propertyPath: shelfID
+      value: 48aa5d6e-e1fb-4ae7-8382-256d76c0d663
+      objectReference: {fileID: 0}
     - target: {fileID: 8103768147579464620, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
       propertyPath: Id
       value: 39c89367-5dd0-4c91-9c19-6d68281629bc
@@ -1398,6 +1513,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+--- !u!114 &1667310215 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6497524958343646262, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+  m_PrefabInstance: {fileID: 1667310214}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4da2fd7c62a2784cbfd83edd9cc3ede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shelf
 --- !u!1 &1924436201
 GameObject:
   m_ObjectHideFlags: 0
@@ -1758,6 +1884,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shelve Space
       objectReference: {fileID: 0}
+    - target: {fileID: 6497524958343646262, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+      propertyPath: shelfID
+      value: f22f01ba-fc2a-46e1-9ee3-aef2324fc566
+      objectReference: {fileID: 0}
     - target: {fileID: 8103768147579464620, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
       propertyPath: Id
       value: aa6f9c00-c15b-4cfe-bfeb-c61394ee3e5f
@@ -1771,6 +1901,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+--- !u!114 &5962396953850981116 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6497524958343646262, guid: 3d87cf06421cb0f48af2de35d0575df6, type: 3}
+  m_PrefabInstance: {fileID: 5962396953850981115}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4da2fd7c62a2784cbfd83edd9cc3ede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shelf
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1779,3 +1920,4 @@ SceneRoots:
   - {fileID: 784003933}
   - {fileID: 248206612}
   - {fileID: 1924436203}
+  - {fileID: 915418563}

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7010daf982a7a1b4595d4f349d9a28d6, type: 3}
   m_Name: Pride & Prejudice
   m_EditorClassIdentifier: Assembly-CSharp::BookData
+  bookID: 697c5909-9144-410e-9260-2e2c8c7fe268
   bookTitle: Pride & Prejudice
   authorName: Jane Austen
   publicationYear: 1813

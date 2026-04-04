@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7010daf982a7a1b4595d4f349d9a28d6, type: 3}
   m_Name: Carmilla
   m_EditorClassIdentifier: Assembly-CSharp::BookData
+  bookID: d8e6c565-0d01-4b5d-96e3-b5738d740802
   bookTitle: Carmilla
   authorName: Sheridan Le Fanu
   publicationYear: 1872

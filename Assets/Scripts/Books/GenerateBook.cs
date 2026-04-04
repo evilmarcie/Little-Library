@@ -9,6 +9,5 @@ public class GenerateBook : MonoBehaviour
     public void generateBook()
     {
         Instantiate(book, holder.transform);
-    
     }
 }

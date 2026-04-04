@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1607203364276844588}
   - component: {fileID: 1051787737169225721}
   - component: {fileID: 6257561585060963280}
-  - component: {fileID: 8103768147579464620}
+  - component: {fileID: 6497524958343646262}
   m_Layer: 5
   m_Name: ShelveSpace
   m_TagString: shelves
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
---- !u!114 &8103768147579464620
+--- !u!114 &6497524958343646262
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,11 +127,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 346362269510838633}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01650c90e9d27cf45b960ce6c248263d, type: 3}
+  m_Script: {fileID: 11500000, guid: b4da2fd7c62a2784cbfd83edd9cc3ede, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BookshelfSaving
-  Id: 
-  GroupData:
-    Id: 
-    Books: []
-  bookPrefab: {fileID: 4122946621112120501, guid: 4b0c91229d85dad4f85b70a314b3ad0a, type: 3}
+  m_EditorClassIdentifier: Assembly-CSharp::Shelf
+  shelfID: 

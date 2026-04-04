@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7010daf982a7a1b4595d4f349d9a28d6, type: 3}
   m_Name: Alice's Adventures in Wonderland
   m_EditorClassIdentifier: Assembly-CSharp::BookData
+  bookID: 76b1f66c-6c8d-4baf-9723-e2e4d9e86573
   bookTitle: Alice's Adventures in Wonderland
   authorName: Lewis Carrol
   publicationYear: 1865

@@ -16,6 +16,8 @@ public class bookPrefab : MonoBehaviour
     public Sprite bookCover;
     public Sprite spineSprite;
     public BookData book;
+    public string coverSpriteID;
+    public string spineSpriteID;
 
     //rendering book gameobject
     public Image coverImage;
@@ -51,6 +53,19 @@ public class bookPrefab : MonoBehaviour
         //change book gameobject name to match book title
         gameObject.name = book.bookTitle.ToString();
         
+    }
+
+     public void SetCoverSprite(Sprite sprite, string id)
+    {
+        coverSpriteID = id;
+        //coverImage.sprite = sprite;
+
+    }
+
+    public void SetSpineSprite(Sprite sprite, string id)
+    {
+        spineSpriteID = id;
+        //spineImage.sprite = sprite;
     }
 
 }

@@ -1,78 +1,64 @@
-using System;
-using System.Runtime.CompilerServices;
-using Unity.Mathematics;
+using System.IO;
 using UnityEngine;
-using System.Linq;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using Unity.VectorGraphics;
 
 public class SaveManager : MonoBehaviour
 {
+    public Book bookPrefab;
 
-    [Header("File Storage Config")]
-    private string fileName = "littlelibrary.savedata";
-    private FileDataHandler dataHandler;
-    public static SaveManager instance { get; private set; }
-    private GameData gameData;
-    private List<ISaveData> saveDataObjects;
-
-    private void Awake()
+    public void Save()
     {
-        if (instance != null)
+        GameData save = new GameData();
+
+        foreach (Book book in FindObjectsByType<Book>(FindObjectsSortMode.None))
         {
-            Debug.Log("save manager error");
-        }
-        instance = this;
-    }
+            BookSaveData data = new BookSaveData();
 
-    void Start()
-    {
-        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
-        this.saveDataObjects = FindAllSaveDataObjects();
-        LoadGame();
-    }
+            data.bookID = book.bookdata.bookID;
+            data.coverSpriteID = book.coverSpriteID;
+            data.spineSpriteID = book.spineSpriteID;
 
-    public void NewGame()
-    {
-        this.gameData = new GameData();
-        // trigger tutorial?
-    }
+            Shelf shelf = book.transform.parent.GetComponent<Shelf>();
+            data.shelfID = shelf.shelfID;
 
-    public void LoadGame()
-    {
+            data.siblingIndex = book.transform.GetSiblingIndex();
 
-        Debug.Log("load");
-
-        this.gameData = dataHandler.Load();
-
-        if (this.gameData == null)
-        {
-            Debug.Log("no save data found");
-            NewGame();
+            save.books.Add(data);
         }
         
-        foreach (ISaveData saveDataObj in saveDataObjects)
+        string json = JsonUtility.ToJson(save, true);
+        File.WriteAllText(Application.persistentDataPath + "LittleLibrary_SaveData", json);
+    }
+
+    public void Load()
+    {
+       string path = Application.persistentDataPath + "LittleLibrary_SaveData";
+
+        if (!File.Exists(path)) return;
+
+        string json = File.ReadAllText(path);
+        GameData save = JsonUtility.FromJson<GameData>(json);
+
+        foreach (BookSaveData data in save.books)
         {
-            saveDataObj.LoadData(gameData);
+            Book book = Instantiate(bookPrefab);
+
+            book.bookdata = BooksManager.Instance.GetByID(data.bookID);
+            var cover = SpriteManager.Instance.GetSprite(data.coverSpriteID);
+
+            book.SetCoverSprite(cover, data.coverSpriteID);
+            var spine = SpriteManager.Instance.GetSprite(data.spineSpriteID);
+            book.SetSpineSprite(spine, data.spineSpriteID);
+
+            Shelf shelf = ShelfManager.Instance.GetShelf(data.shelfID);
+            book.transform.SetParent(shelf.transform);
+            book.transform.SetSiblingIndex(data.siblingIndex);
         }
     }
 
-    public void SaveGame()
-    {
+    public static SaveManager Instance;
 
-        foreach (ISaveData saveDataObj in saveDataObjects)
-        {
-            saveDataObj.SaveData(ref gameData);
-            Debug.Log(saveDataObjects);
-        }
-        dataHandler.Save(gameData);
-        Debug.Log(gameData);
-    }
-
-    private List<ISaveData> FindAllSaveDataObjects()
+    void OnEnable()
     {
-        IEnumerable<ISaveData> saveDataObjects = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<ISaveData>();
-        return new List<ISaveData>(saveDataObjects);
+        Instance = this;
     }
 }
