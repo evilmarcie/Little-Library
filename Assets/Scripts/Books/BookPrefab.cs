@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,15 +8,16 @@ public class bookPrefab : MonoBehaviour
 {
     //arrays
     public BookData[] books = {};
-    public Sprite[] CoverSprites = {};
-    public Sprite [] SpineSprites = {};
+    public SpriteInfo coverSpriteInfo;
+    public SpriteInfo spineSpriteInfo;
+    public List<SpriteInfo> CoverSprites;
+    public List<SpriteInfo> SpineSprites;
 
     //variables
     public Sprite bookCover;
     public Sprite spineSprite;
+    public int spriteNumber;
     public BookData book;
-    public string coverSpriteID;
-    public string spineSpriteID;
 
     //rendering book gameobject
     public Image coverImage;
@@ -27,17 +27,29 @@ public class bookPrefab : MonoBehaviour
     //spine
     public Image spine;
     public TextMeshProUGUI spineTitle;
+
+    //ids
+    public string coverSpriteID;
+    public string spineSpriteID;
+    public string bookId;
     
 
     void Start()
     {
         // randomised book & cover
         book = books[UnityEngine.Random.Range(0, books.Length)];
-        bookCover = CoverSprites[UnityEngine.Random.Range(0, CoverSprites.Length)]; 
+        
+        //random cover
+        CoverSprites = GetComponent<SpriteManager>().CoverSprites;
+        spriteNumber = UnityEngine.Random.Range(0, CoverSprites.Count);
+        coverSpriteInfo = CoverSprites[spriteNumber];
+        bookCover = coverSpriteInfo.sprite;
 
         //match spine to cover
-        int coverIndex = Array.IndexOf(CoverSprites, bookCover);
-        spineSprite = SpineSprites[coverIndex];
+        SpineSprites = GetComponent<SpriteManager>().SpineSprites;
+        spineSpriteInfo = SpineSprites[spriteNumber];
+        spineSprite = spineSpriteInfo.sprite;
+
 
         //set bookcover sprite to image renderer
         coverImage.sprite = bookCover;
@@ -52,20 +64,12 @@ public class bookPrefab : MonoBehaviour
 
         //change book gameobject name to match book title
         gameObject.name = book.bookTitle.ToString();
+
+        //get id info
+        bookId = book.bookID;
+        coverSpriteID = coverSpriteInfo.id;
+        spineSpriteID = spineSpriteInfo.id;
         
-    }
-
-     public void SetCoverSprite(Sprite sprite, string id)
-    {
-        coverSpriteID = id;
-        //coverImage.sprite = sprite;
-
-    }
-
-    public void SetSpineSprite(Sprite sprite, string id)
-    {
-        spineSpriteID = id;
-        //spineImage.sprite = sprite;
     }
 
 }

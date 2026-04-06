@@ -1,16 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BooksManager : MonoBehaviour
+public class BookManager : MonoBehaviour
 {
-    public static BooksManager Instance;
+
+    public static BookManager Instance;
     void OnEnable()
     {
         Instance = this;
     }
 
     public List<BookData> allBooks;
-   private Dictionary<string, BookData> lookup;
+    private Dictionary<string, BookData> lookup;
 
     void Awake()
     {

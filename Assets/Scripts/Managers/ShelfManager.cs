@@ -19,9 +19,11 @@ public class ShelfManager : MonoBehaviour
     public Shelf GetShelf(string id)
     {
         return lookup[id];
+        
     }
 
     public static ShelfManager Instance;
+
     void OnEnable()
     {
         Instance = this;

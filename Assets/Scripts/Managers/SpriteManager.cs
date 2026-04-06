@@ -11,14 +11,15 @@ using UnityEngine;
 
 public class SpriteManager : MonoBehaviour
 {
-    public List<SpriteInfo> BookSprites;
+    public List<SpriteInfo> CoverSprites;
+    public List<SpriteInfo> SpineSprites;
     private Dictionary<string, Sprite> lookup;
 
     void Awake()
     {
         lookup = new Dictionary<string, Sprite>();
         
-        foreach (var s in BookSprites)
+        foreach (var s in CoverSprites)
         {
             lookup [s.id] = s.sprite;
         }

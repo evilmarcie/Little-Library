@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1d69df4c862f84cac50ea619b700b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpriteManager
-  BookSprites:
+  CoverSprites:
   - id: bluecover_2
     sprite: {fileID: 1990461953, guid: ee1c48b7e4f567d439cfa45b4df4f77d, type: 3}
   - id: bluecover_3
@@ -182,12 +182,13 @@ MonoBehaviour:
     sprite: {fileID: -81221623, guid: ef32160c0cb52f149805ce9635b2d089, type: 3}
   - id: purplecover_1
     sprite: {fileID: -1106410897, guid: 0b2d91ea015edec409fd5c791a4446b2, type: 3}
-  - id: redcover_2
+  - id: purplecover_2
     sprite: {fileID: 1910882474, guid: 43f34cae631d8b140b938e6bdcbf947e, type: 3}
-  - id: redcover_3
+  - id: purplecover_3
     sprite: {fileID: -1553367076, guid: b45a60a62d77e0e499b15f50292d7d72, type: 3}
-  - id: redcover_1
+  - id: purplecover_1
     sprite: {fileID: -1336198948, guid: 4addb891829d6524eaa95be4d60b8ff7, type: 3}
+  SpineSprites:
   - id: bluespine_2
     sprite: {fileID: -2093988111, guid: 290578f4815f28d449844b990f1ed897, type: 3}
   - id: bluespine_3
@@ -264,6 +265,71 @@ MonoBehaviour:
   canvasGroup: {fileID: 1406614348}
   fadeInTime: 0.5
   fadeOutTime: 0.5
+--- !u!1 &397998990
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 397998991}
+  - component: {fileID: 397998992}
+  m_Layer: 0
+  m_Name: BookManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &397998991
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397998990}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 716957197}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &397998992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397998990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf6b59e6b71e15f4da63105bee516265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BookManager
+  allBooks:
+  - {fileID: 11400000, guid: 714a347148ae7c747b0fcc2231b94d26, type: 2}
+  - {fileID: 11400000, guid: bf5602d5508a6be44ac4e5d93c32b8e2, type: 2}
+  - {fileID: 11400000, guid: 0130d90c43c2adf4cb24e469c077a88e, type: 2}
+  - {fileID: 11400000, guid: b94acfe05cb6fe24a9ea92ab57be638a, type: 2}
+  - {fileID: 11400000, guid: b76908050e2246246bc92bd2374e35ca, type: 2}
+  - {fileID: 11400000, guid: 082740916d1a4eb41b4677e1af56264c, type: 2}
+  - {fileID: 11400000, guid: 895afc838658e3f48ba6d5ec27e219ff, type: 2}
+  - {fileID: 11400000, guid: 43213c0cb362ac7428adc3a575c6d23c, type: 2}
+  - {fileID: 11400000, guid: 46e5d453f4fbcdc4d9942c13535719bd, type: 2}
+  - {fileID: 11400000, guid: 532a8e91d655eb84a832183c2fc8dc83, type: 2}
+  - {fileID: 11400000, guid: 1046f26834153b44ca1c7b486cc38055, type: 2}
+  - {fileID: 11400000, guid: 6ddb150a425e21c4ab25667a4ddab5d5, type: 2}
+  - {fileID: 11400000, guid: 7fa14292d6cdd5b418fc4954c62c9454, type: 2}
+  - {fileID: 11400000, guid: 57e61609ac62f3741a2119cf03b2245b, type: 2}
+  - {fileID: 11400000, guid: d4d0cd9f6ca5a1447a0a681646f668d2, type: 2}
+  - {fileID: 11400000, guid: 307e79a6ec31c3144ad3e46b31171dfc, type: 2}
+  - {fileID: 11400000, guid: 904f35bfd5e543644aba954bed2e6c55, type: 2}
+  - {fileID: 11400000, guid: a3e9bdde6f110c04281cbe6b431d67b7, type: 2}
+  - {fileID: 11400000, guid: c4008b482a3b413429b0c544dc25c25c, type: 2}
+  - {fileID: 11400000, guid: b3d017e15e2b733489738faf8e98ea98, type: 2}
 --- !u!1 &716957196
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,8 +360,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1764194442}
-  - {fileID: 1836626491}
   - {fileID: 301556641}
+  - {fileID: 397998991}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &744717325
@@ -874,72 +940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 426659030b2f94f41badfc2828083dd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveManager
-  bookPrefab: {fileID: 760862801610162360, guid: 4b0c91229d85dad4f85b70a314b3ad0a, type: 3}
---- !u!1 &1836626490
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1836626491}
-  - component: {fileID: 1836626492}
-  m_Layer: 0
-  m_Name: BooksManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1836626491
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1836626490}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 716957197}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1836626492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1836626490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68da3c7fd873e4a42bafc0dca2758dd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BooksManager
-  allBooks:
-  - {fileID: 11400000, guid: 714a347148ae7c747b0fcc2231b94d26, type: 2}
-  - {fileID: 11400000, guid: bf5602d5508a6be44ac4e5d93c32b8e2, type: 2}
-  - {fileID: 11400000, guid: 0130d90c43c2adf4cb24e469c077a88e, type: 2}
-  - {fileID: 11400000, guid: b94acfe05cb6fe24a9ea92ab57be638a, type: 2}
-  - {fileID: 11400000, guid: b76908050e2246246bc92bd2374e35ca, type: 2}
-  - {fileID: 11400000, guid: 082740916d1a4eb41b4677e1af56264c, type: 2}
-  - {fileID: 11400000, guid: 895afc838658e3f48ba6d5ec27e219ff, type: 2}
-  - {fileID: 11400000, guid: 43213c0cb362ac7428adc3a575c6d23c, type: 2}
-  - {fileID: 11400000, guid: 46e5d453f4fbcdc4d9942c13535719bd, type: 2}
-  - {fileID: 11400000, guid: 532a8e91d655eb84a832183c2fc8dc83, type: 2}
-  - {fileID: 11400000, guid: 1046f26834153b44ca1c7b486cc38055, type: 2}
-  - {fileID: 11400000, guid: 6ddb150a425e21c4ab25667a4ddab5d5, type: 2}
-  - {fileID: 11400000, guid: 7fa14292d6cdd5b418fc4954c62c9454, type: 2}
-  - {fileID: 11400000, guid: 57e61609ac62f3741a2119cf03b2245b, type: 2}
-  - {fileID: 11400000, guid: d4d0cd9f6ca5a1447a0a681646f668d2, type: 2}
-  - {fileID: 11400000, guid: 307e79a6ec31c3144ad3e46b31171dfc, type: 2}
-  - {fileID: 11400000, guid: 904f35bfd5e543644aba954bed2e6c55, type: 2}
-  - {fileID: 11400000, guid: a3e9bdde6f110c04281cbe6b431d67b7, type: 2}
-  - {fileID: 11400000, guid: c4008b482a3b413429b0c544dc25c25c, type: 2}
-  - {fileID: 11400000, guid: b3d017e15e2b733489738faf8e98ea98, type: 2}
+  prefab: {fileID: 7696840577034295050, guid: 4b0c91229d85dad4f85b70a314b3ad0a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

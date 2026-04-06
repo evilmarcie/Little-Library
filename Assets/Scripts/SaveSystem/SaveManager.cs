@@ -3,17 +3,17 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
-    public Book bookPrefab;
+    public bookPrefab prefab;
 
     public void Save()
     {
         GameData save = new GameData();
 
-        foreach (Book book in FindObjectsByType<Book>(FindObjectsSortMode.None))
+        foreach (bookPrefab book in FindObjectsByType<bookPrefab>(FindObjectsSortMode.None))
         {
             BookSaveData data = new BookSaveData();
 
-            data.bookID = book.bookdata.bookID;
+            data.bookID = book.bookId;
             data.coverSpriteID = book.coverSpriteID;
             data.spineSpriteID = book.spineSpriteID;
 
@@ -40,14 +40,18 @@ public class SaveManager : MonoBehaviour
 
         foreach (BookSaveData data in save.books)
         {
-            Book book = Instantiate(bookPrefab);
+            bookPrefab book = Instantiate(prefab);
 
-            book.bookdata = BooksManager.Instance.GetByID(data.bookID);
+            book.book = BookManager.Instance.GetByID(data.bookID);
+            book.bookId = data.bookID;
+
             var cover = SpriteManager.Instance.GetSprite(data.coverSpriteID);
+            book.bookCover = cover;
+            book.coverSpriteID = data.coverSpriteID;
 
-            book.SetCoverSprite(cover, data.coverSpriteID);
             var spine = SpriteManager.Instance.GetSprite(data.spineSpriteID);
-            book.SetSpineSprite(spine, data.spineSpriteID);
+            book.spineSprite = spine;
+            book.spineSpriteID = data.spineSpriteID;
 
             Shelf shelf = ShelfManager.Instance.GetShelf(data.shelfID);
             book.transform.SetParent(shelf.transform);
