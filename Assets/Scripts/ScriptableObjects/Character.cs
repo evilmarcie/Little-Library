@@ -24,6 +24,14 @@ public class Character : ScriptableObject
     public BookData[] neutralBooks;
     public BookData[] dislikedBooks;
 
+    // dialogue
+    [TextArea] public string initialGreeting;
+    [TextArea] public List<string> greetingLines;
+    [TextArea] public List<string> promptLines;
+    [TextArea] public List<string> lovedResponse; 
+    [TextArea] public List<string> likedResponse; 
+    [TextArea] public List<string> neutralResponse;
+    [TextArea] public List<string> dislikedResponse;  
 }
 
 
