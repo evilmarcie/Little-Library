@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7010daf982a7a1b4595d4f349d9a28d6, type: 3}
   m_Name: Romeo & Juliet
   m_EditorClassIdentifier: Assembly-CSharp::BookData
+  bookID: 63390632-a3f5-4ee0-a884-62a9daf24280
   bookTitle: Romeo & Juliet
   authorName: William Shakespeare
   publicationYear: 1597

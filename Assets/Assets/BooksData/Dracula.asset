@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7010daf982a7a1b4595d4f349d9a28d6, type: 3}
   m_Name: Dracula
   m_EditorClassIdentifier: Assembly-CSharp::BookData
+  bookID: 51e4bbc8-526a-4069-b18e-7ad396efa9ce
   bookTitle: Dracula
   authorName: Bram Stoker
   publicationYear: 1897

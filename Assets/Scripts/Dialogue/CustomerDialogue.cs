@@ -1,10 +1,12 @@
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class CustomerDialogue : MonoBehaviour
 {
     public Character customer;
+    
+    //temp, move elsewhere
+    public bool metCustomer = false;
 
     void Awake()
     {
@@ -13,7 +15,14 @@ public class CustomerDialogue : MonoBehaviour
 
     public void Greeting()
     {
-        //random greeting
+        if (metCustomer == false)
+        {
+            //initialGreeting
+        }
+        else
+        {
+            //random greeting
+        }
     }
 
     public void RecieveBook(BookData book)

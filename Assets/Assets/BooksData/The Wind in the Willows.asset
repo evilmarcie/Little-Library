@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7010daf982a7a1b4595d4f349d9a28d6, type: 3}
   m_Name: The Wind in the Willows
   m_EditorClassIdentifier: Assembly-CSharp::BookData
+  bookID: 2c192b6a-f489-4913-96fe-08c4680f4152
   bookTitle: The Wind in the Willows
   authorName: Kenneth Graham
   publicationYear: 1908

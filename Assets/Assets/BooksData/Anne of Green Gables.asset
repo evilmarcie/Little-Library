@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7010daf982a7a1b4595d4f349d9a28d6, type: 3}
   m_Name: Anne of Green Gables
   m_EditorClassIdentifier: Assembly-CSharp::BookData
+  bookID: 5a419726-1c32-4e6b-8680-531d8ad31ba8
   bookTitle: Anne of Green Gables
   authorName: L.M. Montgomery
   publicationYear: 1908

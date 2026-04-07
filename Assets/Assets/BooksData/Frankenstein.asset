@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7010daf982a7a1b4595d4f349d9a28d6, type: 3}
   m_Name: Frankenstein
   m_EditorClassIdentifier: Assembly-CSharp::BookData
+  bookID: e2fa4841-2f17-4c02-bade-6c6db67bfea4
   bookTitle: Frankenstein
   authorName: Mary Shelley
   publicationYear: 1818

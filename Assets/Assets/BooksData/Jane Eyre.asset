@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7010daf982a7a1b4595d4f349d9a28d6, type: 3}
   m_Name: Jane Eyre
   m_EditorClassIdentifier: Assembly-CSharp::BookData
+  bookID: 25032c09-6a5e-4ef2-967e-53230a26135a
   bookTitle: Jane Eyre
   authorName: Charlotte Bronte
   publicationYear: 1847

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7010daf982a7a1b4595d4f349d9a28d6, type: 3}
   m_Name: Crime & Punishment
   m_EditorClassIdentifier: Assembly-CSharp::BookData
+  bookID: 7d4f237d-8493-4f35-9249-d54d17ed6250
   bookTitle: Crime & Punishment
   authorName: Fyodor Dostoyevsky
   publicationYear: 1866

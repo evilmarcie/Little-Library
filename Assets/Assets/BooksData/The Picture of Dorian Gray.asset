@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7010daf982a7a1b4595d4f349d9a28d6, type: 3}
   m_Name: The Picture of Dorian Gray
   m_EditorClassIdentifier: Assembly-CSharp::BookData
+  bookID: 6aaa72bb-4d6a-43a2-b445-08f7ef7feea0
   bookTitle: The Picture of Dorian Gray
   authorName: Oscar Wilde
   publicationYear: 1890

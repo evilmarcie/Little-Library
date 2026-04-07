@@ -1,16 +1,19 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class bookPrefab : MonoBehaviour
+public class bookPrefab : MonoBehaviour, ISaveShelves
 {
     //arrays
     public BookData[] books = {};
-    public Sprite[] CoverSprites = {};
-    public Sprite [] SpineSprites = {};
+    private List<SpriteInfo> sprites;
 
     //variables
+    public SpriteInfo spriteInfo;
+    public int spriteNumber;
+    public string spriteID;
     public Sprite bookCover;
     public Sprite spineSprite;
     public BookData book;
@@ -23,17 +26,19 @@ public class bookPrefab : MonoBehaviour
     //spine
     public Image spine;
     public TextMeshProUGUI spineTitle;
-    
 
     void Start()
     {
         // randomised book & cover
         book = books[UnityEngine.Random.Range(0, books.Length)];
-        bookCover = CoverSprites[UnityEngine.Random.Range(0, CoverSprites.Length)]; 
+        
+        sprites = GetComponent<SpriteManager>().BookSprites;
+        spriteNumber = UnityEngine.Random.Range(0, sprites.Count);
+        spriteInfo = sprites[spriteNumber];
 
-        //match spine to cover
-        int coverIndex = Array.IndexOf(CoverSprites, bookCover);
-        spineSprite = SpineSprites[coverIndex];
+        bookCover = spriteInfo.cover;
+        spine.sprite = spriteInfo.spine;
+        spriteID = spriteInfo.id;
 
         //set bookcover sprite to image renderer
         coverImage.sprite = bookCover;
@@ -49,6 +54,24 @@ public class bookPrefab : MonoBehaviour
         //change book gameobject name to match book title
         gameObject.name = book.bookTitle.ToString();
         
+    }
+
+    public void LoadShelves(BookshelvesData bookshelvesData)
+    {
+        
+    }
+
+    public void SaveShelves(ref BookshelvesData bookshelvesData)
+    {
+        BookshelvesData.BookInfo info = new BookshelvesData.BookInfo();
+
+        info.bookID = book.bookID;
+        info.spritesID = spriteID;
+        info.coverView = GetComponent<PlayableBook>().coverView;
+        info.shelfParentID = transform.parent.GetComponent<Shelf>().shelfID;
+        info.parentsOrder = transform.GetSiblingIndex();
+
+        bookshelvesData.Books.Add(info);
     }
 
 }

@@ -5,6 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BookData", menuName = "Scriptable Objects/BookData")]
 public class BookData : ScriptableObject
 {
+
+    [ContextMenu("Create New GUID")]
+    public void GenerateUID()
+    { bookID = Guid.NewGuid().ToString();}
+    
+    public string bookID;
     public string bookTitle;
     public string authorName;
     public float publicationYear;

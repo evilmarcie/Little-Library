@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7010daf982a7a1b4595d4f349d9a28d6, type: 3}
   m_Name: The Wizard of Oz
   m_EditorClassIdentifier: Assembly-CSharp::BookData
+  bookID: c7cf3b45-7450-4010-9bfb-af990f2fcd73
   bookTitle: The Wizard of Oz
   authorName: Frank Baum
   publicationYear: 1900

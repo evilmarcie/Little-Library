@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7010daf982a7a1b4595d4f349d9a28d6, type: 3}
   m_Name: Emma
   m_EditorClassIdentifier: Assembly-CSharp::BookData
+  bookID: a3b4985a-c796-4db8-974b-3becf2466fe0
   bookTitle: Emma
   authorName: Jane Austen
   publicationYear: 1815
