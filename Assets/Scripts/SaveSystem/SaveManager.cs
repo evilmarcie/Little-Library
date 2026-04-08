@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
-    public static SaveManager instance { get; private set; }
+    public static SaveManager instance;
+    void Awake() { instance = this; }
 
     private List<ISaveShelves> bookshelfDataObjects;
 
@@ -55,10 +56,35 @@ public class SaveManager : MonoBehaviour
         foreach (var info in shelvesData.Books)
         {
             GameObject book = Instantiate(bookPrefab);
-
             bookPrefab bookScript = book.GetComponent<bookPrefab>();
+            PlayableBook playableBook = book.GetComponent<PlayableBook>();
 
-            //figure out best way to convert ID to gameobjects
+            bookScript.spriteInfo = SpriteManager.instance.GetSpriteInfo(info.spritesID);
+            bookScript.book = BookManager.instance.GetBookData(info.bookID);
+            bookScript.SetValues();
+
+            if (info.coverView == true)
+            {
+                playableBook.CoverActive();
+            }
+            else
+            {
+                playableBook.SpineActive();
+            }
+            
+            var shelf = ShelvesManager.instance.GetShelf(info.shelfParentID);
+
+            if (shelf == null)
+            {
+                Debug.Log("cant locate shelf");
+                return;
+            }
+            else
+            {
+                book.transform.SetParent(shelf.transform);
+                book.transform.SetSiblingIndex(info.parentsOrder);   
+            }
+            
         }   
         
     }

@@ -193,13 +193,114 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47451853}
   serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 110192670}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &110192669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 110192670}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &110192670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110192669}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1423.674, y: -0, z: 10165.364}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 744717327}
+  - {fileID: 2078810073}
+  - {fileID: 47451855}
+  - {fileID: 373002717}
+  - {fileID: 1856314284}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &373002716
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 373002717}
+  - component: {fileID: 373002718}
+  m_Layer: 0
+  m_Name: BookManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &373002717
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373002716}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 110192670}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &373002718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373002716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22c1da845ba3bcd48bbfbba574f41897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BookManager
+  allBooks:
+  - {fileID: 11400000, guid: 714a347148ae7c747b0fcc2231b94d26, type: 2}
+  - {fileID: 11400000, guid: bf5602d5508a6be44ac4e5d93c32b8e2, type: 2}
+  - {fileID: 11400000, guid: 0130d90c43c2adf4cb24e469c077a88e, type: 2}
+  - {fileID: 11400000, guid: b94acfe05cb6fe24a9ea92ab57be638a, type: 2}
+  - {fileID: 11400000, guid: b76908050e2246246bc92bd2374e35ca, type: 2}
+  - {fileID: 11400000, guid: 082740916d1a4eb41b4677e1af56264c, type: 2}
+  - {fileID: 11400000, guid: 895afc838658e3f48ba6d5ec27e219ff, type: 2}
+  - {fileID: 11400000, guid: 43213c0cb362ac7428adc3a575c6d23c, type: 2}
+  - {fileID: 11400000, guid: 46e5d453f4fbcdc4d9942c13535719bd, type: 2}
+  - {fileID: 11400000, guid: 532a8e91d655eb84a832183c2fc8dc83, type: 2}
+  - {fileID: 11400000, guid: 1046f26834153b44ca1c7b486cc38055, type: 2}
+  - {fileID: 11400000, guid: 6ddb150a425e21c4ab25667a4ddab5d5, type: 2}
+  - {fileID: 11400000, guid: 7fa14292d6cdd5b418fc4954c62c9454, type: 2}
+  - {fileID: 11400000, guid: 57e61609ac62f3741a2119cf03b2245b, type: 2}
+  - {fileID: 11400000, guid: d4d0cd9f6ca5a1447a0a681646f668d2, type: 2}
+  - {fileID: 11400000, guid: 307e79a6ec31c3144ad3e46b31171dfc, type: 2}
+  - {fileID: 11400000, guid: 904f35bfd5e543644aba954bed2e6c55, type: 2}
+  - {fileID: 11400000, guid: a3e9bdde6f110c04281cbe6b431d67b7, type: 2}
+  - {fileID: 11400000, guid: c4008b482a3b413429b0c544dc25c25c, type: 2}
+  - {fileID: 11400000, guid: b3d017e15e2b733489738faf8e98ea98, type: 2}
 --- !u!1 &382085457
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,12 +390,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 744717325}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 825.3224, y: 0, z: 4421.471}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -598.35156, y: 0, z: -5743.893}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 110192670}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1033416759
 GameObject:
@@ -784,6 +885,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684250847}
   m_CullTransparentMesh: 1
+--- !u!1 &1856314283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1856314284}
+  - component: {fileID: 1856314285}
+  m_Layer: 0
+  m_Name: ShelvesManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1856314284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856314283}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 110192670}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1856314285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856314283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b89689c84dad24438b46cddc6101429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShelvesManager
+  shelves: []
 --- !u!1 &2078810071
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,12 +968,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2078810071}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1423.674, y: -0, z: 10165.364}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 110192670}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -836,6 +982,4 @@ SceneRoots:
   - {fileID: 1033416762}
   - {fileID: 1149539618}
   - {fileID: 1223795889}
-  - {fileID: 744717327}
-  - {fileID: 2078810073}
-  - {fileID: 47451855}
+  - {fileID: 110192670}

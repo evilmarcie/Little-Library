@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,31 +30,32 @@ public class bookPrefab : MonoBehaviour, ISaveShelves
 
     void Start()
     {
-        // randomised book & cover
+        RandomValues();
+        SetValues();
+    }
+
+    public void RandomValues()
+    {
         book = books[UnityEngine.Random.Range(0, books.Length)];
         
-        sprites = GetComponent<SpriteManager>().BookSprites;
+        sprites = SpriteManager.instance.BookSprites;
         spriteNumber = UnityEngine.Random.Range(0, sprites.Count);
         spriteInfo = sprites[spriteNumber];
+    }
 
-        bookCover = spriteInfo.cover;
+
+    public void SetValues()
+    {
+        coverImage.sprite = spriteInfo.cover;
         spine.sprite = spriteInfo.spine;
         spriteID = spriteInfo.id;
-
-        //set bookcover sprite to image renderer
-        coverImage.sprite = bookCover;
-        spine.sprite = spineSprite;
         
-        //set book title to title text
         title.text = book.bookTitle;
         spineTitle.text = book.bookTitle;
 
-        //set author to author text
         author.text = book.authorName;
 
-        //change book gameobject name to match book title
         gameObject.name = book.bookTitle.ToString();
-        
     }
 
     public void LoadShelves(BookshelvesData bookshelvesData)
@@ -67,7 +69,10 @@ public class bookPrefab : MonoBehaviour, ISaveShelves
 
         info.bookID = book.bookID;
         info.spritesID = spriteID;
-        info.coverView = GetComponent<PlayableBook>().coverView;
+
+        PlayableBook playableBook = GetComponent<PlayableBook>();
+        info.coverView = playableBook.coverActiveView;
+
         info.shelfParentID = transform.parent.GetComponent<Shelf>().shelfID;
         info.parentsOrder = transform.GetSiblingIndex();
 
