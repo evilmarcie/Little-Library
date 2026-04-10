@@ -28,8 +28,15 @@ public class SaveManager : MonoBehaviour
             shelfDataObj.SaveShelves(ref shelvesData);
         }
         
+<<<<<<< Updated upstream
         string json = JsonUtility.ToJson(shelvesData, true);
         File.WriteAllText(Application.persistentDataPath + "LittleLibrary_BookshelfData", json);
+=======
+        string json = JsonUtility.ToJson(shelvesData, true);
+        File.WriteAllText(Application.persistentDataPath + "BookshelfData", json);
+
+        
+>>>>>>> Stashed changes
 
         
     }
@@ -39,9 +46,15 @@ public class SaveManager : MonoBehaviour
     public void LoadBookshelves()
     
     {
+<<<<<<< Updated upstream
         bookshelfDataObjects = FindAllSaveShelvesObj();
 
         string path = Application.persistentDataPath + "LittleLibrary_BookshelfData";
+=======
+        bookshelfDataObjects = FindAllSaveShelvesObj();
+
+        string path = Application.persistentDataPath + "BookshelfData";
+>>>>>>> Stashed changes
 
         if (!File.Exists(path)) return;
 

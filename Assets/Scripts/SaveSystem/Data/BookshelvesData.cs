@@ -15,5 +15,6 @@ public class BookshelvesData
         public bool coverView;
         public string shelfParentID;
         public int parentsOrder;
+        public bool onShelf;
     }
 }
