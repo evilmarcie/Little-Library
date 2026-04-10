@@ -25,3 +25,11 @@ MonoBehaviour:
   likedBooks: []
   neutralBooks: []
   dislikedBooks: []
+  initialGreeting: "Hello, I\u2019m Arnold, a literature student at the local university.
+    It's always good to have another bookstore in town!"
+  greetingLines: []
+  promptLines: []
+  lovedResponse: []
+  likedResponse: []
+  neutralResponse: []
+  dislikedResponse: []

@@ -1,19 +1,20 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class bookPrefab : MonoBehaviour
+public class bookPrefab : MonoBehaviour, ISaveShelves
 {
     //arrays
     public BookData[] books = {};
-    public SpriteInfo coverSpriteInfo;
-    public SpriteInfo spineSpriteInfo;
-    public List<SpriteInfo> CoverSprites;
-    public List<SpriteInfo> SpineSprites;
+    private List<SpriteInfo> sprites;
 
     //variables
+    public SpriteInfo spriteInfo;
+    public int spriteNumber;
+    public string spriteID;
     public Sprite bookCover;
     public Sprite spineSprite;
     public int spriteNumber;
@@ -28,7 +29,6 @@ public class bookPrefab : MonoBehaviour
     public Image spine;
     public TextMeshProUGUI spineTitle;
 
-<<<<<<< Updated upstream
     //ids
     public string coverSpriteID;
     public string spineSpriteID;
@@ -37,7 +37,12 @@ public class bookPrefab : MonoBehaviour
 
     void Start()
     {
-        // randomised book & cover
+        RandomValues();
+        SetValues();
+    }
+
+    public void RandomValues()
+    {
         book = books[UnityEngine.Random.Range(0, books.Length)];
         
         //random cover
@@ -82,14 +87,11 @@ public class bookPrefab : MonoBehaviour
         spriteID = spriteInfo.id;
 >>>>>>> Stashed changes
         
-        //set book title to title text
         title.text = book.bookTitle;
         spineTitle.text = book.bookTitle;
 
-        //set author to author text
         author.text = book.authorName;
 
-        //change book gameobject name to match book title
         gameObject.name = book.bookTitle.ToString();
 
         //get id info

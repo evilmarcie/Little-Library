@@ -94,6 +94,9 @@ public class uiManager : MonoBehaviour
 
         leftButton.SetActive(true);
         rightButton.SetActive(false);
+
+        ShelvesManager.instance.FindShelves();
+        SaveManager.instance.LoadBookshelves();
     }
 
     public void toCounter()

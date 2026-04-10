@@ -44,3 +44,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 43213c0cb362ac7428adc3a575c6d23c, type: 2}
   - {fileID: 11400000, guid: 0130d90c43c2adf4cb24e469c077a88e, type: 2}
   - {fileID: 11400000, guid: b94acfe05cb6fe24a9ea92ab57be638a, type: 2}
+  initialGreeting: 
+  greetingLines:
+  - 
+  promptLines: []
+  lovedResponse: []
+  likedResponse: []
+  neutralResponse: []
+  dislikedResponse: []

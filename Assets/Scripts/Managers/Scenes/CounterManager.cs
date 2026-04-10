@@ -16,6 +16,7 @@ public class CounterManager : MonoBehaviour
         if (activeCustomer.visitedToday == true)
         {
             randomCustomer();
+            BeginInteraction();
         }
         else
         {
@@ -40,5 +41,7 @@ public class CounterManager : MonoBehaviour
         nameText.text = activeCustomer.name;
         Image nameBoxImage = nameBox.GetComponent<Image>();
         nameBoxImage.color = activeCustomer.characterColour;
+
+        //start greeting interaction
     }
 }

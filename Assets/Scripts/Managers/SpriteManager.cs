@@ -2,38 +2,40 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
+[Serializable]
     public class SpriteInfo
     {
         public string id;
-        public Sprite sprite;
+        public Sprite cover;
+        public Sprite spine;
     }
 
-public class SpriteManager : MonoBehaviour
+    public class SpriteManager : MonoBehaviour
 {
-    public List<SpriteInfo> CoverSprites;
-    public List<SpriteInfo> SpineSprites;
-    private Dictionary<string, Sprite> lookup;
+    public List<SpriteInfo> BookSprites;
+
+    private Dictionary<string, SpriteInfo> lookup;
 
     void Awake()
     {
-        lookup = new Dictionary<string, Sprite>();
+        instance = this;
         
-        foreach (var s in CoverSprites)
+        lookup = new Dictionary<string, SpriteInfo>();
+        
+        foreach (var spriteInfo in BookSprites)
         {
-            lookup [s.id] = s.sprite;
+            lookup [spriteInfo.id] = spriteInfo;
         }
     }
 
-    public Sprite GetSprite(string id)
+    public SpriteInfo GetSpriteInfo(string id)
     {
         return lookup[id];
     }
 
-    public static SpriteManager Instance;
-
-    void OnEnable()
-    {
-        Instance = this;
-    }
+    public static SpriteManager instance;
 }
+
+
+
+

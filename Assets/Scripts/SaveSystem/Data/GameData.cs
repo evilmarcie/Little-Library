@@ -1,19 +1,9 @@
-using System;
-using System.Collections.Generic;
+using UnityEngine;
 
-[Serializable]
-public class BookSaveData
+public class GameData : MonoBehaviour
 {
-  public string bookID;
-  public string coverSpriteID;
-  public string spineSpriteID;
-  public string shelfID;
-  public int siblingIndex;
-  public bool coverView;
-}
-
-[Serializable]
-public class GameData
-{
-    public List<BookSaveData> books = new List<BookSaveData>();
+    public GameData(BookshelvesData shelvesData, CounterData counterData)
+    {
+        
+    }
 }

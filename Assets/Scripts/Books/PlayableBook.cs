@@ -19,14 +19,14 @@ IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
 
     public SnapSlot myShelf;
     public bool onShelf = false;
+    public bool coverActiveView;
     public BookshelfManager BookshelfManager;
 
     public uiManager UImanager;
 
     void Awake()
     {
-        coverView.SetActive(true);
-        spineView.SetActive(false);
+        CoverActive();
 
         BookshelfManager = FindFirstObjectByType<BookshelfManager>();
     }
@@ -105,19 +105,35 @@ IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
         {
             RectTransform rt = GetComponent<RectTransform>();
 
-            if (coverView.activeSelf)
+            if (coverActiveView == true)
             {
-                coverView.SetActive(false);
-                spineView.SetActive(true);
-                rt.sizeDelta = new Vector2(83.74f, 276);
+                SpineActive();
             }
             else
             {
-                coverView.SetActive(true);
-                spineView.SetActive(false);
-                rt.sizeDelta = new Vector2(192, 276);
+                CoverActive();
             }
         }
 
+    }
+
+    public void CoverActive()
+    {
+        coverView.SetActive(true);
+        spineView.SetActive(false);
+        RectTransform rt = GetComponent<RectTransform>();
+        rt.sizeDelta = new Vector2(192, 276);
+
+        coverActiveView = true;
+    }
+
+    public void SpineActive()
+    {
+        coverView.SetActive(false);
+        spineView.SetActive(true);
+        RectTransform rt = GetComponent<RectTransform>();
+        rt.sizeDelta = new Vector2(83.74f, 276);
+
+        coverActiveView = false;
     }
 }
