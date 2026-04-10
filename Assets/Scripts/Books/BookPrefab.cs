@@ -28,6 +28,7 @@ public class bookPrefab : MonoBehaviour
     public Image spine;
     public TextMeshProUGUI spineTitle;
 
+<<<<<<< Updated upstream
     //ids
     public string coverSpriteID;
     public string spineSpriteID;
@@ -54,6 +55,32 @@ public class bookPrefab : MonoBehaviour
         //set bookcover sprite to image renderer
         coverImage.sprite = bookCover;
         spine.sprite = spineSprite;
+=======
+    public bool loadingFromSave = false;
+
+    void Start()
+    {
+        if (loadingFromSave == false)
+        {
+            RandomValues();
+            SetValues();
+        }
+    }
+
+    public void RandomValues()
+    {
+        book = books[UnityEngine.Random.Range(0, books.Length)];
+        sprites = SpriteManager.instance.BookSprites;
+        spriteNumber = UnityEngine.Random.Range(0, sprites.Count);
+        spriteInfo = sprites[spriteNumber];
+    }
+
+    public void SetValues()
+    {
+        coverImage.sprite = spriteInfo.cover;
+        spine.sprite = spriteInfo.spine;
+        spriteID = spriteInfo.id;
+>>>>>>> Stashed changes
         
         //set book title to title text
         title.text = book.bookTitle;
@@ -72,4 +99,27 @@ public class bookPrefab : MonoBehaviour
         
     }
 
+<<<<<<< Updated upstream
+=======
+    public void SaveShelves(ref BookshelvesData bookshelvesData)
+    {
+        BookshelvesData.BookInfo info = new BookshelvesData.BookInfo();
+
+        info.bookID = book.bookID;
+        info.spritesID = spriteID;
+
+        PlayableBook playableBook = GetComponent<PlayableBook>();
+        info.coverView = playableBook.coverActiveView;
+
+        info.shelfParentID = transform.parent.GetComponent<Shelf>().shelfID;
+        info.parentsOrder = transform.GetSiblingIndex();
+
+        info.onShelf = playableBook.onShelf;
+
+        bookshelvesData.Books.Add(info);
+
+        Destroy(this.gameObject);
+    }
+
+>>>>>>> Stashed changes
 }

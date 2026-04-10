@@ -25,13 +25,26 @@ public class SaveManager : MonoBehaviour
             save.books.Add(data);
         }
         
+<<<<<<< Updated upstream
         string json = JsonUtility.ToJson(save, true);
         File.WriteAllText(Application.persistentDataPath + "LittleLibrary_SaveData", json);
+=======
+        string json = JsonUtility.ToJson(shelvesData, true);
+        File.WriteAllText(Application.persistentDataPath + "BookshelfData", json);
+
+        
+>>>>>>> Stashed changes
     }
 
     public void Load()
     {
+<<<<<<< Updated upstream
        string path = Application.persistentDataPath + "LittleLibrary_SaveData";
+=======
+        bookshelfDataObjects = FindAllSaveShelvesObj();
+
+        string path = Application.persistentDataPath + "BookshelfData";
+>>>>>>> Stashed changes
 
         if (!File.Exists(path)) return;
 
@@ -57,6 +70,50 @@ public class SaveManager : MonoBehaviour
             book.transform.SetParent(shelf.transform);
             book.transform.SetSiblingIndex(data.siblingIndex);
         }
+<<<<<<< Updated upstream
+=======
+
+        foreach (var info in shelvesData.Books)
+        {
+            GameObject book = Instantiate(bookPrefab);
+            bookPrefab bookScript = book.GetComponent<bookPrefab>();
+            bookScript.loadingFromSave = true;
+            PlayableBook playableBook = book.GetComponent<PlayableBook>();
+
+            bookScript.spriteInfo = SpriteManager.instance.GetSpriteInfo(info.spritesID);
+            bookScript.book = BookManager.instance.GetBookData(info.bookID);
+            bookScript.SetValues();
+
+            if (info.coverView == true)
+            {
+                playableBook.CoverActive();
+            }
+            else
+            {
+                playableBook.SpineActive();
+            }
+            
+            var shelf = ShelvesManager.instance.GetShelf(info.shelfParentID);
+
+            if (shelf == null)
+            {
+                Debug.Log("cant locate shelf");
+                return;
+            }
+            else
+            {
+                book.transform.SetParent(shelf.transform);
+                book.transform.SetSiblingIndex(info.parentsOrder);   
+            }
+
+            if (info.onShelf == true)
+            {
+                playableBook.onShelf = true;
+            }
+            
+        }   
+        
+>>>>>>> Stashed changes
     }
 
     public static SaveManager Instance;

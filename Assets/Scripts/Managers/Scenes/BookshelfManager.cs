@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Runtime.Serialization;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -9,6 +10,16 @@ public class BookshelfManager : MonoBehaviour
 {
     public GameObject bookPrefab;
     public Canvas canvas;
+
+    IEnumerator Start()
+    {
+        ShelvesManager.instance.FindShelves();
+        while (ShelvesManager.instance.FullyLoaded == false)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        SaveManager.instance.LoadBookshelves();
+    }
 
     public void GenerateBook()
     {

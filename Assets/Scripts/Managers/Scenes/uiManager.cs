@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -109,6 +110,12 @@ public class uiManager : MonoBehaviour
 
         rightButton.SetActive(true);
         leftButton.SetActive(false);
+<<<<<<< Updated upstream:Assets/Scripts/Managers/Scenes/uiManager.cs
+=======
+
+        SaveManager.instance.SaveBookshelves();
+
+>>>>>>> Stashed changes:Assets/Scripts/Managers/uiManager.cs
     }
 
     
