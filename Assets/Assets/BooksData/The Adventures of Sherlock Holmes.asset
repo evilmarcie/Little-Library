@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7010daf982a7a1b4595d4f349d9a28d6, type: 3}
   m_Name: The Adventures of Sherlock Holmes
   m_EditorClassIdentifier: Assembly-CSharp::BookData
-  bookID: fad88675-6c25-40ae-b338-278f768a80c8
+  bookID: ea878e6c-b9ae-4722-86ee-3a97b6fdfeea
   bookTitle: The Adventures of Sherlock Holmes
   authorName: Arthur Conan Doyle
   publicationYear: 1892

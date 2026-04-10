@@ -1,77 +1,58 @@
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
-    public bookPrefab prefab;
-
-    public void Save()
+    public static SaveManager instance;
+    void Awake()
     {
-        GameData save = new GameData();
-
-        foreach (bookPrefab book in FindObjectsByType<bookPrefab>(FindObjectsSortMode.None))
-        {
-            BookSaveData data = new BookSaveData();
-
-            data.bookID = book.bookId;
-            data.coverSpriteID = book.coverSpriteID;
-            data.spineSpriteID = book.spineSpriteID;
-
-            Shelf shelf = book.transform.parent.GetComponent<Shelf>();
-            data.shelfID = shelf.shelfID;
-
-            data.siblingIndex = book.transform.GetSiblingIndex();
-
-            save.books.Add(data);
-        }
-        
-<<<<<<< Updated upstream
-        string json = JsonUtility.ToJson(save, true);
-        File.WriteAllText(Application.persistentDataPath + "LittleLibrary_SaveData", json);
-=======
-        string json = JsonUtility.ToJson(shelvesData, true);
-        File.WriteAllText(Application.persistentDataPath + "BookshelfData", json);
-
-        
->>>>>>> Stashed changes
+        instance = this;
     }
 
-    public void Load()
+    private List<ISaveShelves> bookshelfDataObjects;
+
+    private List<ISaveShelves> FindAllSaveShelvesObj()
     {
-<<<<<<< Updated upstream
-       string path = Application.persistentDataPath + "LittleLibrary_SaveData";
-=======
+        IEnumerable<ISaveShelves> saveShelvesObj = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<ISaveShelves>();
+        return new List<ISaveShelves>(saveShelvesObj);
+    }
+
+    public void SaveBookshelves()
+    {   
+
         bookshelfDataObjects = FindAllSaveShelvesObj();
 
-        string path = Application.persistentDataPath + "BookshelfData";
->>>>>>> Stashed changes
+        BookshelvesData shelvesData = new BookshelvesData();
+
+        foreach (ISaveShelves shelfDataObj in bookshelfDataObjects)
+        {
+            shelfDataObj.SaveShelves(ref shelvesData);
+        }
+        
+        string json = JsonUtility.ToJson(shelvesData, true);
+        File.WriteAllText(Application.persistentDataPath + "BookshelfData", json);
+        
+    }
+
+    public GameObject bookPrefab;
+
+    public void LoadBookshelves()   
+    {
+       string path = Application.persistentDataPath + "BookshelfData";
 
         if (!File.Exists(path)) return;
 
         string json = File.ReadAllText(path);
-        GameData save = JsonUtility.FromJson<GameData>(json);
+        BookshelvesData shelvesData = JsonUtility.FromJson<BookshelvesData>(json);
 
-        foreach (BookSaveData data in save.books)
+        bookshelfDataObjects = FindAllSaveShelvesObj();
+        
+        foreach (ISaveShelves shelfDataObj in bookshelfDataObjects)
         {
-            bookPrefab book = Instantiate(prefab);
-
-            book.book = BookManager.Instance.GetByID(data.bookID);
-            book.bookId = data.bookID;
-
-            var cover = SpriteManager.Instance.GetSprite(data.coverSpriteID);
-            book.bookCover = cover;
-            book.coverSpriteID = data.coverSpriteID;
-
-            var spine = SpriteManager.Instance.GetSprite(data.spineSpriteID);
-            book.spineSprite = spine;
-            book.spineSpriteID = data.spineSpriteID;
-
-            Shelf shelf = ShelfManager.Instance.GetShelf(data.shelfID);
-            book.transform.SetParent(shelf.transform);
-            book.transform.SetSiblingIndex(data.siblingIndex);
+            shelfDataObj.LoadShelves(shelvesData);
         }
-<<<<<<< Updated upstream
-=======
 
         foreach (var info in shelvesData.Books)
         {
@@ -110,16 +91,17 @@ public class SaveManager : MonoBehaviour
             {
                 playableBook.onShelf = true;
             }
-            
-        }   
-        
->>>>>>> Stashed changes
+        }
     }
 
-    public static SaveManager Instance;
-
-    void OnEnable()
+    public void SaveCounter()
     {
-        Instance = this;
+        
     }
+
+    public void LoadCounter()
+    {
+        
+    }
+
 }

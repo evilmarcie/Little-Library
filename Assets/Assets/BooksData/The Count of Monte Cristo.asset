@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7010daf982a7a1b4595d4f349d9a28d6, type: 3}
   m_Name: The Count of Monte Cristo
   m_EditorClassIdentifier: Assembly-CSharp::BookData
-  bookID: 54e9afab-73f6-45ee-8538-7b0e83c0c898
+  bookID: bf546e8a-3586-4d29-979f-aa883f8fc129
   bookTitle: The Count of Monte Cristo
   authorName: Alexandre Dumas
   publicationYear: 1846

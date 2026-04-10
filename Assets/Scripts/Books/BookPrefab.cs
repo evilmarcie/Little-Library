@@ -17,8 +17,9 @@ public class bookPrefab : MonoBehaviour, ISaveShelves
     public string spriteID;
     public Sprite bookCover;
     public Sprite spineSprite;
-    public int spriteNumber;
+
     public BookData book;
+    public string bookID;
 
     //rendering book gameobject
     public Image coverImage;
@@ -29,38 +30,6 @@ public class bookPrefab : MonoBehaviour, ISaveShelves
     public Image spine;
     public TextMeshProUGUI spineTitle;
 
-    //ids
-    public string coverSpriteID;
-    public string spineSpriteID;
-    public string bookId;
-    
-
-    void Start()
-    {
-        RandomValues();
-        SetValues();
-    }
-
-    public void RandomValues()
-    {
-        book = books[UnityEngine.Random.Range(0, books.Length)];
-        
-        //random cover
-        CoverSprites = GetComponent<SpriteManager>().CoverSprites;
-        spriteNumber = UnityEngine.Random.Range(0, CoverSprites.Count);
-        coverSpriteInfo = CoverSprites[spriteNumber];
-        bookCover = coverSpriteInfo.sprite;
-
-        //match spine to cover
-        SpineSprites = GetComponent<SpriteManager>().SpineSprites;
-        spineSpriteInfo = SpineSprites[spriteNumber];
-        spineSprite = spineSpriteInfo.sprite;
-
-
-        //set bookcover sprite to image renderer
-        coverImage.sprite = bookCover;
-        spine.sprite = spineSprite;
-=======
     public bool loadingFromSave = false;
 
     void Start()
@@ -85,7 +54,6 @@ public class bookPrefab : MonoBehaviour, ISaveShelves
         coverImage.sprite = spriteInfo.cover;
         spine.sprite = spriteInfo.spine;
         spriteID = spriteInfo.id;
->>>>>>> Stashed changes
         
         title.text = book.bookTitle;
         spineTitle.text = book.bookTitle;
@@ -93,16 +61,11 @@ public class bookPrefab : MonoBehaviour, ISaveShelves
         author.text = book.authorName;
 
         gameObject.name = book.bookTitle.ToString();
-
-        //get id info
-        bookId = book.bookID;
-        coverSpriteID = coverSpriteInfo.id;
-        spineSpriteID = spineSpriteInfo.id;
         
+        book.bookID = bookID;
+
     }
 
-<<<<<<< Updated upstream
-=======
     public void SaveShelves(ref BookshelvesData bookshelvesData)
     {
         BookshelvesData.BookInfo info = new BookshelvesData.BookInfo();
@@ -123,5 +86,8 @@ public class bookPrefab : MonoBehaviour, ISaveShelves
         Destroy(this.gameObject);
     }
 
->>>>>>> Stashed changes
+    public void LoadShelves(BookshelvesData bookshelvesData)
+    {
+        
+    }
 }
