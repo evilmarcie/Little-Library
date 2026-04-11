@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7010daf982a7a1b4595d4f349d9a28d6, type: 3}
   m_Name: Hamlet
   m_EditorClassIdentifier: Assembly-CSharp::BookData
-  bookID: 3357bfeb-7f6c-4b62-805d-f0418a0a9647
+  bookID: 7c9ac676-7532-48e0-a572-e7d412211020
   bookTitle: Hamlet
   authorName: William Shakespeare
   publicationYear: 1623

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7010daf982a7a1b4595d4f349d9a28d6, type: 3}
   m_Name: Wuthering Heights
   m_EditorClassIdentifier: Assembly-CSharp::BookData
-  bookID: dd49bd88-a63e-4932-b506-98b445537d8b
+  bookID: bf855198-7cbc-43bd-951c-f902912fa717
   bookTitle: Wuthering Heights
   authorName: Emily Bronte
   publicationYear: 1847

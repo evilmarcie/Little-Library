@@ -10,6 +10,12 @@ public class BookshelfManager : MonoBehaviour
 {
     public GameObject bookPrefab;
     public Canvas canvas;
+    public static BookshelfManager instance;
+
+    void Awake()
+    {
+            instance = this;    
+    }
 
     IEnumerator Start()
     {

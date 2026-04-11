@@ -23,6 +23,7 @@ IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
     public BookshelfManager BookshelfManager;
 
     public uiManager UImanager;
+    public Holder holder;
 
     void Awake()
     {
@@ -33,7 +34,7 @@ IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
 
     void Start()
     {
-        UImanager = uiManager.UImanager;
+        UImanager = uiManager.instance;
     }
 
     // put onto shelf 

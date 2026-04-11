@@ -16,16 +16,18 @@ public class uiManager : MonoBehaviour
     public GameObject infoMenu;
     public Scrollbar booksScrollbar;
     public Scrollbar achievementsScrollbar;
-    public GameObject leftButton;
+    //public GameObject leftButton;
     public GameObject rightButton;
 
-    public static uiManager UImanager;
+    public static uiManager instance;
+
+    public GameObject signUI;
 
     void Awake()
     {
-        if (UImanager == null)
+        if (instance == null)
         {
-            UImanager = this;
+            instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -33,7 +35,7 @@ public class uiManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        leftButton.SetActive(false);
+        //leftButton.SetActive(false);
         databaseMenu.SetActive(false);
 
     }
@@ -91,8 +93,14 @@ public class uiManager : MonoBehaviour
             .WithOverlay()
             .Perform();
         
-        leftButton.SetActive(true);
+        //leftButton.SetActive(true);
         rightButton.SetActive(false);
+        signUI.SetActive(false);
+       
+        if (Holder.instance != null)
+        {
+            Holder.instance.resetHolder();
+        }
     }
 
     public void toCounter()
@@ -106,7 +114,8 @@ public class uiManager : MonoBehaviour
             .Perform();
 
         rightButton.SetActive(true);
-        leftButton.SetActive(false);
+        //leftButton.SetActive(false);
+        signUI.SetActive(true);
 
         SaveManager.instance.SaveBookshelves();
 

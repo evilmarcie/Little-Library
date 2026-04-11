@@ -56,40 +56,43 @@ public class SaveManager : MonoBehaviour
 
         foreach (var info in shelvesData.Books)
         {
-            GameObject book = Instantiate(bookPrefab);
-            bookPrefab bookScript = book.GetComponent<bookPrefab>();
-            bookScript.loadingFromSave = true;
-            PlayableBook playableBook = book.GetComponent<PlayableBook>();
-
-            bookScript.spriteInfo = SpriteManager.instance.GetSpriteInfo(info.spritesID);
-            bookScript.book = BookManager.instance.GetBookData(info.bookID);
-            bookScript.SetValues();
-
-            if (info.coverView == true)
-            {
-                playableBook.CoverActive();
-            }
-            else
-            {
-                playableBook.SpineActive();
-            }
-            
-            var shelf = ShelvesManager.instance.GetShelf(info.shelfParentID);
-
-            if (shelf == null)
-            {
-                Debug.Log("cant locate shelf");
-                return;
-            }
-            else
-            {
-                book.transform.SetParent(shelf.transform);
-                book.transform.SetSiblingIndex(info.parentsOrder);   
-            }
-
             if (info.onShelf == true)
             {
-                playableBook.onShelf = true;
+                GameObject book = Instantiate(bookPrefab);
+                bookPrefab bookScript = book.GetComponent<bookPrefab>();
+                bookScript.loadingFromSave = true;
+                PlayableBook playableBook = book.GetComponent<PlayableBook>();
+
+                bookScript.spriteInfo = SpriteManager.instance.GetSpriteInfo(info.spritesID);
+                bookScript.book = BookManager.instance.GetBookData(info.bookID);
+                bookScript.SetValues();
+
+                if (info.coverView == true)
+                {
+                    playableBook.CoverActive();
+                }
+                else
+                {
+                    playableBook.SpineActive();
+                }
+                
+                var shelf = ShelvesManager.instance.GetShelf(info.shelfParentID);
+
+                if (shelf == null)
+                {
+                    Debug.Log("cant locate shelf");
+                    return;
+                }
+                else
+                {
+                    book.transform.SetParent(shelf.transform);
+                    book.transform.SetSiblingIndex(info.parentsOrder);   
+                }
+
+                if (info.onShelf == true)
+                {
+                    playableBook.onShelf = true;
+                } 
             }
         }
     }

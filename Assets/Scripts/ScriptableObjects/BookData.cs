@@ -15,7 +15,7 @@ public class BookData : ScriptableObject
     public string authorName;
     public float publicationYear;
     public bookGenre BookGenre;
-    public string bookBio;
+    [TextArea] public string bookBio;
 
 }
 

@@ -28,7 +28,7 @@ public class uiBook : MonoBehaviour
         author.text = book.authorName;
         gameObject.name = book.bookTitle.ToString() + "button";
 
-        uiManager = uiManager.UImanager;
+        uiManager = uiManager.instance;
     }
 
     public uiManager uiManager;

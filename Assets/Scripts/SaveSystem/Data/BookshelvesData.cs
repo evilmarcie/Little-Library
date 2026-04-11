@@ -6,6 +6,7 @@ using UnityEngine;
 public class BookshelvesData
 {
     public List<BookInfo> Books = new List<BookInfo>();
+    public BookInfo RecommendedBook;
 
     [Serializable]
     public struct BookInfo

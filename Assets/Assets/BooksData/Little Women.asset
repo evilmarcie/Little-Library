@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7010daf982a7a1b4595d4f349d9a28d6, type: 3}
   m_Name: Little Women
   m_EditorClassIdentifier: Assembly-CSharp::BookData
-  bookID: f5ecad18-f3e2-48ac-a87b-d09d974d19d2
+  bookID: 8d9d6e2b-7871-4e70-9fa1-b84388bda034
   bookTitle: Little Women
   authorName: Louisa May Alcott
   publicationYear: 1869

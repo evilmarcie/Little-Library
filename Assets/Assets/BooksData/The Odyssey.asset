@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7010daf982a7a1b4595d4f349d9a28d6, type: 3}
   m_Name: The Odyssey
   m_EditorClassIdentifier: Assembly-CSharp::BookData
-  bookID: 61c5071b-88ac-48ca-985f-b7166b51cb24
+  bookID: 5ebaf65c-339b-42f0-beac-ac8bb807bb68
   bookTitle: The Odyssey
   authorName: Homer
   publicationYear: 1893

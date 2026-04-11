@@ -57,15 +57,17 @@ public class Tooltip : MonoBehaviour
 
     public void tooltipInactive()
     {
-
         foreach (GameObject book in books)
         {
-            TriggerTooltip checkHover = book.GetComponent<TriggerTooltip>();
-            if (checkHover.pointerHover == false)
+            if (book != null)
             {
-                me.SetActive(false);
+                TriggerTooltip checkHover = book.GetComponent<TriggerTooltip>();
+                if (checkHover.pointerHover == false)
+                {
+                    me.SetActive(false);
 
-                //Debug.Log("hover");
+                    //Debug.Log("hover");
+                }
             }
         }
     
