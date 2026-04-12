@@ -60,17 +60,20 @@ public class Holder : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         Book.onShelf = false;
         Book.parentAfterDrag = container.transform;
         holderAnimator.SetTrigger("triggerExit");
+        triggerGiveBook = true;
         uiManager.instance.toCounter();
-        //trigger customer give book dialogue
     }
+
+    bool triggerGiveBook = false;
 
     public void SaveShelves(ref BookshelvesData bookshelvesData)
     {
         if (dropped != null)
         {
             bookshelvesData.RecommendedBook.bookID = dropped.GetComponent<bookPrefab>().bookID;
-            bookshelvesData.RecommendedBook.spritesID = dropped.GetComponent<bookPrefab>().spriteID;   
+            bookshelvesData.RecommendedBook.spritesID = dropped.GetComponent<bookPrefab>().spriteID;
         }
+        bookshelvesData.triggerGiveBook = triggerGiveBook;
     }
 
     public void resetHolder()

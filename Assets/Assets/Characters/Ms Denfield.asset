@@ -25,3 +25,16 @@ MonoBehaviour:
   likedBooks: []
   neutralBooks: []
   dislikedBooks: []
+  initialGreeting: Hello, I'm Ms Denfield, nice to meet you!
+  greetingLines:
+  - Hello!
+  promptLines:
+  - Could you recomend a book for me?
+  lovedResponse:
+  - That sounds perfect for me, thank you so much!
+  likedResponse:
+  - Good choice! I'm excited to check it out.
+  neutralResponse:
+  - Hmm... that wouldn't be my first choice but I'll give it a try...
+  dislikedResponse:
+  - Um... That isn't fit for me at all.

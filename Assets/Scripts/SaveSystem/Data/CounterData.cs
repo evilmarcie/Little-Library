@@ -1,9 +1,14 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class CounterData : MonoBehaviour
+[Serializable]
+public class CounterData
 {
-    public CounterData()
-    {
-        
-    }
+        public Character currentCustomer;
+        public List<Character> metCustomers = new List<Character>();
+        public List<Character> visitedToday = new List<Character>();
+        public int dialogueStageInt;
+        public string givenBookID;
+        public bool triggerGiveBook;
 }

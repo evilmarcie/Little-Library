@@ -44,11 +44,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 43213c0cb362ac7428adc3a575c6d23c, type: 2}
   - {fileID: 11400000, guid: 0130d90c43c2adf4cb24e469c077a88e, type: 2}
   - {fileID: 11400000, guid: b94acfe05cb6fe24a9ea92ab57be638a, type: 2}
-  initialGreeting: 
+  initialGreeting: Hello, I'm Sonny, nice to meet you!
   greetingLines:
-  - 
-  promptLines: []
-  lovedResponse: []
-  likedResponse: []
-  neutralResponse: []
-  dislikedResponse: []
+  - Hello!
+  promptLines:
+  - Could you recomend a book for me?
+  lovedResponse:
+  - That sounds perfect for me, thank you so much!
+  likedResponse:
+  - Good choice! I'm excited to check it out.
+  neutralResponse:
+  - Hmm... that wouldn't be my first choice but I'll give it a try...
+  dislikedResponse:
+  - Um... That isn't fit for me at all.

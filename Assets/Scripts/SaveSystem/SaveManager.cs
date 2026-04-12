@@ -97,14 +97,52 @@ public class SaveManager : MonoBehaviour
         }
     }
 
+
+    private List<ISaveCounter> CounterDataObjects;
+
+     private List<ISaveCounter> FindAllSaveCounterObj()
+    {
+        IEnumerable<ISaveCounter> saveCounterObj = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<ISaveCounter>();
+        return new List<ISaveCounter>(saveCounterObj);
+    }
+
     public void SaveCounter()
     {
+        CounterDataObjects = FindAllSaveCounterObj();
+
+        CounterData counterData = new CounterData();
+
+        foreach (ISaveCounter counterDataObj in CounterDataObjects)
+        {
+            counterDataObj.SaveCounter(ref counterData);
+        }
         
+        string json = JsonUtility.ToJson(counterData, true);
+        File.WriteAllText(Application.persistentDataPath + "CounterData", json);
     }
 
     public void LoadCounter()
     {
+        string path = Application.persistentDataPath + "CounterData";
+
+        if (!File.Exists(path)) return;
+
+        string json = File.ReadAllText(path);
+        CounterData counterData = JsonUtility.FromJson<CounterData>(json);
+
+        CounterDataObjects = FindAllSaveCounterObj();
+
+         string shelfPath = Application.persistentDataPath + "BookshelfData";
+        if (!File.Exists(shelfPath)) return;
+        string jsonShelf = File.ReadAllText(path);
+        BookshelvesData shelvesData = JsonUtility.FromJson<BookshelvesData>(jsonShelf);
+        counterData.givenBookID = shelvesData.RecommendedBook.bookID;
+        counterData.triggerGiveBook = shelvesData.triggerGiveBook;
         
+        foreach (ISaveCounter counterDataObj in CounterDataObjects)
+        {
+            counterDataObj.LoadCounter(counterData);
+        }
     }
 
 }

@@ -25,11 +25,16 @@ MonoBehaviour:
   likedBooks: []
   neutralBooks: []
   dislikedBooks: []
-  initialGreeting: "Hello, I\u2019m Arnold, a literature student at the local university.
-    It's always good to have another bookstore in town!"
-  greetingLines: []
-  promptLines: []
-  lovedResponse: []
-  likedResponse: []
-  neutralResponse: []
-  dislikedResponse: []
+  initialGreeting: Hello, I'm Arnold, nice to meet you!
+  greetingLines:
+  - Hello!
+  promptLines:
+  - Could you recomend a book for me?
+  lovedResponse:
+  - That sounds perfect for me, thank you so much!
+  likedResponse:
+  - Good choice! I'm excited to check it out.
+  neutralResponse:
+  - Hmm... that wouldn't be my first choice but I'll give it a try...
+  dislikedResponse:
+  - Um... That isn't fit for me at all.

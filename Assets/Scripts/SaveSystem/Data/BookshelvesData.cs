@@ -7,6 +7,7 @@ public class BookshelvesData
 {
     public List<BookInfo> Books = new List<BookInfo>();
     public BookInfo RecommendedBook;
+    public bool triggerGiveBook = false;
 
     [Serializable]
     public struct BookInfo

@@ -93,6 +93,8 @@ public class uiManager : MonoBehaviour
             .WithOverlay()
             .Perform();
         
+        SaveManager.instance.SaveCounter();
+
         //leftButton.SetActive(true);
         rightButton.SetActive(false);
         signUI.SetActive(false);
@@ -114,10 +116,10 @@ public class uiManager : MonoBehaviour
             .Perform();
 
         rightButton.SetActive(true);
-        //leftButton.SetActive(false);
         signUI.SetActive(true);
 
         SaveManager.instance.SaveBookshelves();
+        SaveManager.instance.LoadCounter();
 
     }
 
