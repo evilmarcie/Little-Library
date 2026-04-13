@@ -85,7 +85,8 @@ public class uiManager : MonoBehaviour
 
     public void toShelves()
     {
-
+        CounterManager.instance.CounterLoaded = false;
+        
         SceneController.Instance
             .NewTransition()
             .Load(SceneDatabase.Slots.SessionContent, SceneDatabase.Scenes.Bookshelves, SetActive: true)
@@ -107,8 +108,9 @@ public class uiManager : MonoBehaviour
 
     public void toCounter()
     {
+        SaveManager.instance.SaveBookshelves();
 
-          SceneController.Instance
+        SceneController.Instance
             .NewTransition()
             .Load(SceneDatabase.Slots.SessionContent, SceneDatabase.Scenes.Counter, SetActive: true)
             .Load(SceneDatabase.Slots.UI, SceneDatabase.Scenes.UI)
@@ -117,9 +119,6 @@ public class uiManager : MonoBehaviour
 
         rightButton.SetActive(true);
         signUI.SetActive(true);
-
-        SaveManager.instance.SaveBookshelves();
-        SaveManager.instance.LoadCounter();
 
     }
 

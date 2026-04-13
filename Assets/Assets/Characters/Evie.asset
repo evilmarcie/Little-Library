@@ -15,10 +15,10 @@ MonoBehaviour:
   fullName: Evie
   characterName: Evie
   pronouns: she/they
-  characterColour: {r: 0, g: 0, b: 0, a: 0}
   age: 0
   career: 
   visitedToday: 0
+  characterID: df732468-cd7d-4f26-8276-e55d3fb71244
   characterSprite: {fileID: 21300000, guid: 0b7075c84b436654fb64d0b953892ec4, type: 3}
   favGenre: 321
   lovedBooks:
@@ -49,7 +49,7 @@ MonoBehaviour:
   greetingLines:
   - Hello!
   promptLines:
-  - Could you recomend a book for me?
+  - Could you recommend a book for me?
   lovedResponse:
   - That sounds perfect for me, thank you so much!
   likedResponse:

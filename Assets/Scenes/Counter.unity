@@ -1359,7 +1359,7 @@ MonoBehaviour:
   nameText: {fileID: 2108613545}
   dialogueText: {fileID: 1589621381}
   dialogueUI: {fileID: 252839923}
-  textSpeed: 2
+  textSpeed: 0
   currentStage: 0
   givenBook: {fileID: 0}
 --- !u!4 &1840096041

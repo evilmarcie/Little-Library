@@ -3,15 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CounterManager : MonoBehaviour, ISaveCounter
 { 
     public static CounterManager instance;
+    public bool CounterLoaded = false;
+
     void Awake()
     {
         instance = this;
+        character.SetActive(false);
+        dialogueUI.SetActive(false);
+        CounterLoaded = true;
+    }
+
+     IEnumerator Start()
+    {
+        while (CounterLoaded == false)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        SaveManager.instance.LoadCounter();
     }
 
     public Character activeCustomer;
@@ -25,12 +40,6 @@ public class CounterManager : MonoBehaviour, ISaveCounter
     public GameObject nameBox;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
-
-    void Start()
-    {
-        character.SetActive(false);
-        dialogueUI.SetActive(false);
-    }
 
     public void customerEnter()
     {
@@ -83,7 +92,8 @@ public class CounterManager : MonoBehaviour, ISaveCounter
     }
     public void FirstMeeting()
     {
-        dialogueText.text = activeCustomer.initialGreeting;
+        string firstMeeting = activeCustomer.initialGreeting;
+        StartCoroutine(TypeLine(firstMeeting));
         haveMet.Add(activeCustomer);
     }
 
@@ -92,7 +102,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter
         int greetingInt = UnityEngine.Random.Range(0, activeCustomer.greetingLines.Count);
         string greeting = activeCustomer.greetingLines[greetingInt];
 
-        TypeLine(greeting);
+        StartCoroutine(TypeLine(greeting));
     }
 
     string prompt;
@@ -105,12 +115,12 @@ public class CounterManager : MonoBehaviour, ISaveCounter
         int promptInt = UnityEngine.Random.Range(0, activeCustomer.promptLines.Count);
         prompt = activeCustomer.promptLines[promptInt];
 
-        TypeLine(prompt);
+        StartCoroutine(TypeLine(prompt));
     }
 
     public void RepeatPrompt()
     {
-        TypeLine(prompt);
+        StartCoroutine(TypeLine(prompt));
     }
 
     public void GiveBook(BookData givenBook)
@@ -122,7 +132,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter
         nameText.text = activeCustomer.name;
         string giveBook = givenBook.bookTitle+" by "+ givenBook.authorName+"?";
 
-        TypeLine(giveBook);
+        StartCoroutine(TypeLine(giveBook));
 
     }
 
@@ -130,6 +140,8 @@ public class CounterManager : MonoBehaviour, ISaveCounter
 
     public void Response(BookData givenBook)
     {
+        Debug.Log("response");
+
         currentStage = DialogueStage.Response;
 
          if (activeCustomer.lovedBooks.Contains(givenBook))
@@ -157,7 +169,8 @@ public class CounterManager : MonoBehaviour, ISaveCounter
             Debug.Log("error, book not found in lists");
         }
 
-        TypeLine(response);
+        Debug.Log(response);
+        StartCoroutine(TypeLine(response));
     }
 
     public GameObject dialogueUI;
@@ -165,7 +178,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter
     public void EndInteraction()
     {
         dialogueUI.SetActive(false);
-        dialogueText.text = null;
+        dialogueText.text = " ";
 
         if(currentStage == DialogueStage.Response)
         {
@@ -177,15 +190,20 @@ public class CounterManager : MonoBehaviour, ISaveCounter
         }
     }
     
-    public float textSpeed;
+    float textSpeed = 0.05f;
 
     IEnumerator TypeLine(string text)
-    {
-        foreach(char c in text.ToCharArray())
+    { 
+
+        dialogueText.text = " ";
+
+        foreach(char letter in text.ToCharArray())
         {
-            dialogueText.text += c;
+            dialogueText.text += letter;
             yield return new WaitForSeconds(textSpeed);
         }
+
+        // add finish line when pressed if mid typing
     }
 
     public enum DialogueStage { Greeting, Prompt, GiveBook, Response, Inactive}
@@ -195,6 +213,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter
     {
         currentStage = stage;
     }
+
     public void NextDialogue()
     {
 
@@ -210,38 +229,72 @@ public class CounterManager : MonoBehaviour, ISaveCounter
         else if(currentStage == DialogueStage.GiveBook)
         {
             Response(givenBook);
+            Debug.Log("go to book response");
         }
         else if(currentStage == DialogueStage.Response)
         {
             EndInteraction();
         }   
+
+        Debug.Log("next dialogue");
     }
 
     public BookData givenBook;
 
     public void SaveCounter(ref CounterData counterData)
     {
-        counterData.currentCustomer = activeCustomer;
+        counterData.currentCustomerID = activeCustomer.characterID;
         counterData.dialogueStageInt = (int)currentStage;
         
-        //save met cx list
-        //save visited today list
+        foreach (Character met in haveMet)
+        {
+            string metID = met.characterID;
+            counterData.metCustomersID.Add(metID);
+        }
+
+        foreach (Character visited in visitedToday)
+        {
+            string visitedID = visited.characterID;
+            counterData.metCustomersID.Add(visitedID);
+        }
     }
 
     public void LoadCounter(CounterData counterData)
     {
-        activeCustomer = counterData.currentCustomer;
-        givenBook = BookManager.instance.GetBookData(counterData.givenBookID);
+        Debug.Log("load start");
+
+        string activeCharID = counterData.currentCustomerID;
+        activeCustomer = CharacterManager.instance.GetCharacter(activeCharID);
+
         currentStage = (DialogueStage)counterData.dialogueStageInt;
+
+        foreach (string met in counterData.metCustomersID)
+        {
+            string metID = met;
+            Character character = CharacterManager.instance.GetCharacter(metID);
+            haveMet.Add(character);
+        }
+
+        foreach (string visited in counterData.visitedTodayID)
+        {
+            string visitedID = visited;
+            Character character = CharacterManager.instance.GetCharacter(visitedID);
+            haveMet.Add(character);
+        }
 
         if (currentStage != DialogueStage.Inactive)
         {
             SetCharacterSprites();
         }
 
+        givenBook = BookManager.instance.GetBookData(counterData.givenBookID);
+        Debug.Log(givenBook.bookTitle);
+
         if (counterData.triggerGiveBook == true)
         {
             GiveBook(givenBook);
         }
+        Debug.Log("loaded");
     }
+
 }

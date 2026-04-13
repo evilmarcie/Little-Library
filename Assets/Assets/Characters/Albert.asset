@@ -15,10 +15,10 @@ MonoBehaviour:
   fullName: Albert Brown
   characterName: Albert
   pronouns: he/him
-  characterColour: {r: 0, g: 0, b: 0, a: 0}
   age: 0
   career: Baker
   visitedToday: 0
+  characterID: eee5a4ff-5d4d-4323-984f-8aabfd818191
   characterSprite: {fileID: 21300000, guid: 4d256d1b83939824dbcde073229f8294, type: 3}
   favGenre: 2
   lovedBooks:
@@ -49,7 +49,7 @@ MonoBehaviour:
   greetingLines:
   - Hello!
   promptLines:
-  - Could you recomend a book for me?
+  - Could you recommend a book for me?
   lovedResponse:
   - That sounds perfect for me, thank you so much!
   likedResponse:

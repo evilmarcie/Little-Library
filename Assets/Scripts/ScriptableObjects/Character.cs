@@ -9,10 +9,16 @@ public class Character : ScriptableObject
     public string fullName;
     public string characterName;
     public string pronouns;
-    public Color characterColour;
     public int age;
     public string career;
     public bool visitedToday = false;
+    public string characterID;
+
+    [ContextMenu("Create New GUID")]
+    public void GenerateUID()
+    {
+        characterID = Guid.NewGuid().ToString();
+    }
 
     //visuals
     public Sprite characterSprite;

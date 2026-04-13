@@ -15,10 +15,10 @@ MonoBehaviour:
   fullName: Nora Denfield
   characterName: Ms Denfield
   pronouns: she/her
-  characterColour: {r: 0, g: 0, b: 0, a: 0}
   age: 0
   career: Retired
   visitedToday: 0
+  characterID: 2fdf684f-33d8-4ebb-be85-1b7a35619c79
   characterSprite: {fileID: 21300000, guid: d865ca2f207c6f342a4e4c69a7c3eb85, type: 3}
   favGenre: 2048
   lovedBooks: []
@@ -29,7 +29,7 @@ MonoBehaviour:
   greetingLines:
   - Hello!
   promptLines:
-  - Could you recomend a book for me?
+  - Could you recommend a book for me?
   lovedResponse:
   - That sounds perfect for me, thank you so much!
   likedResponse:

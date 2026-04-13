@@ -5,9 +5,9 @@ using UnityEngine;
 [Serializable]
 public class CounterData
 {
-        public Character currentCustomer;
-        public List<Character> metCustomers = new List<Character>();
-        public List<Character> visitedToday = new List<Character>();
+        public string currentCustomerID;
+        public List<string> metCustomersID = new List<string>();
+        public List<string> visitedTodayID = new List<string>();
         public int dialogueStageInt;
         public string givenBookID;
         public bool triggerGiveBook;

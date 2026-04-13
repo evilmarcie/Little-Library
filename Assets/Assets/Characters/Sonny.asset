@@ -15,10 +15,10 @@ MonoBehaviour:
   fullName: Sonny Lim
   characterName: Sonny
   pronouns: he/him
-  characterColour: {r: 0, g: 0, b: 0, a: 0}
   age: 0
   career: Student
   visitedToday: 0
+  characterID: 9cbc8592-80b4-4a78-93b4-060d35fcea2d
   characterSprite: {fileID: 21300000, guid: 74f565ce2b5ab36438f00256e5c48630, type: 3}
   favGenre: 4
   lovedBooks:
@@ -48,7 +48,7 @@ MonoBehaviour:
   greetingLines:
   - Hello!
   promptLines:
-  - Could you recomend a book for me?
+  - Could you recommend a book for me?
   lovedResponse:
   - That sounds perfect for me, thank you so much!
   likedResponse:

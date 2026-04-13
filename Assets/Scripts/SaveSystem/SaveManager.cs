@@ -100,7 +100,7 @@ public class SaveManager : MonoBehaviour
 
     private List<ISaveCounter> CounterDataObjects;
 
-     private List<ISaveCounter> FindAllSaveCounterObj()
+    private List<ISaveCounter> FindAllSaveCounterObj()
     {
         IEnumerable<ISaveCounter> saveCounterObj = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<ISaveCounter>();
         return new List<ISaveCounter>(saveCounterObj);
@@ -123,26 +123,30 @@ public class SaveManager : MonoBehaviour
 
     public void LoadCounter()
     {
+        //get shelf data
+        string shelfPath = Application.persistentDataPath + "BookshelfData";
+        if (!File.Exists(shelfPath)) return;
+        Debug.Log("found shelfdata");
+        string jsonShelf = File.ReadAllText(shelfPath);
+        BookshelvesData shelvesData = JsonUtility.FromJson<BookshelvesData>(jsonShelf);
+
+        //get counter data
         string path = Application.persistentDataPath + "CounterData";
-
         if (!File.Exists(path)) return;
-
         string json = File.ReadAllText(path);
         CounterData counterData = JsonUtility.FromJson<CounterData>(json);
 
+        //find counterdata objects to load
         CounterDataObjects = FindAllSaveCounterObj();
-
-         string shelfPath = Application.persistentDataPath + "BookshelfData";
-        if (!File.Exists(shelfPath)) return;
-        string jsonShelf = File.ReadAllText(path);
-        BookshelvesData shelvesData = JsonUtility.FromJson<BookshelvesData>(jsonShelf);
-        counterData.givenBookID = shelvesData.RecommendedBook.bookID;
-        counterData.triggerGiveBook = shelvesData.triggerGiveBook;
+        if (CounterDataObjects.Count == 0){Debug.Log("cannot find counter data objects");};
+                                
+            foreach (ISaveCounter counterDataObj in CounterDataObjects)
+            {
+                Debug.Log("execute loading");
+                counterData.givenBookID = shelvesData.RecommendedBook.bookID;
+                counterData.triggerGiveBook = shelvesData.triggerGiveBook;
+                counterDataObj.LoadCounter(counterData);
+            }
         
-        foreach (ISaveCounter counterDataObj in CounterDataObjects)
-        {
-            counterDataObj.LoadCounter(counterData);
-        }
     }
-
-}
+}   
