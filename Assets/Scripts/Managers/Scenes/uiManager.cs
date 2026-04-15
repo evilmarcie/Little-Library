@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
@@ -22,6 +23,7 @@ public class uiManager : MonoBehaviour
     public static uiManager instance;
 
     public GameObject signUI;
+    public bool uiLoaded = false;
 
     void Awake()
     {
@@ -34,10 +36,21 @@ public class uiManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        uiLoaded = true;
 
         //leftButton.SetActive(false);
         databaseMenu.SetActive(false);
+        EODmenu.SetActive(false);
 
+    }
+
+    IEnumerator Start()
+    {
+        while (uiLoaded == false)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        SessionManager.instance.DayStart();
     }
 
     void Update()
@@ -99,11 +112,6 @@ public class uiManager : MonoBehaviour
         //leftButton.SetActive(true);
         rightButton.SetActive(false);
         signUI.SetActive(false);
-       
-        if (Holder.instance != null)
-        {
-            Holder.instance.resetHolder();
-        }
     }
 
     public void toCounter()
@@ -121,8 +129,7 @@ public class uiManager : MonoBehaviour
         signUI.SetActive(true);
 
     }
-
-    
+   
     //book display
     public Image infoCover;
     public TextMeshProUGUI infoTitle;
@@ -134,7 +141,6 @@ public class uiManager : MonoBehaviour
     public TextMeshProUGUI publishedInfo;
     public TextMeshProUGUI genreInfo;
     public TextMeshProUGUI descInfo;
-
 
     public void setBookInfo(BookData book, Sprite cover)
     {
@@ -158,6 +164,46 @@ public class uiManager : MonoBehaviour
         genreInfo.text = "Genre: " + book.BookGenre;
         descInfo.text = "Description: " + book.bookBio; 
 
+    }
+
+    public GameObject EODmenu;
+    public TextMeshProUGUI dayHeader;
+    public TextMeshProUGUI rating;
+    public GameObject bookSummary;
+
+    public void DayEnd()
+    {
+        EODmenu.SetActive(true);
+        dayHeader.text = "DAY " + SessionManager.instance.day.ToString();
+        rating.text = SessionManager.instance.currentRating.ToString();
+        // book summary (instantiate each book from save?)
+    }
+
+    public void SaveAndQuit()
+    {
+        // save full game
+        // end application
+    }
+
+    public void NextDay()
+    {
+        SessionManager.instance.ResetDay();
+        EODmenu.SetActive(false);
+    }
+
+    public TextMeshProUGUI ratingSign;
+    public void UpdateRatingUI(int currentRating)
+    {
+        ratingSign.text = currentRating.ToString();
+
+        // set text colour depending on value
+    }
+
+    public TextMeshProUGUI daySign;
+
+    public void UpdateDayUI(int day)
+    {
+        daySign.text = "DAY " + day.ToString();
     }
 
 }

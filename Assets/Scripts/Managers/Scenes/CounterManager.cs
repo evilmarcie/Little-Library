@@ -20,7 +20,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter
         CounterLoaded = true;
     }
 
-     IEnumerator Start()
+    IEnumerator Start()
     {
         while (CounterLoaded == false)
         {
@@ -47,15 +47,23 @@ public class CounterManager : MonoBehaviour, ISaveCounter
         
         if (visitedToday.Contains(activeCustomer))
         {
-            //while (visitedToday.Contains(activeCustomer))
-            //{
-                //randomCustomer();
-            //}
+            StartCoroutine(elimiateRepeatCustomers());
         }
+
         visitedToday.Add(activeCustomer);
         SetCharacterSprites();
         SetDialogueSprites();
         BeginInteraction();
+    }
+
+    IEnumerator elimiateRepeatCustomers()
+    {
+        while (visitedToday.Contains(activeCustomer))
+        {
+            randomCustomer();
+            yield return new WaitForEndOfFrame();
+        }
+        yield return activeCustomer;
     }
 
     public void SetCharacterSprites()
@@ -140,7 +148,6 @@ public class CounterManager : MonoBehaviour, ISaveCounter
 
     public void Response(BookData givenBook)
     {
-        Debug.Log("response");
 
         currentStage = DialogueStage.Response;
 
@@ -148,32 +155,36 @@ public class CounterManager : MonoBehaviour, ISaveCounter
         {
             int responseINT = UnityEngine.Random.Range(0, activeCustomer.lovedResponse.Count);
             response = activeCustomer.lovedResponse[responseINT];
+            SessionManager.instance.updateCustomerSatisfaction(20);
         }
         else if (activeCustomer.likedBooks.Contains(givenBook))
         {
             int responseINT = UnityEngine.Random.Range(0, activeCustomer.likedResponse.Count);
             response = activeCustomer.likedResponse[responseINT];
+            SessionManager.instance.updateCustomerSatisfaction(10);
         }
         else if (activeCustomer.neutralBooks.Contains(givenBook))
         {
             int responseINT = UnityEngine.Random.Range(0, activeCustomer.neutralResponse.Count);
             response = activeCustomer.neutralResponse[responseINT];
+            SessionManager.instance.updateCustomerSatisfaction(0);
         }
         else if (activeCustomer.dislikedBooks.Contains(givenBook))
         {
             int responseINT = UnityEngine.Random.Range(0, activeCustomer.dislikedResponse.Count);
             response = activeCustomer.dislikedResponse[responseINT];
+            SessionManager.instance.updateCustomerSatisfaction(-20);
         }
         else
         {
             Debug.Log("error, book not found in lists");
         }
-
-        Debug.Log(response);
         StartCoroutine(TypeLine(response));
     }
 
     public GameObject dialogueUI;
+
+    int maxCXperDay = 3;
 
     public void EndInteraction()
     {
@@ -187,7 +198,24 @@ public class CounterManager : MonoBehaviour, ISaveCounter
             nameText.text = null;
             prompt = null;
             currentStage = DialogueStage.Inactive;
+
+            StartCoroutine(nextInteraction());
         }
+    }
+
+    IEnumerator nextInteraction()
+    {
+        if (visitedToday.Count >= maxCXperDay)
+            {
+                uiManager.instance.DayEnd();
+            }
+            else
+            {
+                new WaitForSeconds(3);
+                customerEnter();
+            }
+
+        yield return new WaitForEndOfFrame();
     }
     
     float textSpeed = 0.05f;
@@ -243,7 +271,11 @@ public class CounterManager : MonoBehaviour, ISaveCounter
 
     public void SaveCounter(ref CounterData counterData)
     {
-        counterData.currentCustomerID = activeCustomer.characterID;
+        
+        if (activeCustomer != null)
+        {
+         counterData.currentCustomerID = activeCustomer.characterID;   
+        }
         counterData.dialogueStageInt = (int)currentStage;
         
         foreach (Character met in haveMet)
@@ -255,13 +287,12 @@ public class CounterManager : MonoBehaviour, ISaveCounter
         foreach (Character visited in visitedToday)
         {
             string visitedID = visited.characterID;
-            counterData.metCustomersID.Add(visitedID);
+            counterData.visitedTodayID.Add(visitedID);
         }
     }
 
     public void LoadCounter(CounterData counterData)
     {
-        Debug.Log("load start");
 
         string activeCharID = counterData.currentCustomerID;
         activeCustomer = CharacterManager.instance.GetCharacter(activeCharID);
@@ -279,7 +310,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter
         {
             string visitedID = visited;
             Character character = CharacterManager.instance.GetCharacter(visitedID);
-            haveMet.Add(character);
+            visitedToday.Add(character);
         }
 
         if (currentStage != DialogueStage.Inactive)
@@ -294,7 +325,6 @@ public class CounterManager : MonoBehaviour, ISaveCounter
         {
             GiveBook(givenBook);
         }
-        Debug.Log("loaded");
     }
 
 }

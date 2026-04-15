@@ -62,6 +62,10 @@ public class Holder : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         holderAnimator.SetTrigger("triggerExit");
         triggerGiveBook = true;
         uiManager.instance.toCounter();
+        Destroy(dropped);
+        
+        RectTransform rect = GetComponent<RectTransform>();
+        rect.transform.position = startPos;
     }
 
     bool triggerGiveBook = false;
@@ -74,17 +78,6 @@ public class Holder : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
             bookshelvesData.RecommendedBook.spritesID = dropped.GetComponent<bookPrefab>().spriteID;
         }
         bookshelvesData.triggerGiveBook = triggerGiveBook;
-    }
-
-    public void resetHolder()
-    {
-        gameObject.transform.position = startPos;
-
-        if (container.transform.childCount > 0)
-        {
-            GameObject child = container.transform.GetChild(0).gameObject;
-            Destroy(child);
-        }
     }
 
     public void LoadShelves(BookshelvesData bookshelvesData)
