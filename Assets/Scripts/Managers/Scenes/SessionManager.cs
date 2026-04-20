@@ -15,31 +15,19 @@ public class SessionManager : MonoBehaviour
     }
     #endregion
 
-    IEnumerator Start()
-    {
-        while ((CounterManager.instance.CounterLoaded == false) && (uiManager.instance.uiLoaded == false))
-        {
-            yield return new WaitForEndOfFrame();
-        }
-        DayStart();
-    }
-
     public int day = 1;
+    public bool bookBoxToday = false;
+    public bool completeBookBox = false;
 
     // trigger on counter manager load
     public void DayStart()
     {
         uiManager.instance.UpdateDayUI(day);
+        uiManager.instance.DeliveryNotification(true);
 
         if (day == 1)
         {
             Debug.Log("tutorial");
-            CounterManager.instance.customerEnter();
-        }
-        else
-        {
-            // trigger book box delivery, cx arrive once book box is empty
-            CounterManager.instance.customerEnter();
         }
     }
 
@@ -65,4 +53,8 @@ public class SessionManager : MonoBehaviour
 
         uiManager.instance.UpdateRatingUI(currentRating);
     }
+
+    public enum DayStage { delivery, unpackDelivery, cxArrive, inDialogue, pickBooks }
+    public DayStage currentDayStage;
+
 }

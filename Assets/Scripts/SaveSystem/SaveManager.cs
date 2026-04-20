@@ -125,14 +125,15 @@ public class SaveManager : MonoBehaviour
     {
         //get shelf data
         string shelfPath = Application.persistentDataPath + "BookshelfData";
-        if (!File.Exists(shelfPath)) return;
+        if (!File.Exists(shelfPath)) {Debug.Log("no bookshelfdata"); return;}
         Debug.Log("found shelfdata");
         string jsonShelf = File.ReadAllText(shelfPath);
         BookshelvesData shelvesData = JsonUtility.FromJson<BookshelvesData>(jsonShelf);
 
         //get counter data
         string path = Application.persistentDataPath + "CounterData";
-        if (!File.Exists(path)) return;
+        if (!File.Exists(path)) {Debug.Log("no counterdata"); return;}
+        Debug.Log("found counterdata");
         string json = File.ReadAllText(path);
         CounterData counterData = JsonUtility.FromJson<CounterData>(json);
 
@@ -140,13 +141,13 @@ public class SaveManager : MonoBehaviour
         CounterDataObjects = FindAllSaveCounterObj();
         if (CounterDataObjects.Count == 0){Debug.Log("cannot find counter data objects");};
                                 
-            foreach (ISaveCounter counterDataObj in CounterDataObjects)
-            {
-                Debug.Log("execute loading");
-                counterData.givenBookID = shelvesData.RecommendedBook.bookID;
-                counterData.triggerGiveBook = shelvesData.triggerGiveBook;
-                counterDataObj.LoadCounter(counterData);
-            }
+        foreach (ISaveCounter counterDataObj in CounterDataObjects)
+        {
+            Debug.Log("execute loading");
+            counterData.givenBookID = shelvesData.RecommendedBook.bookID;
+            counterData.triggerGiveBook = shelvesData.triggerGiveBook;
+            counterDataObj.LoadCounter(counterData);
+        }
         
     }
 }   

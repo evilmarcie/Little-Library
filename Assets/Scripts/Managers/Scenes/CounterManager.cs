@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Pool;
 using UnityEngine.UI;
 
 public class CounterManager : MonoBehaviour, ISaveCounter
@@ -101,7 +102,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter
     public void FirstMeeting()
     {
         string firstMeeting = activeCustomer.initialGreeting;
-        StartCoroutine(TypeLine(firstMeeting));
+        Dialogue(firstMeeting);
         haveMet.Add(activeCustomer);
     }
 
@@ -110,7 +111,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter
         int greetingInt = UnityEngine.Random.Range(0, activeCustomer.greetingLines.Count);
         string greeting = activeCustomer.greetingLines[greetingInt];
 
-        StartCoroutine(TypeLine(greeting));
+        Dialogue(greeting);
     }
 
     string prompt;
@@ -123,12 +124,16 @@ public class CounterManager : MonoBehaviour, ISaveCounter
         int promptInt = UnityEngine.Random.Range(0, activeCustomer.promptLines.Count);
         prompt = activeCustomer.promptLines[promptInt];
 
-        StartCoroutine(TypeLine(prompt));
+        Dialogue(prompt);
+
+        SessionManager.instance.currentDayStage = SessionManager.DayStage.pickBooks;
     }
 
     public void RepeatPrompt()
     {
-        StartCoroutine(TypeLine(prompt));
+        Dialogue(prompt);
+
+        SessionManager.instance.currentDayStage = SessionManager.DayStage.pickBooks;
     }
 
     public void GiveBook(BookData givenBook)
@@ -140,7 +145,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter
         nameText.text = activeCustomer.name;
         string giveBook = givenBook.bookTitle+" by "+ givenBook.authorName+"?";
 
-        StartCoroutine(TypeLine(giveBook));
+        Dialogue(giveBook);
 
     }
 
@@ -179,7 +184,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter
         {
             Debug.Log("error, book not found in lists");
         }
-        StartCoroutine(TypeLine(response));
+        Dialogue(response);
     }
 
     public GameObject dialogueUI;
@@ -220,18 +225,38 @@ public class CounterManager : MonoBehaviour, ISaveCounter
     
     float textSpeed = 0.05f;
 
+    public void Dialogue(string line)
+    {
+        SessionManager.instance.currentDayStage = SessionManager.DayStage.inDialogue;
+
+        if (typeLineCoroutine != null)
+        {
+            StopCoroutine(typeLineCoroutine);
+        }  
+        typeLineCoroutine = StartCoroutine(TypeLine(line));
+    }
+
+    public Coroutine typeLineCoroutine;
+
     IEnumerator TypeLine(string text)
     { 
-
         dialogueText.text = " ";
+
+        canStartNextLine = false;
 
         foreach(char letter in text.ToCharArray())
         {
+            if (dialogueController.instance.pointerDown == true)
+            {
+                dialogueText.text = text;
+                break;
+            }
+
             dialogueText.text += letter;
             yield return new WaitForSeconds(textSpeed);
         }
 
-        // add finish line when pressed if mid typing
+        canStartNextLine = true;
     }
 
     public enum DialogueStage { Greeting, Prompt, GiveBook, Response, Inactive}
@@ -242,29 +267,32 @@ public class CounterManager : MonoBehaviour, ISaveCounter
         currentStage = stage;
     }
 
+    private bool canStartNextLine;
+
     public void NextDialogue()
     {
-
-        if (currentStage == DialogueStage.Greeting)
+        if (canStartNextLine)
         {
-            Prompt();
+            if (currentStage == DialogueStage.Greeting)
+            {
+                Prompt();
+            }
+            else if (currentStage == DialogueStage.Prompt)
+            {
+                EndInteraction(); 
+            }
+            // givebook triggered by game event
+            else if(currentStage == DialogueStage.GiveBook)
+            {
+                Response(givenBook);
+                Debug.Log("go to book response");
+            }
+            else if(currentStage == DialogueStage.Response)
+            {
+                EndInteraction();
+            } 
         }
-        else if (currentStage == DialogueStage.Prompt)
-        {
-            EndInteraction(); 
-        }
-        // givebook triggered by game event
-        else if(currentStage == DialogueStage.GiveBook)
-        {
-            Response(givenBook);
-            Debug.Log("go to book response");
-        }
-        else if(currentStage == DialogueStage.Response)
-        {
-            EndInteraction();
-        }   
-
-        Debug.Log("next dialogue");
+          
     }
 
     public BookData givenBook;
@@ -294,8 +322,11 @@ public class CounterManager : MonoBehaviour, ISaveCounter
     public void LoadCounter(CounterData counterData)
     {
 
-        string activeCharID = counterData.currentCustomerID;
-        activeCustomer = CharacterManager.instance.GetCharacter(activeCharID);
+        if (counterData.currentCustomerID != null)
+        {
+            string activeCharID = counterData.currentCustomerID;
+            activeCustomer = CharacterManager.instance.GetCharacter(activeCharID);
+        }
 
         currentStage = (DialogueStage)counterData.dialogueStageInt;
 
@@ -318,12 +349,20 @@ public class CounterManager : MonoBehaviour, ISaveCounter
             SetCharacterSprites();
         }
 
-        givenBook = BookManager.instance.GetBookData(counterData.givenBookID);
-        Debug.Log(givenBook.bookTitle);
+        if (counterData.givenBookID != null)
+        {
+            givenBook = BookManager.instance.GetBookData(counterData.givenBookID);
+            Debug.Log(givenBook.bookTitle);   
+        }
 
         if (counterData.triggerGiveBook == true)
         {
             GiveBook(givenBook);
+        }
+
+        if (SessionManager.instance.completeBookBox == true)
+        {
+            customerEnter();
         }
     }
 

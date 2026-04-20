@@ -9,6 +9,8 @@ using UnityEngine.UI;
 
 public class uiManager : MonoBehaviour
 {
+
+    #region  refs
     public GameObject databaseMenu;
     public GameObject pauseMenu;
     public bool gamePaused = false;
@@ -24,7 +26,8 @@ public class uiManager : MonoBehaviour
 
     public GameObject signUI;
     public bool uiLoaded = false;
-
+    #endregion
+    
     void Awake()
     {
         if (instance == null)
@@ -38,9 +41,10 @@ public class uiManager : MonoBehaviour
         }
         uiLoaded = true;
 
-        //leftButton.SetActive(false);
         databaseMenu.SetActive(false);
         EODmenu.SetActive(false);
+        deliveryNotif.SetActive(false);
+        customerNotif.SetActive(false);
 
     }
 
@@ -96,6 +100,8 @@ public class uiManager : MonoBehaviour
         achievementsScrollbar.value = 1;
     }
 
+    public GameObject bookBox;
+
     public void toShelves()
     {
         CounterManager.instance.CounterLoaded = false;
@@ -109,9 +115,31 @@ public class uiManager : MonoBehaviour
         
         SaveManager.instance.SaveCounter();
 
-        //leftButton.SetActive(true);
         rightButton.SetActive(false);
         signUI.SetActive(false);
+
+        if (deliveryNotif.activeSelf == true)
+        {
+            deliveryNotif.SetActive(false);
+        }
+
+        StartCoroutine(StartBookBox());
+
+    }
+
+    IEnumerator StartBookBox()
+    {
+        while (Bookbox.instance == null)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        
+        if (SessionManager.instance.bookBoxToday == false)
+        {
+            Bookbox.instance.GenerateBookBox();   
+        }
+        yield break;
+        
     }
 
     public void toCounter()
@@ -128,7 +156,14 @@ public class uiManager : MonoBehaviour
         rightButton.SetActive(true);
         signUI.SetActive(true);
 
+        if (customerNotif.activeSelf == true)
+        {
+            customerNotif.SetActive(false);
+        }
+
     }
+
+    #region refs
    
     //book display
     public Image infoCover;
@@ -141,6 +176,8 @@ public class uiManager : MonoBehaviour
     public TextMeshProUGUI publishedInfo;
     public TextMeshProUGUI genreInfo;
     public TextMeshProUGUI descInfo;
+
+    #endregion
 
     public void setBookInfo(BookData book, Sprite cover)
     {
@@ -204,6 +241,20 @@ public class uiManager : MonoBehaviour
     public void UpdateDayUI(int day)
     {
         daySign.text = "DAY " + day.ToString();
+    }
+
+    public GameObject customerNotif;
+    public GameObject deliveryNotif;
+
+    public void CustomerNotification(bool set)
+    {
+        customerNotif.SetActive(set);
+        Debug.Log("cx notif");
+    }
+
+    public void DeliveryNotification(bool set)
+    {
+        deliveryNotif.SetActive(set);
     }
 
 }
