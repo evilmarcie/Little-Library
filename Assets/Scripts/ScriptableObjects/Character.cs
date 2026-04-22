@@ -11,7 +11,7 @@ public class Character : ScriptableObject
     public string pronouns;
     public int age;
     public string career;
-    public bool visitedToday = false;
+    public bool shortCharacter;
     public string characterID;
 
     [ContextMenu("Create New GUID")]

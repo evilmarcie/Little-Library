@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.UI;
 
-public class CounterManager : MonoBehaviour, ISaveCounter
+public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
 { 
     public static CounterManager instance;
     public bool CounterLoaded = false;
@@ -44,6 +45,8 @@ public class CounterManager : MonoBehaviour, ISaveCounter
 
     public void customerEnter()
     {
+        Debug.Log("customer enter");
+
         randomCustomer();
         
         if (visitedToday.Contains(activeCustomer))
@@ -67,9 +70,20 @@ public class CounterManager : MonoBehaviour, ISaveCounter
         yield return activeCustomer;
     }
 
+    Vector3 shortCharacterPos = new Vector3(21, -97, 0);
+    Vector3 tallCharacterPos = new Vector3(21, -295, 0);
+
     public void SetCharacterSprites()
     {
         character.SetActive(true);
+        if (activeCustomer.shortCharacter == true)
+        {
+            character.transform.localPosition = shortCharacterPos;
+        }
+        else
+        {
+            character.transform.localPosition = tallCharacterPos;
+        }
         Image characterImg = character.GetComponent<Image>();
         characterImg.sprite = activeCustomer.characterSprite;
     }
@@ -295,6 +309,8 @@ public class CounterManager : MonoBehaviour, ISaveCounter
           
     }
 
+    #region save counter
+
     public BookData givenBook;
 
     public void SaveCounter(ref CounterData counterData)
@@ -302,8 +318,10 @@ public class CounterManager : MonoBehaviour, ISaveCounter
         
         if (activeCustomer != null)
         {
-         counterData.currentCustomerID = activeCustomer.characterID;   
+            counterData.currentCustomerID = activeCustomer.characterID;
+            Debug.Log("saving active customer");
         }
+
         counterData.dialogueStageInt = (int)currentStage;
         
         foreach (Character met in haveMet)
@@ -322,13 +340,17 @@ public class CounterManager : MonoBehaviour, ISaveCounter
     public void LoadCounter(CounterData counterData)
     {
 
-        if (counterData.currentCustomerID != null)
+        if (counterData.currentCustomerID != string.Empty)
         {
             string activeCharID = counterData.currentCustomerID;
             activeCustomer = CharacterManager.instance.GetCharacter(activeCharID);
+            currentStage = (DialogueStage)counterData.dialogueStageInt;
+            if (currentStage != DialogueStage.Inactive)
+            {
+                SetCharacterSprites();
+            }
         }
-
-        currentStage = (DialogueStage)counterData.dialogueStageInt;
+        Debug.Log("loaded");
 
         foreach (string met in counterData.metCustomersID)
         {
@@ -344,26 +366,38 @@ public class CounterManager : MonoBehaviour, ISaveCounter
             visitedToday.Add(character);
         }
 
-        if (currentStage != DialogueStage.Inactive)
-        {
-            SetCharacterSprites();
-        }
-
-        if (counterData.givenBookID != null)
+        if ((counterData.givenBookID != null) && (counterData.triggerGiveBook == true))
         {
             givenBook = BookManager.instance.GetBookData(counterData.givenBookID);
             Debug.Log(givenBook.bookTitle);   
-        }
-
-        if (counterData.triggerGiveBook == true)
-        {
             GiveBook(givenBook);
         }
 
-        if (SessionManager.instance.completeBookBox == true)
+        if ((SessionManager.instance.completeBookBox == true) && (activeCustomer == null) 
+        && (SessionManager.instance.currentDayStage == SessionManager.DayStage.cxArrive))
         {
             customerEnter();
         }
     }
 
+    #endregion
+
+    public void SaveGame(ref GameData gameData)
+    {
+        foreach (Character customer in haveMet)
+        {
+            string id = customer.characterID;
+            gameData.metCustomersID.Add(id);
+        }
+    }
+
+    public void LoadGame(GameData gameData)
+    {
+        foreach (string id in gameData.metCustomersID)
+        {
+            string charID = id;
+            Character character = CharacterManager.instance.GetCharacter(charID);
+            haveMet.Add(character);
+        }
+    }
 }

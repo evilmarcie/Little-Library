@@ -7,7 +7,10 @@ public class CoreManager : MonoBehaviour
         SceneController.Instance
             .NewTransition()
             .Load(SceneDatabase.Slots.Menu, SceneDatabase.Scenes.Home)
+            .Load(SceneDatabase.Slots.UI, SceneDatabase.Scenes.UI)
             .Perform();
+        
+        SaveManager.instance.LoadGame();
     }
   
 }

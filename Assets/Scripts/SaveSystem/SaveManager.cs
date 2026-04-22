@@ -11,6 +11,7 @@ public class SaveManager : MonoBehaviour
         instance = this;
     }
 
+#region bookshelves
     private List<ISaveShelves> bookshelfDataObjects;
 
     private List<ISaveShelves> FindAllSaveShelvesObj()
@@ -97,7 +98,9 @@ public class SaveManager : MonoBehaviour
         }
     }
 
+    #endregion
 
+#region counter
     private List<ISaveCounter> CounterDataObjects;
 
     private List<ISaveCounter> FindAllSaveCounterObj()
@@ -150,4 +153,75 @@ public class SaveManager : MonoBehaviour
         }
         
     }
+
+    #endregion
+
+#region game
+    private List<ISaveGame> GameDataObjects;
+
+    private List<ISaveGame> FindAllGameDataObjects()
+    {
+        IEnumerable<ISaveGame> GameDataObj = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<ISaveGame>();
+        return new List<ISaveGame>(GameDataObj);
+    }
+    public void SaveGame()
+    {
+        GameDataObjects = FindAllGameDataObjects();
+
+        GameData gameData = new GameData();
+
+        foreach (ISaveGame gameDataObj in GameDataObjects)
+        {
+            gameDataObj.SaveGame(ref gameData);
+        }
+        
+        string json = JsonUtility.ToJson(gameData, true);
+        File.WriteAllText(Application.persistentDataPath + "Game Save", json);
+    }
+
+    public void LoadGame()
+    {
+        string path = Application.persistentDataPath + "Game Save";
+        if (!File.Exists(path)) {Debug.Log("no game save"); return;}
+        Debug.Log("found game save");
+        string json = File.ReadAllText(path);
+
+        GameData gameData = JsonUtility.FromJson<GameData>(json);
+
+        GameDataObjects = FindAllGameDataObjects();
+        if (GameDataObjects.Count == 0){Debug.Log("cannot find game data objects");};
+                                
+        foreach (ISaveGame gameDataObj in GameDataObjects)
+        {
+            gameDataObj.LoadGame(gameData);
+        }
+
+        // write new counter data from game data
+
+        CounterData counterData = new CounterData();
+        counterData.metCustomersID = gameData.metCustomersID;
+
+        string jsonCounter = JsonUtility.ToJson(counterData, true);
+        File.WriteAllText(Application.persistentDataPath + "CounterData", jsonCounter);
+
+        // write new bookshelf data from game data
+
+        BookshelvesData shelvesData = new BookshelvesData();
+        BookshelvesData.BookInfo info = new BookshelvesData.BookInfo();
+        
+        foreach(GameData.BookInfo books in gameData.Books)
+        {
+            info.bookID = books.bookID;
+            info.coverView = books.coverView;
+            info.onShelf = books.onShelf;
+            info.parentsOrder = books.parentsOrder;
+            info.shelfParentID = books.shelfParentID;
+            info.spritesID = books.spritesID;
+            shelvesData.Books.Add(info);
+        }
+        
+        string jsonShelves = JsonUtility.ToJson(shelvesData, true);
+        File.WriteAllText(Application.persistentDataPath + "BookshelfData", jsonShelves);
+    }
+    #endregion
 }   

@@ -19,7 +19,7 @@ MonoBehaviour:
   career: Literature Student
   visitedToday: 0
   characterID: d196a4bd-a0ca-4381-a756-012495f8feb6
-  characterSprite: {fileID: 21300000, guid: 2f7060abcb8576d43b3c6a89b83993eb, type: 3}
+  characterSprite: {fileID: 21300000, guid: e69e36bfb524af14fbe8a9f1f5cc0013, type: 3}
   favGenre: 8
   lovedBooks:
   - {fileID: 11400000, guid: 904f35bfd5e543644aba954bed2e6c55, type: 2}

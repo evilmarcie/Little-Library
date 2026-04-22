@@ -20,7 +20,7 @@ public class Holder : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     {
         instance = this;
         gameObject.SetActive(false);
-        startPos = transform.position;
+        startPos = transform.localPosition;
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -64,8 +64,8 @@ public class Holder : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         uiManager.instance.toCounter();
         Destroy(dropped);
         
-        RectTransform rect = GetComponent<RectTransform>();
-        rect.transform.position = startPos;
+        
+        transform.localPosition = startPos;
     }
 
     bool triggerGiveBook = false;

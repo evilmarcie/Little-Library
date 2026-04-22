@@ -17,9 +17,9 @@ MonoBehaviour:
   pronouns: he/him
   age: 0
   career: Student
-  visitedToday: 0
+  shortCharacter: 1
   characterID: 9cbc8592-80b4-4a78-93b4-060d35fcea2d
-  characterSprite: {fileID: 21300000, guid: 74f565ce2b5ab36438f00256e5c48630, type: 3}
+  characterSprite: {fileID: 21300000, guid: 9045ed1413cb82c4e9a6e20b3be5dffa, type: 3}
   favGenre: 4
   lovedBooks:
   - {fileID: 11400000, guid: 532a8e91d655eb84a832183c2fc8dc83, type: 2}

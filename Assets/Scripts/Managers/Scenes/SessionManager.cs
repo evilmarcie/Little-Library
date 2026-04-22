@@ -3,7 +3,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class SessionManager : MonoBehaviour
+public class SessionManager : MonoBehaviour, ISaveGame
 {
 
     #region instance
@@ -12,16 +12,28 @@ public class SessionManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+        sessionLoaded = true;
     }
     #endregion
 
     public int day = 1;
     public bool bookBoxToday = false;
     public bool completeBookBox = false;
+    bool sessionLoaded = false;
+
+    IEnumerator Start()
+    {
+        while (sessionLoaded == false)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        DayStart();
+    }
 
     // trigger on counter manager load
     public void DayStart()
     {
+        Debug.Log("day start trigger");
         uiManager.instance.UpdateDayUI(day);
         uiManager.instance.DeliveryNotification(true);
 
@@ -54,7 +66,21 @@ public class SessionManager : MonoBehaviour
         uiManager.instance.UpdateRatingUI(currentRating);
     }
 
-    public enum DayStage { delivery, unpackDelivery, cxArrive, inDialogue, pickBooks }
+    public void SaveGame(ref GameData gameData)
+    {
+        
+        gameData.lastDayCompleted = day;   
+        gameData.customerRating = currentRating;
+
+    }
+
+    public void LoadGame(GameData gameData)
+    {
+        currentRating = gameData.customerRating;
+        day = gameData.lastDayCompleted;
+    }
+
+    public enum DayStage { delivery, unpackDelivery, cxArrive, inDialogue, pickBooks, EOD }
     public DayStage currentDayStage;
 
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
-public class Bookbox : MonoBehaviour
+public class Bookbox : MonoBehaviour, IPointerClickHandler
 {
     public static Bookbox instance;
 
@@ -50,5 +50,26 @@ public class Bookbox : MonoBehaviour
 
         SessionManager.instance.currentDayStage = SessionManager.DayStage.unpackDelivery;
        
+    }
+
+    public bool boxOpen = false;
+    public Animator boxAnimator;
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (boxOpen == false)
+        {
+            //boxAnimator.ResetTrigger("closeBox");
+            boxAnimator.SetTrigger("openBox");
+            boxHolder.SetActive(true);
+            boxOpen = true;
+        }
+        else if (boxOpen == true)
+        {
+            //boxAnimator.ResetTrigger("openBox");
+            boxAnimator.SetTrigger("closeBox");
+            boxHolder.SetActive(false);
+            boxOpen = false;
+        }
     }
 }

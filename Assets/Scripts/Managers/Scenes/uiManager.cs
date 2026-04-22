@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -12,15 +13,13 @@ public class uiManager : MonoBehaviour
 
     #region  refs
     public GameObject databaseMenu;
-    public GameObject pauseMenu;
-    public bool gamePaused = false;
-
     public GameObject homeMenu;
     public GameObject infoMenu;
     public Scrollbar booksScrollbar;
     public Scrollbar achievementsScrollbar;
     //public GameObject leftButton;
     public GameObject rightButton;
+    public GameObject overlayUI;
 
     public static uiManager instance;
 
@@ -45,24 +44,30 @@ public class uiManager : MonoBehaviour
         EODmenu.SetActive(false);
         deliveryNotif.SetActive(false);
         customerNotif.SetActive(false);
-
+        pauseMenu.SetActive(false);
+        overlayUI.SetActive(false);
+        settingsMenu.SetActive(false);
+        
+        musicSlider.value = MusicManager.music.volume;
     }
 
-    IEnumerator Start()
-    {
-        while (uiLoaded == false)
-        {
-            yield return new WaitForEndOfFrame();
-        }
-        SessionManager.instance.DayStart();
-    }
+    public bool gameStarted = false;
 
     void Update()
     {
-
-        if (gamePaused == true)
+        
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            //buttons and other features unable to be interacted with
+            
+            if ((gameStarted == true) && (settingsMenu.activeSelf == false))
+            {
+                PauseGame();
+            }
+
+            if (settingsMenu.activeSelf == true)
+            {
+                settingsMenu.SetActive(false);
+            }
         }
         
     }
@@ -79,6 +84,9 @@ public class uiManager : MonoBehaviour
     {
         databaseMenu.SetActive(false);
     }
+
+    public GameObject pauseMenu;
+    public bool gamePaused = false;
 
     public void PauseGame()
     {
@@ -257,4 +265,17 @@ public class uiManager : MonoBehaviour
         deliveryNotif.SetActive(set);
     }
 
+    public Slider musicSlider;
+
+    public void changeVolume()
+    {
+        MusicManager.music.volume = musicSlider.value;
+    }
+
+    public GameObject settingsMenu;
+
+    public void OpenSettings()
+    {
+        settingsMenu.SetActive(true);
+    }
 }
