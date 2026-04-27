@@ -46,6 +46,7 @@ public class uiManager : MonoBehaviour
         pauseMenu.SetActive(false);
         overlayUI.SetActive(false);
         settingsMenu.SetActive(false);
+        quitWarning.SetActive(false);
         
         musicSlider.value = MusicManager.music.volume;
     }
@@ -67,6 +68,10 @@ public class uiManager : MonoBehaviour
             {
                 settingsMenu.SetActive(false);
                 SetButtonInteractions(true);
+                if (gameStarted == true)
+                {
+                    pauseMenu.SetActive(true);
+                }
             }
         }
         
@@ -240,6 +245,24 @@ public class uiManager : MonoBehaviour
         Application.Quit();
     }
 
+    public GameObject quitWarning;
+
+    public void QuitWarning()
+    {
+        quitWarning.SetActive(true);
+        pauseMenu.SetActive(false);
+    }
+
+    public void CancelQuit()
+    {
+        quitWarning.SetActive(false);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
     public void NextDay()
     {
         SaveManager.instance.SaveGame();
@@ -290,6 +313,7 @@ public class uiManager : MonoBehaviour
     public void OpenSettings()
     {
         settingsMenu.SetActive(true);
+        pauseMenu.SetActive(false);
     }
 
     public GameObject databasebutton;

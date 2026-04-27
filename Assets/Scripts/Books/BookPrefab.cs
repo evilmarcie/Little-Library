@@ -28,7 +28,6 @@ public class bookPrefab : MonoBehaviour, ISaveShelves
 
     //spine
     public Image spine;
-    public TextMeshProUGUI spineTitle;
 
     public bool loadingFromSave = false;
 
@@ -56,7 +55,6 @@ public class bookPrefab : MonoBehaviour, ISaveShelves
         spriteID = spriteInfo.id;
         
         title.text = book.bookTitle;
-        spineTitle.text = book.bookTitle;
 
         author.text = book.authorName;
 

@@ -1,10 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using Unity.VisualScripting;
-using UnityEditor;
-using JetBrains.Annotations;
-using System.Collections.Generic;
 
 
 public class PlayableBook : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, 
@@ -61,7 +57,6 @@ IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = Input.mousePosition;
-
     }
 
     public void OnEndDrag(PointerEventData eventData)

@@ -42,10 +42,13 @@ public class MenuManager : MonoBehaviour
             {
                 loadMenu.SetActive(false);
             }
+
+            if (creditsMenu.activeSelf == true)
+            {
+                creditsMenu.SetActive(false);
+            }
         }
     }
-
-    public GameObject settingsMenu;
 
     public void SettingsMenu()
     {
@@ -68,6 +71,17 @@ public class MenuManager : MonoBehaviour
             profilesGameData.TryGetValue(saveSlot.GetProfileId(), out profileData);
             saveSlot.SetData(profileData);
         }
+    }
+    public GameObject creditsMenu;
+
+    public void OpenCreditsMenu()
+    {
+        creditsMenu.SetActive(true);
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 
 }

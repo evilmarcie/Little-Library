@@ -231,7 +231,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -170, y: 338}
-  m_SizeDelta: {x: 290.8434, y: 130.4041}
+  m_SizeDelta: {x: 324.75, y: 126.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &97551108
 MonoBehaviour:
@@ -561,7 +561,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806a06ebd68b143458ff7612f9964aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::dialogueController
-  pointerDown: 0
 --- !u!114 &252839926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1079,8 +1078,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.374, y: -25}
-  m_SizeDelta: {x: 1286.2046, y: 157.0209}
+  m_AnchoredPosition: {x: 0, y: -14}
+  m_SizeDelta: {x: 1106.7388, y: 157.0209}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1589621381
 MonoBehaviour:
@@ -1269,17 +1268,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108613543}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 97551107}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 101, y: 0}
-  m_SizeDelta: {x: 394.95, y: 104.21}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 160.42871, y: -63.375}
+  m_SizeDelta: {x: 242.7023, y: 104.21}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2108613545
 MonoBehaviour:
@@ -1328,12 +1327,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55.3
+  m_fontSize: 50
   m_fontSizeBase: 55.3
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 20
+  m_fontSizeMax: 50
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1367,7 +1366,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 212.16217, w: 0}
+  m_margin: {x: 0, y: 0, z: -0.020751953, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

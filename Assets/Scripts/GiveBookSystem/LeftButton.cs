@@ -11,10 +11,10 @@ public class LeftButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (BookshelfManager.instance.holdingBook == true) //& customer interaction stage
+        if ((BookshelfManager.instance.holdingBook == true) && 
+        (SessionManager.instance.currentDayStage == SessionManager.DayStage.pickBooks))
         {
             holder.SetActive(true);
-            // trigger animation
         }
     }
 }

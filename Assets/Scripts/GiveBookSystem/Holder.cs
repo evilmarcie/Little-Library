@@ -26,7 +26,6 @@ public class Holder : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     public void OnPointerExit(PointerEventData eventData)
     {
         gameObject.SetActive(false);
-
         if (beforeState == false) //if cover view was inactive before hover
         {
             bookController.SpineActive();
@@ -35,14 +34,20 @@ public class Holder : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     }
 
     public bool beforeState;
-    GameObject hoveredBook;
-    PlayableBook bookController;
+    public GameObject hoveredBook;
+    public PlayableBook bookController;
     
 
      public void OnPointerEnter(PointerEventData eventData)
     {
+        
         hoveredBook = eventData.pointerDrag;
-        bookController = hoveredBook.GetComponent<PlayableBook>();
+        if (hoveredBook=null){Debug.Log("cannot find hovered book"); return;};
+        Debug.Log("found hovered book");
+
+        PlayableBook bookController = hoveredBook.GetComponent<PlayableBook>();
+        if (bookController != null) {Debug.Log("found playable book");}
+
         beforeState = bookController.coverActiveView;
         if (beforeState == false) //if cover view inactive
         {
@@ -63,7 +68,6 @@ public class Holder : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         triggerGiveBook = true;
         uiManager.instance.toCounter();
         Destroy(dropped);
-        
         
         transform.localPosition = startPos;
     }

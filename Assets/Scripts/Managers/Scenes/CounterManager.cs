@@ -261,7 +261,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
             }
             else
             {
-                new WaitForSeconds(3);
+                new WaitForSeconds(5);
                 customerEnter();
             }
 
@@ -291,18 +291,11 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
 
         foreach(char letter in text.ToCharArray())
         {
-            if (dialogueController.instance.pointerDown == true)
-            {
-                dialogueText.text = text;
-                break;
-            }
-
             dialogueText.text += letter;
             yield return new WaitForSeconds(textSpeed);
         }
 
         canStartNextLine = true;
-
     }
 
     public enum DialogueStage { Greeting, Prompt, GiveBook, Response, Inactive}
@@ -417,6 +410,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
 
     #endregion
 
+    #region  save game
     public void SaveGame(ref GameData gameData)
     {
 
@@ -436,4 +430,5 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
             haveMet.Add(character);
         }
     }
+    #endregion
 }
