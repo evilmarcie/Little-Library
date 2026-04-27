@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class GameData : MonoBehaviour
+public class GameData
 {
     // shelf data
     public List<BookInfo> Books = new List<BookInfo>();

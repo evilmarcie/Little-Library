@@ -16,6 +16,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
 
     void Awake()
     {
+        if (instance != null){Destroy(instance);} 
         instance = this;
         character.SetActive(false);
         dialogueUI.SetActive(false);
@@ -28,7 +29,22 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
         {
             yield return new WaitForEndOfFrame();
         }
-        SaveManager.instance.LoadCounter();
+        if (uiManager.instance.LoadingFromShelves == true)
+        {
+            SaveManager.instance.LoadCounter();
+            Debug.Log("loading from shelves true");
+        }
+        if (uiManager.instance.LoadingFromShelves == false)
+        {
+            uiManager.instance.UpdateDayUI(SessionManager.instance.day);
+            uiManager.instance.DeliveryNotification(true);
+            instance.Reset();
+            
+            if (SessionManager.instance.day == 1)
+            {
+                Debug.Log("tutorial");
+            }
+        }
     }
 
     public Character activeCustomer;
@@ -42,6 +58,16 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
     public GameObject nameBox;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
+
+    public void Reset()
+    {
+        activeCustomer = null;
+        visitedToday.Clear();
+        currentStage = DialogueStage.Inactive;
+        givenBook = null;
+
+        Debug.Log("execute reset");
+    }
 
     public void customerEnter()
     {
@@ -98,6 +124,8 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
     {
         activeCustomer = potentialCustomers[UnityEngine.Random.Range(0, potentialCustomers.Length)];
     }
+
+    #region dialogue
 
     public void BeginInteraction()
     {
@@ -220,6 +248,9 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
 
             StartCoroutine(nextInteraction());
         }
+
+        uiManager.instance.SetButtonInteractions(true);
+
     }
 
     IEnumerator nextInteraction()
@@ -271,6 +302,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
         }
 
         canStartNextLine = true;
+
     }
 
     public enum DialogueStage { Greeting, Prompt, GiveBook, Response, Inactive}
@@ -285,6 +317,8 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
 
     public void NextDialogue()
     {
+        uiManager.instance.SetButtonInteractions(false);
+
         if (canStartNextLine)
         {
             if (currentStage == DialogueStage.Greeting)
@@ -308,6 +342,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
         }
           
     }
+    #endregion 
 
     #region save counter
 
@@ -384,6 +419,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
 
     public void SaveGame(ref GameData gameData)
     {
+
         foreach (Character customer in haveMet)
         {
             string id = customer.characterID;

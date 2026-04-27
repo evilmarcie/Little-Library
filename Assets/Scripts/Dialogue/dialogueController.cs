@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class dialogueController : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
+public class dialogueController : MonoBehaviour, IPointerUpHandler, IPointerDownHandler, IPointerClickHandler
 {
     public static dialogueController instance;
 
@@ -23,5 +23,10 @@ public class dialogueController : MonoBehaviour, IPointerUpHandler, IPointerDown
         CounterManager.instance.NextDialogue();
         pointerDown = true;
         Debug.Log("pointer up");
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
     }
 }

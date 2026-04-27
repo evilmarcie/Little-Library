@@ -10,7 +10,6 @@ public class CoreManager : MonoBehaviour
             .Load(SceneDatabase.Slots.UI, SceneDatabase.Scenes.UI)
             .Perform();
         
-        SaveManager.instance.LoadGame();
     }
   
 }

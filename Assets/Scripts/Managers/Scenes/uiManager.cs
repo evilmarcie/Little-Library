@@ -42,7 +42,6 @@ public class uiManager : MonoBehaviour
 
         databaseMenu.SetActive(false);
         EODmenu.SetActive(false);
-        deliveryNotif.SetActive(false);
         customerNotif.SetActive(false);
         pauseMenu.SetActive(false);
         overlayUI.SetActive(false);
@@ -67,6 +66,7 @@ public class uiManager : MonoBehaviour
             if (settingsMenu.activeSelf == true)
             {
                 settingsMenu.SetActive(false);
+                SetButtonInteractions(true);
             }
         }
         
@@ -77,12 +77,14 @@ public class uiManager : MonoBehaviour
         databaseMenu.SetActive(true);
         databaseMenu.GetComponent<DatabaseUI>().OpenBooksMenu();
         resetDatabase();
+        SetButtonInteractions(false);
 
     }
 
     public void CloseDatabase()
     {
         databaseMenu.SetActive(false);
+        SetButtonInteractions(true);
     }
 
     public GameObject pauseMenu;
@@ -92,12 +94,14 @@ public class uiManager : MonoBehaviour
     {
         pauseMenu.SetActive(true);
         gamePaused = true;
+        SetButtonInteractions(false);
     }
 
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
         gamePaused = false;
+        SetButtonInteractions(true);
     }
 
      void resetDatabase()
@@ -109,6 +113,7 @@ public class uiManager : MonoBehaviour
     }
 
     public GameObject bookBox;
+    string currentProfile;
 
     public void toShelves()
     {
@@ -150,9 +155,13 @@ public class uiManager : MonoBehaviour
         
     }
 
+    public bool LoadingFromShelves;
+
     public void toCounter()
     {
         SaveManager.instance.SaveBookshelves();
+
+        LoadingFromShelves = true;
 
         SceneController.Instance
             .NewTransition()
@@ -226,12 +235,16 @@ public class uiManager : MonoBehaviour
 
     public void SaveAndQuit()
     {
-        // save full game
-        // end application
+        SaveManager.instance.SaveGame();
+        // fade out of some kind
+        Application.Quit();
     }
 
     public void NextDay()
     {
+        SaveManager.instance.SaveGame();
+        // reload to counter fully with load screen
+        LoadingFromShelves = false;
         SessionManager.instance.ResetDay();
         EODmenu.SetActive(false);
     }
@@ -277,5 +290,13 @@ public class uiManager : MonoBehaviour
     public void OpenSettings()
     {
         settingsMenu.SetActive(true);
+    }
+
+    public GameObject databasebutton;
+
+    public void SetButtonInteractions(bool set)
+    {
+        rightButton.GetComponent<Button>().interactable = set;
+        databasebutton.GetComponent<Button>().interactable = set;        
     }
 }

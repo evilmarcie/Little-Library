@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class bookPrefab : MonoBehaviour, ISaveShelves, ISaveGame
+public class bookPrefab : MonoBehaviour, ISaveShelves
 {
     //arrays
     public BookData[] books = {};
@@ -73,6 +73,7 @@ public class bookPrefab : MonoBehaviour, ISaveShelves, ISaveGame
         PlayableBook playableBook = GetComponent<PlayableBook>();
         
         if (playableBook.onShelf == true)
+
         {
             info.bookID = book.bookID;
             info.spritesID = spriteID;
@@ -96,32 +97,4 @@ public class bookPrefab : MonoBehaviour, ISaveShelves, ISaveGame
         
     }
 
-    public void SaveGame(ref GameData gameData)
-    {
-        GameData.BookInfo info = new GameData.BookInfo();
-        PlayableBook playableBook = GetComponent<PlayableBook>();
-        
-        if (playableBook.onShelf == true)
-        {
-            info.bookID = book.bookID;
-            info.spritesID = spriteID;
-        
-            info.coverView = playableBook.coverActiveView;
-
-            info.shelfParentID = transform.parent.GetComponent<Shelf>().shelfID;
-            info.parentsOrder = transform.GetSiblingIndex();
-
-            info.onShelf = playableBook.onShelf;
-
-            gameData.Books.Add(info);
-
-            Destroy(this.gameObject);
-        }
-        else return;
-    }
-
-    public void LoadGame(GameData gameData)
-    {
-        
-    }
 }

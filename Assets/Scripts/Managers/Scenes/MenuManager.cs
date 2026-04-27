@@ -1,13 +1,21 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
+    public static MenuManager instance; 
+
     void Awake()
     {
+        instance = this;
+        saveSlots = loadMenu.GetComponentsInChildren<SaveSlot>();
         loadMenu.SetActive(false);
+        //SaveManager.instance.LoadGame();
     }
+
+    public int loadDay;
 
     public void StartGame()
     {
@@ -46,19 +54,20 @@ public class MenuManager : MonoBehaviour
 
     public GameObject loadMenu;
 
+    private SaveSlot[] saveSlots;
+
     public void LoadMenu()
     {
         loadMenu.SetActive(true);
+
+        Dictionary<string, GameData> profilesGameData = SaveManager.instance.LoadAllProfiles();
+
+        foreach (SaveSlot saveSlot in saveSlots)
+        {
+            GameData profileData = null;
+            profilesGameData.TryGetValue(saveSlot.GetProfileId(), out profileData);
+            saveSlot.SetData(profileData);
+        }
     }
 
-    public void LoadGameButton()
-    {
-        StartGame();
-    }
-
-    public void NewGameButton()
-    {
-        StartGame();
-        // new save file
-    }
 }

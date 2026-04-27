@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SessionManager : MonoBehaviour, ISaveGame
 {
@@ -27,28 +28,38 @@ public class SessionManager : MonoBehaviour, ISaveGame
         {
             yield return new WaitForEndOfFrame();
         }
-        DayStart();
+        GameData data = SaveManager.instance.ReadGameData(SaveManager.instance.profileID);
+        day = data.lastDayCompleted+1;
+        currentRating = data.customerRating;
+        StartCoroutine(DayStart());
     }
 
     // trigger on counter manager load
-    public void DayStart()
+    public IEnumerator DayStart()
     {
-        Debug.Log("day start trigger");
-        uiManager.instance.UpdateDayUI(day);
-        uiManager.instance.DeliveryNotification(true);
-
-        if (day == 1)
+        Debug.Log("trigger day start");
+        while ((CounterManager.instance == null) && (uiManager.instance == null) 
+        && (CounterManager.instance.CounterLoaded == false) && uiManager.instance.uiLoaded == false)
         {
-            Debug.Log("tutorial");
+            yield return new WaitForEndOfFrame();
         }
+        Debug.Log("managers active");
+        
     }
 
     public void ResetDay()
     {
+        SceneController.Instance
+            .NewTransition()
+            .Load(SceneDatabase.Slots.SessionContent, SceneDatabase.Scenes.Counter, SetActive: true)
+            .Load(SceneDatabase.Slots.UI, SceneDatabase.Scenes.UI)
+            .WithOverlay()
+            .WithClearUnusedAssets()
+            .Perform();
+        
         day += 1;
-        // do like a load screen / save & reload to counter scene
         DayStart();
-        CounterManager.instance.visitedToday.Clear();
+  
     }
 
     public int currentRating = 100;
@@ -76,8 +87,7 @@ public class SessionManager : MonoBehaviour, ISaveGame
 
     public void LoadGame(GameData gameData)
     {
-        currentRating = gameData.customerRating;
-        day = gameData.lastDayCompleted;
+        
     }
 
     public enum DayStage { delivery, unpackDelivery, cxArrive, inDialogue, pickBooks, EOD }
