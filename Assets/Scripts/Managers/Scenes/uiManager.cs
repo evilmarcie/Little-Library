@@ -16,7 +16,6 @@ public class uiManager : MonoBehaviour
     public GameObject homeMenu;
     public GameObject infoMenu;
     public Scrollbar booksScrollbar;
-    public Scrollbar achievementsScrollbar;
     //public GameObject leftButton;
     public GameObject rightButton;
     public GameObject overlayUI;
@@ -114,11 +113,9 @@ public class uiManager : MonoBehaviour
         homeMenu.SetActive(true);
         infoMenu.SetActive(false);
         booksScrollbar.value = 1;
-        achievementsScrollbar.value = 1;
     }
 
     public GameObject bookBox;
-    string currentProfile;
 
     public void toShelves()
     {
@@ -141,21 +138,23 @@ public class uiManager : MonoBehaviour
             deliveryNotif.SetActive(false);
         }
 
-        StartCoroutine(StartBookBox());
+        if (SessionManager.instance.bookBoxToday == false)
+        {
+            Debug.Log("book box today false");
+            StartCoroutine(StartBookBox());
+        }
 
     }
 
     IEnumerator StartBookBox()
     {
+        Debug.Log("bookbox routine");
         while (Bookbox.instance == null)
         {
             yield return new WaitForEndOfFrame();
         }
-        
-        if (SessionManager.instance.bookBoxToday == false)
-        {
-            Bookbox.instance.GenerateBookBox();   
-        }
+        Bookbox.instance.boxParent.SetActive(true);
+        Bookbox.instance.GenerateBookBox();   
         yield break;
         
     }
@@ -186,11 +185,6 @@ public class uiManager : MonoBehaviour
     }
 
     #region refs
-   
-    //book display
-    public Image infoCover;
-    public TextMeshProUGUI infoTitle;
-    public TextMeshProUGUI infoAuthor;
 
     //book info
     public TextMeshProUGUI titleHeader;
@@ -210,11 +204,6 @@ public class uiManager : MonoBehaviour
         
         homeMenu.SetActive(false);
         infoMenu.SetActive(true);
-
-        //book display
-        infoCover.sprite = cover;
-        infoTitle.text = book.bookTitle;
-        infoAuthor.text = book.authorName;
 
         //info
         titleHeader.text = book.bookTitle;

@@ -40,7 +40,7 @@ public class Bookbox : MonoBehaviour, IPointerClickHandler
 
     public void GenerateBookBox()
     {
-        boxParent.SetActive(true);
+        Debug.Log("bookbox active");
 
         for (int booksGenerated = 0; booksGenerated < bookboxMaxCapacity; booksGenerated++)
         {

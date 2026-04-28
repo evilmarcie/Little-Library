@@ -8,6 +8,11 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
+    string gameFileName = "GameData.json";
+    string counterFileName = "CounterData.json";
+    string bookshelfFileName = "BookshelfData.json";
+
+
     public static SaveManager instance;
     void Awake()
     {
@@ -48,7 +53,7 @@ public class SaveManager : MonoBehaviour
         string profilePath = ProfilePath(profileID);
         try
         {
-            string path = Path.Combine(profilePath, "BookshelfData");
+            string path = Path.Combine(profilePath, bookshelfFileName);
             //Directory.CreateDirectory(path);
             string json = JsonUtility.ToJson(shelvesData, true);
             File.WriteAllText(path, json);
@@ -65,7 +70,7 @@ public class SaveManager : MonoBehaviour
 
     public void LoadBookshelves()
     {
-        string path = Path.Combine(Application.persistentDataPath, fileID(profileID), "BookshelfData");
+        string path = Path.Combine(Application.persistentDataPath, fileID(profileID), bookshelfFileName);
 
         if (!File.Exists(path)) return;
 
@@ -148,8 +153,7 @@ public class SaveManager : MonoBehaviour
         string profilePath = ProfilePath(profileID);
         try
         {
-            string path = Path.Combine(profilePath, "CounterData");
-            //Directory.CreateDirectory(path);
+            string path = Path.Combine(profilePath, counterFileName);
             string json = JsonUtility.ToJson(counterData, true);
             File.WriteAllText(path, json);
             Debug.Log("save counter");
@@ -163,14 +167,14 @@ public class SaveManager : MonoBehaviour
     public void LoadCounter()
     {
         //get shelf data
-        string shelfPath = Path.Combine(Application.persistentDataPath, fileID(profileID), "BookshelfData");
+        string shelfPath = Path.Combine(Application.persistentDataPath, fileID(profileID), bookshelfFileName);
         if (!File.Exists(shelfPath)) { Debug.Log("no bookshelfdata"); return; }
         Debug.Log("found shelfdata");
         string jsonShelf = File.ReadAllText(shelfPath);
         BookshelvesData shelvesData = JsonUtility.FromJson<BookshelvesData>(jsonShelf);
 
         //get counter data
-        string path = Path.Combine(Application.persistentDataPath, fileID(profileID), "CounterData");
+        string path = Path.Combine(Application.persistentDataPath, fileID(profileID), counterFileName);
         if (!File.Exists(path)) { Debug.Log("no counterdata"); return; }
         Debug.Log("found counterdata");
         string json = File.ReadAllText(path);
@@ -179,7 +183,6 @@ public class SaveManager : MonoBehaviour
         //find counterdata objects to load
         CounterDataObjects = FindAllSaveCounterObj();
         if (CounterDataObjects.Count == 0) { Debug.Log("cannot find counter data objects"); }
-        ;
 
         foreach (ISaveCounter counterDataObj in CounterDataObjects)
         {
@@ -189,7 +192,6 @@ public class SaveManager : MonoBehaviour
         }
 
         Debug.Log("load counterdata");
-
     }
 
     #endregion
@@ -209,7 +211,7 @@ public class SaveManager : MonoBehaviour
         GameData gameData = new GameData();
 
         //get shelf data
-        string shelfPath = Path.Combine(profilePath, "BookshelfData");
+        string shelfPath = Path.Combine(profilePath, bookshelfFileName);
         if (!File.Exists(shelfPath)) { Debug.Log("no bookshelfdata"); return; }
         Debug.Log("found shelfdata");
         string jsonShelf = File.ReadAllText(shelfPath);
@@ -239,7 +241,7 @@ public class SaveManager : MonoBehaviour
         }
 
         // write new game data
-        string path = Path.Combine(profilePath, "Game Save");
+        string path = Path.Combine(profilePath, gameFileName);
         try
         {
             //Directory.CreateDirectory(path);
@@ -266,22 +268,27 @@ public class SaveManager : MonoBehaviour
         {
             gameDataObj.LoadGame(gameData);
         }
-
-        // write new counter data from game data
-        CounterData counterData = new CounterData();
-        counterData.metCustomersID = gameData.metCustomersID;
-        
         string profilePath = ProfilePath(profileID);
-        string counterPath = Path.Combine(profilePath, "CounterData");
-        try
-        {
-            string jsonCounter = JsonUtility.ToJson(counterData, true);
-            File.WriteAllText(counterPath, jsonCounter);
-        }
-        catch
-        {
-            Debug.LogError("Error saving new file");
-        }
+
+        // // write new counter data from game data
+        // CounterData counterData = new CounterData();
+        // foreach (string id in gameData.metCustomersID)
+        // {
+        //     string custID = id;
+        //     counterData.metCustomersID.Add(custID);
+        // }
+        // string counterPath = Path.Combine(profilePath, counterFileName);
+        
+        // try
+        // {
+        //     string jsonCounter = JsonUtility.ToJson(counterData, true);
+        //     File.WriteAllText(counterPath, jsonCounter);
+        //     Debug.Log("updated counterdata");
+        // }
+        // catch
+        // {
+        //     Debug.LogError("Error saving new counterdata");
+        // }
 
         // write new bookshelf data from game data
         BookshelvesData shelvesData = new BookshelvesData();
@@ -297,18 +304,18 @@ public class SaveManager : MonoBehaviour
             info.spritesID = books.spritesID;
             shelvesData.Books.Add(info);
         }
-
         shelvesData.triggerGiveBook = false;
 
-        string shelfPath = Path.Combine(profilePath, "BookshelfData");
+        string shelfPath = Path.Combine(profilePath, bookshelfFileName);
         try
         {
             string jsonShelf = JsonUtility.ToJson(shelvesData, true);
             File.WriteAllText(shelfPath, jsonShelf);
+            Debug.Log("updated shelfdata");
         }
         catch
         {
-            Debug.LogError("Error saving new file");
+            Debug.LogError("Error saving new shelfdata");
         }
     }
     #endregion
@@ -321,7 +328,7 @@ public class SaveManager : MonoBehaviour
         foreach (DirectoryInfo dirInfo in dirInfos)
         {
             string profileID = dirInfo.Name;
-            string fullPath = Path.Combine(Application.persistentDataPath, fileID(profileID), "Game Save");
+            string fullPath = Path.Combine(Application.persistentDataPath, fileID(profileID), gameFileName);
             if (!File.Exists(fullPath))
             {
                 Debug.Log(profileID + " has no save data");
@@ -336,7 +343,7 @@ public class SaveManager : MonoBehaviour
 
     public GameData ReadGameData(string profileID)
     {
-        string path = Path.Combine(Application.persistentDataPath, fileID(profileID), "Game Save");
+        string path = Path.Combine(Application.persistentDataPath, fileID(profileID), gameFileName);
         if (!File.Exists(path)) { return null; }
         string json = File.ReadAllText(path);
         GameData thisData = JsonUtility.FromJson<GameData>(json);

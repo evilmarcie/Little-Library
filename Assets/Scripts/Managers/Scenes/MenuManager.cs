@@ -61,8 +61,6 @@ public class MenuManager : MonoBehaviour
 
     public void LoadMenu()
     {
-        loadMenu.SetActive(true);
-
         Dictionary<string, GameData> profilesGameData = SaveManager.instance.LoadAllProfiles();
 
         foreach (SaveSlot saveSlot in saveSlots)
@@ -71,6 +69,8 @@ public class MenuManager : MonoBehaviour
             profilesGameData.TryGetValue(saveSlot.GetProfileId(), out profileData);
             saveSlot.SetData(profileData);
         }
+
+        loadMenu.SetActive(true);
     }
     public GameObject creditsMenu;
 

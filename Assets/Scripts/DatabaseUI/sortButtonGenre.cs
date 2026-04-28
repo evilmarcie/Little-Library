@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,8 +10,6 @@ public class sortButtonGenre : MonoBehaviour
     public GameObject content;
     public Button[] books;
     public Scrollbar booksScrollbar;
-
-
 
     void Awake()
     {
@@ -33,6 +32,28 @@ public class sortButtonGenre : MonoBehaviour
                 }
             }
         }
+
+        BooksMenu booksMenu = GetComponentInParent<BooksMenu>();
+        if (booksMenu != null)
+        {
+            foreach (GameObject button in booksMenu.genreButtons)
+            {
+                bookGenre buttonsgenre = button.GetComponent<sortButtonGenre>().buttonGenre;
+                if (buttonsgenre == buttonGenre)
+                {
+                    
+                }
+                else
+                {
+                    button.SetActive(false);
+                }
+            }    
+        }
+        else
+        {
+            Debug.Log("cannot find parent");
+        }
+        
 
         booksScrollbar.value = 1;
     }

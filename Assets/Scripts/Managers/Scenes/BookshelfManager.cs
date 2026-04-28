@@ -3,13 +3,12 @@ using System.Runtime.Serialization;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class BookshelfManager : MonoBehaviour
 {
-    public GameObject bookPrefab;
-    public Canvas canvas;
     public static BookshelfManager instance;
 
     void Awake()
@@ -27,6 +26,7 @@ public class BookshelfManager : MonoBehaviour
         SaveManager.instance.LoadBookshelves();
         
     }
-
+    
+    public GameObject heldBook;
     public bool holdingBook;
 }

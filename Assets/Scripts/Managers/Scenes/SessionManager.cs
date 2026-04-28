@@ -29,8 +29,11 @@ public class SessionManager : MonoBehaviour, ISaveGame
             yield return new WaitForEndOfFrame();
         }
         GameData data = SaveManager.instance.ReadGameData(SaveManager.instance.profileID);
-        day = data.lastDayCompleted+1;
-        currentRating = data.customerRating;
+        if (data!=null)
+        {
+            day = data.lastDayCompleted+1;
+            currentRating = data.customerRating;
+        }
         StartCoroutine(DayStart());
     }
 
@@ -57,8 +60,11 @@ public class SessionManager : MonoBehaviour, ISaveGame
             .WithClearUnusedAssets()
             .Perform();
         
+        bookBoxToday = false;
+        completeBookBox = false;
+        currentDayStage = DayStage.delivery;
         day += 1;
-        DayStart();
+        StartCoroutine(DayStart());
   
     }
 

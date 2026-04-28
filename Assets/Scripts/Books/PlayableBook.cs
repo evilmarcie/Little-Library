@@ -36,8 +36,9 @@ IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
     // put onto shelf 
 
     public void OnBeginDrag(PointerEventData eventData)
-    
     {
+        BookshelfManager.instance.heldBook = gameObject;
+
         onShelf = false;
         BookshelfManager.holdingBook = true;
 
@@ -57,10 +58,13 @@ IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = Input.mousePosition;
+
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        BookshelfManager.instance.heldBook = null;
+
         transform.SetParent(parentAfterDrag);
 
         CoverImage.raycastTarget = true;

@@ -1284,6 +1284,8 @@ MonoBehaviour:
   dropText: {fileID: 1169048479}
   holderAnimator: {fileID: 1030661889}
   beforeState: 0
+  hoveredBook: {fileID: 0}
+  bookController: {fileID: 0}
   dropped: {fileID: 0}
 --- !u!95 &1030661889
 Animator:
@@ -1833,8 +1835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 097b42dd7e7518340a4cdd7b9f0c90c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BookshelfManager
-  bookPrefab: {fileID: 4122946621112120501, guid: 4b0c91229d85dad4f85b70a314b3ad0a, type: 3}
-  canvas: {fileID: 248206611}
+  heldBook: {fileID: 0}
   holdingBook: 0
 --- !u!4 &1924436203
 Transform:

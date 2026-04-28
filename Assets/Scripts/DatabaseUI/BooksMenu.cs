@@ -4,6 +4,7 @@ using TMPro;
 using System;
 using UnityEditor.Animations;
 using UnityEngine.Animations;
+using System.Collections.Generic;
 
 public class BooksMenu : MonoBehaviour
 {
@@ -34,6 +35,13 @@ public class BooksMenu : MonoBehaviour
         }
 
         booksScrollbar.value = 1;
+
+        foreach (GameObject buttons in genreButtons)
+        {
+            buttons.SetActive(true);
+        }
     }
+
+    public List<GameObject> genreButtons;
     
 }

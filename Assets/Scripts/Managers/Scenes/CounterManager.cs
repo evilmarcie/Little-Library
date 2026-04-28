@@ -261,7 +261,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
             }
             else
             {
-                new WaitForSeconds(5);
+                  new WaitForSecondsRealtime(5);
                 customerEnter();
             }
 
@@ -347,7 +347,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
         if (activeCustomer != null)
         {
             counterData.currentCustomerID = activeCustomer.characterID;
-            Debug.Log("saving active customer");
+            //Debug.Log("saving active customer");
         }
 
         counterData.dialogueStageInt = (int)currentStage;
@@ -371,6 +371,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
         if (counterData.currentCustomerID != string.Empty)
         {
             string activeCharID = counterData.currentCustomerID;
+            Debug.Log(activeCharID);
             activeCustomer = CharacterManager.instance.GetCharacter(activeCharID);
             currentStage = (DialogueStage)counterData.dialogueStageInt;
             if (currentStage != DialogueStage.Inactive)
@@ -378,23 +379,37 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
                 SetCharacterSprites();
             }
         }
-        Debug.Log("loaded");
-
-        foreach (string met in counterData.metCustomersID)
+        else
         {
-            string metID = met;
-            Character character = CharacterManager.instance.GetCharacter(metID);
-            haveMet.Add(character);
+            Debug.Log("no active char");
         }
 
-        foreach (string visited in counterData.visitedTodayID)
+        if (counterData.metCustomersID.Count > 0)
         {
-            string visitedID = visited;
-            Character character = CharacterManager.instance.GetCharacter(visitedID);
-            visitedToday.Add(character);
+            foreach (string met in counterData.metCustomersID)
+            {
+                string metID = met;
+                Character character = CharacterManager.instance.GetCharacter(metID);
+                if (character!=null){haveMet.Add(character);}
+                else{Debug.Log("cannot find char from ID");}
+            }   
         }
+        else{Debug.Log("met customers list empty");}
 
-        if ((counterData.givenBookID != null) && (counterData.triggerGiveBook == true))
+        if (counterData.visitedTodayID.Count > 0)
+        {
+            foreach (string visited in counterData.visitedTodayID)
+            {
+                string visitedID = visited;
+                Character character = CharacterManager.instance.GetCharacter(visitedID);
+                if (character!=null){visitedToday.Add(character);}
+                else{Debug.Log("cannot find char from ID");}
+            }   
+        }
+        else{Debug.Log("visited today list empty");}
+
+        if (((counterData.givenBookID != null)|(counterData.givenBookID != string.Empty)) 
+        && (counterData.triggerGiveBook == true))
         {
             givenBook = BookManager.instance.GetBookData(counterData.givenBookID);
             Debug.Log(givenBook.bookTitle);   
@@ -413,7 +428,6 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
     #region  save game
     public void SaveGame(ref GameData gameData)
     {
-
         foreach (Character customer in haveMet)
         {
             string id = customer.characterID;
@@ -423,12 +437,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
 
     public void LoadGame(GameData gameData)
     {
-        foreach (string id in gameData.metCustomersID)
-        {
-            string charID = id;
-            Character character = CharacterManager.instance.GetCharacter(charID);
-            haveMet.Add(character);
-        }
+        
     }
     #endregion
 }

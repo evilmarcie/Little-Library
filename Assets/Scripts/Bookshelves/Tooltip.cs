@@ -37,18 +37,16 @@ public class Tooltip : MonoBehaviour
         books = GameObject.FindGameObjectsWithTag("book");
     }
 
-    public BookshelfManager bookshelfManager;
 
     public void tooltipActive(BookData currentBook, GameObject trigger)
     {
         PlayableBook triggerBook = trigger.GetComponent<PlayableBook>();
         
-        if((triggerBook.onShelf == true) && (bookshelfManager.holdingBook == false))
+        if((triggerBook.onShelf == true) && (BookshelfManager.instance.holdingBook == false))
         {
             titleText.text = currentBook.bookTitle;
             authorText.text = "By " + currentBook.authorName;
             me.SetActive(true);
-            //Debug.Log("active");
         }
     
     }
@@ -65,8 +63,6 @@ public class Tooltip : MonoBehaviour
                 if (checkHover.pointerHover == false)
                 {
                     me.SetActive(false);
-
-                    //Debug.Log("hover");
                 }
             }
         }

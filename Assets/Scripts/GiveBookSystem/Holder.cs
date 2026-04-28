@@ -1,11 +1,5 @@
-
-using Unity.VisualScripting;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Rendering;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class Holder : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDropHandler, ISaveShelves
 {
@@ -26,11 +20,12 @@ public class Holder : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     public void OnPointerExit(PointerEventData eventData)
     {
         gameObject.SetActive(false);
+
         if (beforeState == false) //if cover view was inactive before hover
         {
             bookController.SpineActive();
         }
-
+        hoveredBook = null;
     }
 
     public bool beforeState;
@@ -40,12 +35,11 @@ public class Holder : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
      public void OnPointerEnter(PointerEventData eventData)
     {
-        
-        hoveredBook = eventData.pointerDrag;
-        if (hoveredBook=null){Debug.Log("cannot find hovered book"); return;};
+        hoveredBook = BookshelfManager.instance.heldBook;
+        if (hoveredBook==null){Debug.Log("cannot find hovered book"); return;};
         Debug.Log("found hovered book");
 
-        PlayableBook bookController = hoveredBook.GetComponent<PlayableBook>();
+        bookController = hoveredBook.GetComponent<PlayableBook>();
         if (bookController != null) {Debug.Log("found playable book");}
 
         beforeState = bookController.coverActiveView;
@@ -53,6 +47,7 @@ public class Holder : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         {
             bookController.CoverActive();
         }
+    
     }
 
     public GameObject dropped;
