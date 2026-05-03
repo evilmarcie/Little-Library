@@ -119,6 +119,9 @@ public class uiManager : MonoBehaviour
 
     public void toShelves()
     {
+        
+        SaveManager.instance.SaveCounter();
+        
         CounterManager.instance.CounterLoaded = false;
         
         SceneController.Instance
@@ -127,8 +130,6 @@ public class uiManager : MonoBehaviour
             .Load(SceneDatabase.Slots.UI, SceneDatabase.Scenes.UI)
             .WithOverlay()
             .Perform();
-        
-        SaveManager.instance.SaveCounter();
 
         rightButton.SetActive(false);
         signUI.SetActive(false);
@@ -138,25 +139,6 @@ public class uiManager : MonoBehaviour
             deliveryNotif.SetActive(false);
         }
 
-        if (SessionManager.instance.bookBoxToday == false)
-        {
-            Debug.Log("book box today false");
-            StartCoroutine(StartBookBox());
-        }
-
-    }
-
-    IEnumerator StartBookBox()
-    {
-        Debug.Log("bookbox routine");
-        while (Bookbox.instance == null)
-        {
-            yield return new WaitForEndOfFrame();
-        }
-        Bookbox.instance.boxParent.SetActive(true);
-        Bookbox.instance.GenerateBookBox();   
-        yield break;
-        
     }
 
     public bool LoadingFromShelves;
@@ -180,6 +162,11 @@ public class uiManager : MonoBehaviour
         if (customerNotif.activeSelf == true)
         {
             customerNotif.SetActive(false);
+        }
+
+        if (Holder.instance != null)
+        {
+            Holder.instance.DestroyHolder();
         }
 
     }

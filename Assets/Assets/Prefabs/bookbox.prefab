@@ -87,7 +87,7 @@ Animator:
   m_GameObject: {fileID: 1993732031817391915}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3f4fc27d438aaeb46a1676fbfee2f620, type: 2}
+  m_Controller: {fileID: 9100000, guid: 79d76e546a5e0aa4ba17e75e470ecd1d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -111,11 +111,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02690deea3f58b34e88d54b4ffeae984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bookbox
-  bookBoxAnimator: {fileID: 291922730912757998}
+  loaded: 0
   bookPrefab: {fileID: 4122946621112120501, guid: 4b0c91229d85dad4f85b70a314b3ad0a, type: 3}
   boxHolder: {fileID: 3507340865231111693}
-  bookBoxToday: 0
   boxParent: {fileID: 8225043942671598173}
+  bookCount: 0
+  boxOpen: 0
+  boxAnimator: {fileID: 291922730912757998}
 --- !u!1 &3507340865231111693
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,6 +130,7 @@ GameObject:
   - component: {fileID: 5867441081129803037}
   - component: {fileID: 7059405282296910484}
   - component: {fileID: 842406036641876429}
+  - component: {fileID: 7268204447867746190}
   m_Layer: 5
   m_Name: boxHolderBackground
   m_TagString: Untagged
@@ -149,11 +152,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 4741712117841614158}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 91.37805, y: -0.57891846}
-  m_SizeDelta: {x: 927.4562, y: 295.4421}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 152, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &5867441081129803037
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -205,7 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.HorizontalLayoutGroup
   m_Padding:
-    m_Left: 20
+    m_Left: 180
     m_Right: 20
     m_Top: 20
     m_Bottom: 20
@@ -218,6 +221,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!114 &7268204447867746190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3507340865231111693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
+  m_HorizontalFit: 1
+  m_VerticalFit: 2
 --- !u!1 &8225043942671598173
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,6 +269,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28.621979, y: 0.57891846}
+  m_AnchoredPosition: {x: -378, y: 318}
   m_SizeDelta: {x: 1110.2122, y: 296.6}
   m_Pivot: {x: 0.5, y: 0.5}

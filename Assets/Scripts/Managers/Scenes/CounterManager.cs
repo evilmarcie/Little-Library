@@ -23,15 +23,25 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
         CounterLoaded = true;
     }
 
+    void Update()
+    {
+        if (activeCustomer == null)
+        {
+            character.SetActive(false);
+        }
+    }
+
     IEnumerator Start()
     {
         while (CounterLoaded == false)
         {
             yield return new WaitForEndOfFrame();
         }
+
+        SaveManager.instance.LoadCounter();
+
         if (uiManager.instance.LoadingFromShelves == true)
         {
-            SaveManager.instance.LoadCounter();
             Debug.Log("loading from shelves true");
         }
         if (uiManager.instance.LoadingFromShelves == false)
@@ -73,17 +83,22 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
     {
         Debug.Log("customer enter");
 
-        randomCustomer();
-        
-        if (visitedToday.Contains(activeCustomer))
+        do
         {
-            StartCoroutine(elimiateRepeatCustomers());
+            randomCustomer();
         }
+        while(visitedToday.Contains(activeCustomer));
 
         visitedToday.Add(activeCustomer);
         SetCharacterSprites();
         SetDialogueSprites();
         BeginInteraction();
+    }
+
+     public void randomCustomer()
+    {
+        activeCustomer = null;
+        activeCustomer = potentialCustomers[UnityEngine.Random.Range(0, potentialCustomers.Length)];
     }
 
     IEnumerator elimiateRepeatCustomers()
@@ -118,11 +133,6 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
     {
         dialogueUI.SetActive(true);
         nameText.text = activeCustomer.name;
-    }
-
-    public void randomCustomer()
-    {
-        activeCustomer = potentialCustomers[UnityEngine.Random.Range(0, potentialCustomers.Length)];
     }
 
     #region dialogue
@@ -255,13 +265,14 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
 
     IEnumerator nextInteraction()
     {
+
         if (visitedToday.Count >= maxCXperDay)
             {
                 uiManager.instance.DayEnd();
             }
             else
             {
-                  new WaitForSecondsRealtime(5);
+                new WaitForSecondsRealtime(5);
                 customerEnter();
             }
 
@@ -346,8 +357,8 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
         
         if (activeCustomer != null)
         {
+            Debug.Log(activeCustomer.name + "saved active");
             counterData.currentCustomerID = activeCustomer.characterID;
-            //Debug.Log("saving active customer");
         }
 
         counterData.dialogueStageInt = (int)currentStage;
@@ -368,20 +379,30 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
     public void LoadCounter(CounterData counterData)
     {
 
-        if (counterData.currentCustomerID != string.Empty)
+        if ((counterData.currentCustomerID != string.Empty)|(counterData.currentCustomerID!=null))
         {
             string activeCharID = counterData.currentCustomerID;
             Debug.Log(activeCharID);
-            activeCustomer = CharacterManager.instance.GetCharacter(activeCharID);
-            currentStage = (DialogueStage)counterData.dialogueStageInt;
-            if (currentStage != DialogueStage.Inactive)
+            try
             {
-                SetCharacterSprites();
+                activeCustomer = CharacterManager.instance.GetCharacter(activeCharID);
+                currentStage = (DialogueStage)counterData.dialogueStageInt;
+                Debug.Log(activeCustomer.name + "loaded active");
+                if (currentStage != DialogueStage.Inactive)
+                {
+                    SetCharacterSprites();
+                }
+            }
+            catch
+            {
+                Debug.Log("cust not active");
+                activeCustomer = null;
             }
         }
         else
         {
             Debug.Log("no active char");
+            activeCustomer = null;
         }
 
         if (counterData.metCustomersID.Count > 0)
@@ -409,7 +430,8 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
         else{Debug.Log("visited today list empty");}
 
         if (((counterData.givenBookID != null)|(counterData.givenBookID != string.Empty)) 
-        && (counterData.triggerGiveBook == true))
+        && (counterData.triggerGiveBook == true) 
+        && (SessionManager.instance.currentDayStage == SessionManager.DayStage.pickBooks))
         {
             givenBook = BookManager.instance.GetBookData(counterData.givenBookID);
             Debug.Log(givenBook.bookTitle);   

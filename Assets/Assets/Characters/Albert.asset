@@ -17,14 +17,14 @@ MonoBehaviour:
   pronouns: he/him
   age: 0
   career: Baker
-  visitedToday: 0
+  shortCharacter: 0
   characterID: eee5a4ff-5d4d-4323-984f-8aabfd818191
   characterSprite: {fileID: 21300000, guid: ea1cf6b652c5fad43bb29c7b601cd8d4, type: 3}
   favGenre: 2
   lovedBooks:
   - {fileID: 11400000, guid: 1046f26834153b44ca1c7b486cc38055, type: 2}
   - {fileID: 11400000, guid: 46e5d453f4fbcdc4d9942c13535719bd, type: 2}
-  - {fileID: 11400000, guid: 082740916d1a4eb41b4677e1af56264c, type: 2}
+  - {fileID: 11400000, guid: b3d017e15e2b733489738faf8e98ea98, type: 2}
   - {fileID: 11400000, guid: 6ddb150a425e21c4ab25667a4ddab5d5, type: 2}
   - {fileID: 11400000, guid: 082740916d1a4eb41b4677e1af56264c, type: 2}
   likedBooks:

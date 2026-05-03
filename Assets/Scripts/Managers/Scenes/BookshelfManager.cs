@@ -16,6 +16,8 @@ public class BookshelfManager : MonoBehaviour
             instance = this;    
     }
 
+    public GameObject holderPrefab;
+
     IEnumerator Start()
     {
         ShelvesManager.instance.FindShelves();
@@ -24,8 +26,23 @@ public class BookshelfManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         SaveManager.instance.LoadBookshelves();
+        if ((SessionManager.instance.currentDayStage == SessionManager.DayStage.pickBooks) && (Holder.instance==null))
+        {
+            Debug.Log("activate holder");
+            Instantiate(holderPrefab, ShelfGroup.shelfGroup.canvas.transform);
+            yield break;  
+        }
+        if((Bookbox.instance == null) && 
+        (SessionManager.instance.bookBoxToday == false) && 
+        (SessionManager.instance.currentDayStage == SessionManager.DayStage.delivery))
+        {
+            Debug.Log("instantiate bookbox");
+            Instantiate(bookbox, ShelfGroup.shelfGroup.canvas.transform);
+        }
         
     }
+
+    public GameObject bookbox;
     
     public GameObject heldBook;
     public bool holdingBook;

@@ -8,18 +8,19 @@ public class Holder : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     public Animator holderAnimator;
 
     public static Holder instance;
-    Vector3 startPos;
 
     void Awake()
     {
+        Debug.Log("holder awake");
         instance = this;
         gameObject.SetActive(false);
-        startPos = transform.localPosition;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         gameObject.SetActive(false);
+
+        Debug.Log("deactivate holder");
 
         if (beforeState == false) //if cover view was inactive before hover
         {
@@ -31,7 +32,6 @@ public class Holder : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     public bool beforeState;
     public GameObject hoveredBook;
     public PlayableBook bookController;
-    
 
      public void OnPointerEnter(PointerEventData eventData)
     {
@@ -62,9 +62,16 @@ public class Holder : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         holderAnimator.SetTrigger("triggerExit");
         triggerGiveBook = true;
         uiManager.instance.toCounter();
-        Destroy(dropped);
-        
-        transform.localPosition = startPos;
+    }
+
+    public void ActivateHolder()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void DestroyHolder()
+    {
+        Destroy(gameObject);
     }
 
     bool triggerGiveBook = false;

@@ -26,6 +26,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c4008b482a3b413429b0c544dc25c25c, type: 2}
   - {fileID: 11400000, guid: a3e9bdde6f110c04281cbe6b431d67b7, type: 2}
   - {fileID: 11400000, guid: 714a347148ae7c747b0fcc2231b94d26, type: 2}
+  - {fileID: 11400000, guid: bf5602d5508a6be44ac4e5d93c32b8e2, type: 2}
   likedBooks:
   - {fileID: 11400000, guid: 1046f26834153b44ca1c7b486cc38055, type: 2}
   - {fileID: 11400000, guid: 082740916d1a4eb41b4677e1af56264c, type: 2}

@@ -14,5 +14,9 @@ public class ShelfGroup : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        canvas = gameObject;
     }
+
+    public GameObject canvas;
 }

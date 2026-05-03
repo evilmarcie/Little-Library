@@ -54,7 +54,6 @@ public class sortButtonGenre : MonoBehaviour
             Debug.Log("cannot find parent");
         }
         
-
         booksScrollbar.value = 1;
     }
 }

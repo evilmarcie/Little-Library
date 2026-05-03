@@ -40,6 +40,7 @@ public class SaveSlot : MonoBehaviour, IPointerClickHandler
     public void NewGame()
     {
         SaveManager.instance.profileID = profileID;
+        SaveManager.instance.RemoveConflictingFiles(profileID);
         MenuManager.instance.StartGame();
     }
 

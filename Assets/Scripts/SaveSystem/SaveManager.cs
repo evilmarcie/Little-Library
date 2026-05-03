@@ -54,7 +54,6 @@ public class SaveManager : MonoBehaviour
         try
         {
             string path = Path.Combine(profilePath, bookshelfFileName);
-            //Directory.CreateDirectory(path);
             string json = JsonUtility.ToJson(shelvesData, true);
             File.WriteAllText(path, json);
             Debug.Log("saved shelves");
@@ -271,24 +270,25 @@ public class SaveManager : MonoBehaviour
         string profilePath = ProfilePath(profileID);
 
         // // write new counter data from game data
-        // CounterData counterData = new CounterData();
-        // foreach (string id in gameData.metCustomersID)
-        // {
-        //     string custID = id;
-        //     counterData.metCustomersID.Add(custID);
-        // }
-        // string counterPath = Path.Combine(profilePath, counterFileName);
+        CounterData counterData = new CounterData();
+
+        foreach (string id in gameData.metCustomersID)
+        {
+            string custID = id;
+            counterData.metCustomersID.Add(custID);
+        }
+        string counterPath = Path.Combine(profilePath, counterFileName);
         
-        // try
-        // {
-        //     string jsonCounter = JsonUtility.ToJson(counterData, true);
-        //     File.WriteAllText(counterPath, jsonCounter);
-        //     Debug.Log("updated counterdata");
-        // }
-        // catch
-        // {
-        //     Debug.LogError("Error saving new counterdata");
-        // }
+        try
+        {
+            string jsonCounter = JsonUtility.ToJson(counterData, true);
+            File.WriteAllText(counterPath, jsonCounter);
+            Debug.Log("updated counterdata");
+        }
+        catch
+        {
+            Debug.LogError("Error saving new counterdata");
+        }
 
         // write new bookshelf data from game data
         BookshelvesData shelvesData = new BookshelvesData();
@@ -354,5 +354,26 @@ public class SaveManager : MonoBehaviour
     public string fileID(string rawID)
     {
         return profileID = rawID + "/";
+    }
+
+    public void RemoveConflictingFiles(string profileID)
+    {
+        string profilePath = ProfilePath(profileID);
+        
+        // check for counter file & delete if exists
+        string counterPath = Path.Combine(profilePath, counterFileName);
+        if (File.Exists(counterPath))
+            {
+                File.Delete(counterPath);
+                Debug.Log("deleted conflicting counterdata");
+            }
+
+        // check for shelf file & delete if exists
+        string shelfPath = Path.Combine(profilePath, bookshelfFileName);
+        if (File.Exists(shelfPath))
+            {
+                File.Delete(shelfPath);
+                Debug.Log("deleted conflicting shekfdata");
+            }
     }
 }

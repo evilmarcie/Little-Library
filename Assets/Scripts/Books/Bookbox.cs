@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Data.Common;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7,10 +8,19 @@ using UnityEngine.UIElements;
 public class Bookbox : MonoBehaviour, IPointerClickHandler
 {
     public static Bookbox instance;
+    public bool loaded = false;
 
     void Awake()
     {
         instance = this;
+    }
+
+    void Start()
+    {
+        if (SessionManager.instance.bookBoxToday == false)
+        {
+            GenerateBookBox();
+        }
     }
 
     public GameObject bookPrefab;
@@ -34,22 +44,28 @@ public class Bookbox : MonoBehaviour, IPointerClickHandler
                 uiManager.instance.CustomerNotification(true);
                 SessionManager.instance.completeBookBox = true;
                 SessionManager.instance.currentDayStage = SessionManager.DayStage.cxArrive;
+                Destroy(boxParent);
             } 
         }
     }
 
     public void GenerateBookBox()
     {
-        Debug.Log("bookbox active");
+        
+        Debug.Log("generated books");
 
         for (int booksGenerated = 0; booksGenerated < bookboxMaxCapacity; booksGenerated++)
         {
             Instantiate(bookPrefab, boxHolder.transform);
         }
-        SessionManager.instance.bookBoxToday = true;
 
-        SessionManager.instance.currentDayStage = SessionManager.DayStage.unpackDelivery;
-       
+        if (boxHolder.transform.childCount > 0)
+        {
+            boxHolder.SetActive(false);
+            SessionManager.instance.bookBoxToday = true;
+            SessionManager.instance.currentDayStage = SessionManager.DayStage.unpackDelivery;
+        }
+
     }
 
     public bool boxOpen = false;
