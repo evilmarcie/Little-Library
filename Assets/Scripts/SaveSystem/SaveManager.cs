@@ -243,7 +243,6 @@ public class SaveManager : MonoBehaviour
         string path = Path.Combine(profilePath, gameFileName);
         try
         {
-            //Directory.CreateDirectory(path);
             string json = JsonUtility.ToJson(gameData, true);
             File.WriteAllText(path, json);
             Debug.Log("save");

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Data.Common;
 using Unity.Mathematics;
 using UnityEngine;
@@ -49,14 +50,30 @@ public class Bookbox : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    public List<BookData> childBooks;
+
     public void GenerateBookBox()
     {
+        List<BookData> childBooks = new List<BookData>();
+        if (childBooks.Count != 0){childBooks.Clear();}
         
         Debug.Log("generated books");
 
         for (int booksGenerated = 0; booksGenerated < bookboxMaxCapacity; booksGenerated++)
         {
-            Instantiate(bookPrefab, boxHolder.transform);
+            GameObject thisBook = null;
+            BookData thisBookData = null;
+           
+            do
+            {
+                if (thisBook!=null){Destroy(thisBook);}
+                thisBook = Instantiate(bookPrefab, boxHolder.transform);
+                thisBook.GetComponent<bookPrefab>().RandomValues();
+                thisBookData = thisBook.GetComponent<bookPrefab>().book;
+            }
+            while(childBooks.Contains(thisBookData));
+                
+            childBooks.Add(thisBookData);
         }
 
         if (boxHolder.transform.childCount > 0)
@@ -65,7 +82,6 @@ public class Bookbox : MonoBehaviour, IPointerClickHandler
             SessionManager.instance.bookBoxToday = true;
             SessionManager.instance.currentDayStage = SessionManager.DayStage.unpackDelivery;
         }
-
     }
 
     public bool boxOpen = false;

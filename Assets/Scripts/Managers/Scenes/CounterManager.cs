@@ -91,24 +91,13 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
 
         visitedToday.Add(activeCustomer);
         SetCharacterSprites();
-        SetDialogueSprites();
-        BeginInteraction();
+        StartCoroutine(BeginInteraction());
     }
 
      public void randomCustomer()
     {
         activeCustomer = null;
         activeCustomer = potentialCustomers[UnityEngine.Random.Range(0, potentialCustomers.Length)];
-    }
-
-    IEnumerator elimiateRepeatCustomers()
-    {
-        while (visitedToday.Contains(activeCustomer))
-        {
-            randomCustomer();
-            yield return new WaitForEndOfFrame();
-        }
-        yield return activeCustomer;
     }
 
     Vector3 shortCharacterPos = new Vector3(21, -97, 0);
@@ -137,8 +126,11 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
 
     #region dialogue
 
-    public void BeginInteraction()
+    public IEnumerator BeginInteraction()
     {
+        yield return new WaitForSecondsRealtime(1);
+
+        SetDialogueSprites();
         currentStage = DialogueStage.Greeting;
 
         if (haveMet.Contains(activeCustomer))
@@ -188,8 +180,10 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
         SessionManager.instance.currentDayStage = SessionManager.DayStage.pickBooks;
     }
 
-    public void GiveBook(BookData givenBook)
+    public IEnumerator GiveBook(BookData givenBook)
     {
+        yield return new WaitForSecondsRealtime(1);
+
         SetDialogueSprites();
 
         currentStage = DialogueStage.GiveBook;
@@ -272,7 +266,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
             }
             else
             {
-                new WaitForSecondsRealtime(5);
+                yield return new WaitForSecondsRealtime(2);
                 customerEnter();
             }
 
@@ -435,7 +429,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
         {
             givenBook = BookManager.instance.GetBookData(counterData.givenBookID);
             Debug.Log(givenBook.bookTitle);   
-            GiveBook(givenBook);
+            StartCoroutine(GiveBook(givenBook));
         }
 
         if ((SessionManager.instance.completeBookBox == true) && (activeCustomer == null) 

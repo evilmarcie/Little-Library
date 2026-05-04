@@ -31,21 +31,14 @@ public class bookPrefab : MonoBehaviour, ISaveShelves
 
     public bool loadingFromSave = false;
 
-    void Start()
-    {
-        if (loadingFromSave == false)
-        {
-            RandomValues();
-            SetValues();
-        }
-    }
-
     public void RandomValues()
     {
         book = books[UnityEngine.Random.Range(0, books.Length)];
         sprites = SpriteManager.instance.BookSprites;
         spriteNumber = UnityEngine.Random.Range(0, sprites.Count);
         spriteInfo = sprites[spriteNumber];
+
+        SetValues();
     }
 
     public void SetValues()

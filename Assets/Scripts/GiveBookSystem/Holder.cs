@@ -11,7 +11,6 @@ public class Holder : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     void Awake()
     {
-        Debug.Log("holder awake");
         instance = this;
         gameObject.SetActive(false);
     }
@@ -19,8 +18,6 @@ public class Holder : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     public void OnPointerExit(PointerEventData eventData)
     {
         gameObject.SetActive(false);
-
-        Debug.Log("deactivate holder");
 
         if (beforeState == false) //if cover view was inactive before hover
         {
