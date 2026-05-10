@@ -3,10 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Pool;
 using UnityEngine.UI;
 
 public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
@@ -81,7 +79,6 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
 
     public void customerEnter()
     {
-        Debug.Log("customer enter");
 
         do
         {
@@ -100,20 +97,24 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
         activeCustomer = potentialCustomers[UnityEngine.Random.Range(0, potentialCustomers.Length)];
     }
 
-    Vector3 shortCharacterPos = new Vector3(21, -97, 0);
-    Vector3 tallCharacterPos = new Vector3(21, -295, 0);
+    Vector2 shortCharacterPos = new Vector2(21, -200);
+    Vector2 tallCharacterPos = new Vector2(21, -400);
 
     public void SetCharacterSprites()
     {
         character.SetActive(true);
-        if (activeCustomer.shortCharacter == true)
+
+        RectTransform rt = character.GetComponent<RectTransform>();
+
+        if (activeCustomer.shortCharacter)
         {
-            character.transform.localPosition = shortCharacterPos;
+            rt.anchoredPosition = shortCharacterPos;
         }
         else
         {
-            character.transform.localPosition = tallCharacterPos;
+            rt.anchoredPosition = tallCharacterPos;
         }
+
         Image characterImg = character.GetComponent<Image>();
         characterImg.sprite = activeCustomer.characterSprite;
     }
@@ -128,7 +129,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
 
     public IEnumerator BeginInteraction()
     {
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(0.5f);
 
         SetDialogueSprites();
         currentStage = DialogueStage.Greeting;
@@ -182,7 +183,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
 
     public IEnumerator GiveBook(BookData givenBook)
     {
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(0.5f);
 
         SetDialogueSprites();
 
@@ -266,7 +267,7 @@ public class CounterManager : MonoBehaviour, ISaveCounter, ISaveGame
             }
             else
             {
-                yield return new WaitForSecondsRealtime(2);
+                yield return new WaitForSecondsRealtime(1.5f);
                 customerEnter();
             }
 

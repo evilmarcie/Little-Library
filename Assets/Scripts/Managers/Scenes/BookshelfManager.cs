@@ -1,11 +1,5 @@
 using System.Collections;
-using System.Runtime.Serialization;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class BookshelfManager : MonoBehaviour
 {
@@ -13,10 +7,11 @@ public class BookshelfManager : MonoBehaviour
 
     void Awake()
     {
-            instance = this;    
+            instance = this; 
     }
 
     public GameObject holderPrefab;
+    public GameObject leftButton;
 
     IEnumerator Start()
     {
@@ -29,7 +24,7 @@ public class BookshelfManager : MonoBehaviour
         if ((SessionManager.instance.currentDayStage == SessionManager.DayStage.pickBooks) && (Holder.instance==null))
         {
             Debug.Log("activate holder");
-            Instantiate(holderPrefab, ShelfGroup.shelfGroup.canvas.transform);
+            Instantiate(holderPrefab, leftButton.transform.position, Quaternion.identity, ShelfGroup.shelfGroup.canvas.transform);
             yield break;  
         }
         if((Bookbox.instance == null) && 

@@ -1,6 +1,4 @@
-using UnityEngine;
-
-   public interface ISaveGame
+public interface ISaveGame
     {
         public void SaveGame(ref GameData gameData);
         public void LoadGame(GameData gameData);

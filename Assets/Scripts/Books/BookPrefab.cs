@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -33,9 +31,9 @@ public class bookPrefab : MonoBehaviour, ISaveShelves
 
     public void RandomValues()
     {
-        book = books[UnityEngine.Random.Range(0, books.Length)];
+        book = books[Random.Range(0, books.Length)];
         sprites = SpriteManager.instance.BookSprites;
-        spriteNumber = UnityEngine.Random.Range(0, sprites.Count);
+        spriteNumber = Random.Range(0, sprites.Count);
         spriteInfo = sprites[spriteNumber];
 
         SetValues();

@@ -45,16 +45,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 895afc838658e3f48ba6d5ec27e219ff, type: 2}
   - {fileID: 11400000, guid: 7fa14292d6cdd5b418fc4954c62c9454, type: 2}
   - {fileID: 11400000, guid: b94acfe05cb6fe24a9ea92ab57be638a, type: 2}
-  initialGreeting: Hello, I'm Albert, nice to meet you!
+  initialGreeting: 'Hey! My name is Albert, nice to meet you! I.. mostly read romance
+    books... '
   greetingLines:
-  - Hello!
+  - Hello! Lovely to see you again!
   promptLines:
   - Could you recommend a book for me?
   lovedResponse:
-  - That sounds perfect for me, thank you so much!
+  - Oh, that sounds perfect for me! Thank you so much!
   likedResponse:
-  - Good choice! I'm excited to check it out.
+  - Sounds great! I am excited to check it out.
   neutralResponse:
-  - Hmm... that wouldn't be my first choice but I'll give it a try...
+  - That wouldn't be my first choice but I'll give it a try...
   dislikedResponse:
-  - Um... That isn't fit for me at all.
+  - Sorry... I don't think I would like this at all...

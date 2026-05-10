@@ -1,12 +1,7 @@
-using System.Collections;
-using Mono.Cecil.Cil;
+using System.Numerics;
 using TMPro;
-using Unity.Collections;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
-using UnityEngine.Playables;
 
 public class SnapSlot : MonoBehaviour, IDropHandler
 {
@@ -21,16 +16,32 @@ public class SnapSlot : MonoBehaviour, IDropHandler
         GameObject dropped = eventData.pointerDrag;
         PlayableBook book = dropped.GetComponent<PlayableBook>();
         book.myShelf = this;
-        if (book.coverView.activeSelf)
+        shelfHolding = 0;
+        
+        foreach(PlayableBook child in gameObject.GetComponentsInChildren<PlayableBook>())
         {
-            shelfHolding += 1;
+            if (child.coverActiveView == true)
+            {
+                shelfHolding += 1;
+            }
+            else if (child.coverActiveView == false)
+            {
+                shelfHolding += 0.5f;
+            }
         }
-        else
+        
+        float booksize = 0;
+
+        if(book.coverActiveView == true)
         {
-            shelfHolding += 0.5f;
+             booksize = 1;
+        }
+        else if(book.coverActiveView == false)
+        {
+             booksize = 0.5f;
         }
 
-        if (shelfHolding <= maxCapacty)
+        if ((shelfHolding + booksize) <= maxCapacty)
         {
             book.parentAfterDrag = transform;
             book.onShelf = true;
@@ -44,15 +55,6 @@ public class SnapSlot : MonoBehaviour, IDropHandler
 
     public void BookRemoved(PlayableBook book)
     {    
-
-        if (book.coverView.activeSelf)
-        {
-            shelfHolding -= 1;
-        }
-        else
-        {
-            shelfHolding -= 0.5f;
-        }
     
     }
 }

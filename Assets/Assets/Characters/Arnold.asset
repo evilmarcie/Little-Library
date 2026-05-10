@@ -17,7 +17,7 @@ MonoBehaviour:
   pronouns: he/him
   age: 0
   career: Literature Student
-  visitedToday: 0
+  shortCharacter: 0
   characterID: d196a4bd-a0ca-4381-a756-012495f8feb6
   characterSprite: {fileID: 21300000, guid: e69e36bfb524af14fbe8a9f1f5cc0013, type: 3}
   favGenre: 8
@@ -45,16 +45,18 @@ MonoBehaviour:
   dislikedBooks:
   - {fileID: 11400000, guid: c4008b482a3b413429b0c544dc25c25c, type: 2}
   - {fileID: 11400000, guid: a3e9bdde6f110c04281cbe6b431d67b7, type: 2}
-  initialGreeting: Hello, I'm Arnold, nice to meet you!
+  initialGreeting: 'Hello, I''m Arnold, it''s a pleasure to meet you. I study literature
+    at the local university so I mainly read academic books. '
   greetingLines:
-  - Hello!
+  - Hello, I hope your day is well.
   promptLines:
-  - Could you recommend a book for me?
+  - Do you have anything you could recommend for me?
   lovedResponse:
-  - That sounds perfect for me, thank you so much!
+  - Oh that will be perfect, thank you very much for the recommendation!
   likedResponse:
-  - Good choice! I'm excited to check it out.
+  - 'Great choice! I will check it out. '
   neutralResponse:
-  - Hmm... that wouldn't be my first choice but I'll give it a try...
+  - Hmm... I'm not sure about that one, but I will give it the benefit of the doubt,
+    I suppose.
   dislikedResponse:
-  - Um... That isn't fit for me at all.
+  - 'That isn''t fit for me. '

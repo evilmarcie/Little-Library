@@ -57,7 +57,10 @@ IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = Input.mousePosition;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)transform.parent,Input.mousePosition,Camera.main,
+        out Vector2 localPos);
+
+        ((RectTransform)transform).localPosition = localPos;
 
     }
 

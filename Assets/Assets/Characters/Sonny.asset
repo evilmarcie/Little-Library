@@ -45,16 +45,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 43213c0cb362ac7428adc3a575c6d23c, type: 2}
   - {fileID: 11400000, guid: 0130d90c43c2adf4cb24e469c077a88e, type: 2}
   - {fileID: 11400000, guid: b94acfe05cb6fe24a9ea92ab57be638a, type: 2}
-  initialGreeting: Hello, I'm Sonny, nice to meet you!
+  initialGreeting: Hello! I'm Sonny, nice to meet you! I am practicing reading with
+    my parents, so nothing too big for me please...
   greetingLines:
   - Hello!
   promptLines:
-  - Could you recommend a book for me?
+  - Do you have any books I might like?
   lovedResponse:
-  - That sounds perfect for me, thank you so much!
+  - Oh that's awesome! I can't wait to read it!
   likedResponse:
-  - Good choice! I'm excited to check it out.
+  - Cool! I'm excited to give it a go!
   neutralResponse:
-  - Hmm... that wouldn't be my first choice but I'll give it a try...
+  - 'Um... I guess I can try that... '
   dislikedResponse:
-  - Um... That isn't fit for me at all.
+  - Um... sorry but I can't read that.

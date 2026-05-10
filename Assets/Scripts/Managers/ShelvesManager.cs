@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShelvesManager : MonoBehaviour
@@ -22,8 +21,7 @@ public class ShelvesManager : MonoBehaviour
     public void FindShelves()
     {
         
-        if (shelves == null || shelves.Count == 0 || lookup == null || lookup.Count == 0)
-        {
+        
             shelves.Clear();
             shelves = FindObjectsByType<Shelf>(FindObjectsSortMode.None).ToList();
             
@@ -44,11 +42,8 @@ public class ShelvesManager : MonoBehaviour
                     FullyLoaded = true;
                 }
             }
-        }
-        else
-        {
             FullyLoaded = true;
-        }
+        
     
     }
     

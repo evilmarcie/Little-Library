@@ -1,8 +1,5 @@
 using UnityEngine;
 using TMPro;
-using System;
-using Unity.VisualScripting;
-using System.Collections.Generic;
 
 public class Tooltip : MonoBehaviour
 {    
@@ -32,7 +29,13 @@ public class Tooltip : MonoBehaviour
 
     void Update()
     {
-        transform.position = Input.mousePosition + new Vector3(50, -50, 0);
+        RectTransform parentRect = (RectTransform)transform.parent;
+
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(parentRect,Input.mousePosition,Camera.main,out Vector2 localPos);
+
+        Vector2 offset = new Vector2(10f, -10f) / parentRect.lossyScale;
+
+        ((RectTransform)transform).localPosition = localPos + offset;
 
         books = GameObject.FindGameObjectsWithTag("book");
     }

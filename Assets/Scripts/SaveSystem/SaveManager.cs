@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Unity.VisualScripting;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class SaveManager : MonoBehaviour
@@ -114,7 +112,7 @@ public class SaveManager : MonoBehaviour
                 }
                 else
                 {
-                    book.transform.SetParent(shelf.transform);
+                    book.transform.SetParent(shelf.transform, false);
                     book.transform.SetSiblingIndex(info.parentsOrder);
                 }
 
@@ -122,6 +120,9 @@ public class SaveManager : MonoBehaviour
                 {
                     playableBook.onShelf = true;
                 }
+
+                //RectTransform rt = book.GetComponent<RectTransform>();
+                //rt.localScale = Vector3.one;
             }
         }
     }

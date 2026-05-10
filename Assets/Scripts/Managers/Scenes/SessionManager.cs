@@ -1,8 +1,5 @@
 using System.Collections;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SessionManager : MonoBehaviour, ISaveGame
 {

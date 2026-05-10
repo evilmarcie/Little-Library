@@ -1,9 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System;
-using UnityEditor.Animations;
-using UnityEngine.Animations;
 using System.Collections.Generic;
 
 public class BooksMenu : MonoBehaviour

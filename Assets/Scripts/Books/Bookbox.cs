@@ -1,10 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Data.Common;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 
 public class Bookbox : MonoBehaviour, IPointerClickHandler
 {
@@ -41,7 +37,7 @@ public class Bookbox : MonoBehaviour, IPointerClickHandler
             if (boxHolder.transform.childCount == 0)
             {
                 Debug.Log("zero children");
-                boxParent.SetActive(false); // ideally add animate out, temp just disappear
+                boxParent.SetActive(false); 
                 uiManager.instance.CustomerNotification(true);
                 SessionManager.instance.completeBookBox = true;
                 SessionManager.instance.currentDayStage = SessionManager.DayStage.cxArrive;
@@ -56,8 +52,6 @@ public class Bookbox : MonoBehaviour, IPointerClickHandler
     {
         List<BookData> childBooks = new List<BookData>();
         if (childBooks.Count != 0){childBooks.Clear();}
-        
-        Debug.Log("generated books");
 
         for (int booksGenerated = 0; booksGenerated < bookboxMaxCapacity; booksGenerated++)
         {

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShelfGroup : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class ShelfGroup : MonoBehaviour
         if (shelfGroup == null)
         {
             shelfGroup = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         else
         {
